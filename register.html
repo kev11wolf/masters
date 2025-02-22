@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register - Masters Pool</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Register - The Masters Pool</title>
+    <link rel="stylesheet" href="assets/styles/styles.css">
 </head>
 <body>
+    <!-- Header -->
     <header>
-        <h1>Masters Pool</h1>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -17,19 +17,28 @@
             </ul>
         </nav>
     </header>
-    <main>
-        <h2>Register for the Tournament</h2>
+
+    <!-- Registration Form -->
+    <section class="registration-form">
+        <h1>Register for The Masters Pool</h1>
         <form id="registration-form">
             <label for="name">Name:</label>
-            <input type="text" id="name" required>
+            <input type="text" id="name" name="name" required>
+
             <label for="email">Email:</label>
-            <input type="email" id="email" required>
+            <input type="email" id="email" name="email" required>
+
+            <label for="team">Select Your Team:</label>
+            <select id="team" name="team">
+                <option value="player1">Player 1</option>
+                <option value="player2">Player 2</option>
+                <!-- Add more options as needed -->
+            </select>
+
             <button type="submit">Submit</button>
         </form>
-    </main>
-    <footer>
-        <p>&copy; 2023 Masters Pool. All rights reserved.</p>
-    </footer>
-    <script src="script.js"></script>
+    </section>
+
+    <script src="assets/scripts/registration.js"></script>
 </body>
 </html>
