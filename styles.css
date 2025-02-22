@@ -1,0 +1,45 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0; /* Light background color */
+    color: #333; /* Dark text color */
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #008f39; /* Augusta dark green */
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+main {
+    padding: 20px;
+}
+
+footer {
+    background-color: #008f39; /* Matches header */
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: relative; /* Allow footer to be at the bottom */
+    bottom: 0; /* Stick footer to the bottom */
+    width: 100%;
+}
+
+/* Optional animations can be added here */
