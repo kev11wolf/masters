@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Masters Pool</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>The Masters Pool</title>
+    <link rel="stylesheet" href="assets/styles/styles.css">
 </head>
 <body>
+    <!-- Header -->
     <header>
-        <h1>Masters Pool</h1>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -17,15 +17,20 @@
             </ul>
         </nav>
     </header>
-    <main>
-        <h2>Welcome to the Masters Pool Tournament!</h2>
-        <p>Join us for an exciting tournament. May the best player win!</p>
-        <button id="music-btn">Play Music</button>
-    </main>
-    <footer>
-        <p>&copy; 2023 Masters Pool. All rights reserved.</p>
-    </footer>
-    <audio id="bg-music" src="assets/music.mp3" loop></audio>
-    <script src="script.js"></script>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Welcome to The Masters Pool!</h1>
+        <p>Join the excitement and compete for the best score!</p>
+        <a href="register.html" class="btn">Register Now</a>
+    </section>
+
+    <!-- Music and Animation -->
+    <audio autoplay loop>
+        <source src="assets/music/augusta-theme.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script src="assets/scripts/animations.js"></script>
 </body>
 </html>
