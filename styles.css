@@ -1,45 +1,115 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0; /* Light background color */
-    color: #333; /* Dark text color */
+/* General Reset */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
+/* Body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f1f1f1;
+    color: #333;
+}
+
+/* Header */
 header {
-    background-color: #008f39; /* Augusta dark green */
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
+    background-color: #006747;
+    padding: 10px 0;
 }
 
 nav ul {
     list-style-type: none;
-    padding: 0;
+    text-align: center;
 }
 
 nav ul li {
     display: inline;
-    margin: 0 15px;
+    margin: 0 20px;
 }
 
-nav a {
+nav ul li a {
     color: white;
     text-decoration: none;
+    font-weight: bold;
 }
 
-main {
-    padding: 20px;
-}
-
-footer {
-    background-color: #008f39; /* Matches header */
+/* Hero Section */
+.hero {
+    background: url('assets/images/augusta-course.jpg') no-repeat center center;
+    background-size: cover;
     color: white;
     text-align: center;
-    padding: 10px 0;
-    position: relative; /* Allow footer to be at the bottom */
-    bottom: 0; /* Stick footer to the bottom */
-    width: 100%;
+    padding: 100px 0;
 }
 
-/* Optional animations can be added here */
+.hero h1 {
+    font-size: 50px;
+}
+
+.hero .btn {
+    background-color: #FFD700;
+    color: black;
+    padding: 15px 30px;
+    text-decoration: none;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+.hero .btn:hover {
+    background-color: #f1c40f;
+}
+
+/* Form */
+.registration-form {
+    text-align: center;
+    padding: 50px;
+}
+
+.registration-form input, .registration-form select {
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 18px;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 5px;
+}
+
+.registration-form button {
+    padding: 15px 30px;
+    background-color: #006747;
+    color: white;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.registration-form button:hover {
+    background-color: #004d36;
+}
+
+/* Leaderboard */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+
+th {
+    background-color: #006747;
+    color: white;
+}
+
+td {
+    background-color: #e9e9e9;
+}
+
+tr:nth-child(even) td {
+    background-color: #f1f1f1;
+}
