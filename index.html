@@ -3,34 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Masters Pool</title>
-    <link rel="stylesheet" href="assets/styles/styles.css">
+    <title>Masters Pool</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Header -->
     <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="register.html">Register</a></li>
-                <li><a href="leaderboard.html">Leaderboard</a></li>
-            </ul>
-        </nav>
+        <h1>Masters Pool</h1>
     </header>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>Welcome to The Masters Pool!</h1>
-        <p>Join the excitement and compete for the best score!</p>
-        <a href="register.html" class="btn">Register Now</a>
-    </section>
-
-    <!-- Music and Animation -->
-    <audio autoplay loop>
-        <source src="assets/music/augusta-theme.mp3" type="audio/mp3">
+    <main>
+        <section id="registration">
+            <h2>Register</h2>
+            <p>Click the link below to register:</p>
+            <a href="YOUR_GOOGLE_FORM_LINK" target="_blank" class="button">Register Here</a>
+        </section>
+        <section id="leaderboard">
+            <h2>Leaderboard</h2>
+            <ul id="participantsList"></ul>
+        </section>
+    </main>
+    <audio controls autoplay loop>
+        <source src="background-music.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
-
-    <script src="assets/scripts/animations.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
