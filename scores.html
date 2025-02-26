@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Scores</title>
+</head>
+<body>
+    <header>
+        <h1>Scores</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="register.html">Register</a></li>
+                <li><a href="leaderboard.html">Leaderboard</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Scores of Participants</h2>
+        <table id="scores">
+            <thead>
+                <tr>
+                    <th>Participant</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data will be populated here -->
+            </tbody>
+        </table>
+    </main>
+    <script>
+        fetch('scores.csv')
+            .then(response => response.text())
+            .then(data => {
+                const rows = data.split('\n').slice(1);
+                const tableBody = document.querySelector('#scores tbody');
+                rows.forEach(row => {
+                    const cols = row.split(',');
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `<td>${cols[0]}</td><td>${cols[1]}</td>`;
+                    tableBody.appendChild(tr);
+                });
+            });
+    </script>
+</body>
+</html>
