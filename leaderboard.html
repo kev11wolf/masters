@@ -31,8 +31,18 @@
                 <!-- Data will be populated here -->
             </tbody>
         </table>
+        <div id="music-player">
+            <audio id="background-music" loop>
+                <source src="https://www.youtube.com/watch?v=G97AdMLbfr4&ab_channel=TheMasters" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+            <label for="volume">Volume:</label>
+            <input type="range" id="volume" min="0" max="1" step="0.1" value="0.5" />
+        </div>
     </main>
+    
     <script>
+        // Fetch and display the leaderboard data
         fetch('leaderboard.csv')
             .then(response => response.text())
             .then(data => {
@@ -45,6 +55,19 @@
                     tableBody.appendChild(tr);
                 });
             });
+
+        // Get the audio element and volume input
+        const audio = document.getElementById('background-music');
+        const volumeControl = document.getElementById('volume');
+
+        // Set the initial volume
+        audio.volume = volumeControl.value;
+        audio.play();  // Start playing the music when the page loads
+
+        // Update the audio volume when the range input changes
+        volumeControl.addEventListener('input', function() {
+            audio.volume = this.value;
+        });
     </script>
 </body>
 </html>
