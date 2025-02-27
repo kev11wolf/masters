@@ -1,63 +1,52 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: url('URL_OF_BACKGROUND_IMAGE') no-repeat center center fixed;
-    background-size: cover;
-    color: white;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f4; /* Light gray background */
+    color: #004d00; /* Dark green text color */
 }
 
 header {
-    background-color: rgba(0, 128, 0, 0.9);
-    padding: 20px;
+    background: #007bff; /* Masters Theme Color, you might consider changing this */
+    color: #ffffff; /* Keeping header text white for contrast */
+    padding: 10px 0;
     text-align: center;
+    font-family: 'Playfair Display', serif;
 }
 
-nav ul {
+h1 {
+    margin: 0;
+    color: #004d00; /* Dark green for h1 headings */
+}
+
+main {
+    padding: 20px;
+}
+
+section {
+    margin: 20px 0;
+}
+
+.button {
+    background-color: #28a745; /* Green Button */
+    color: white; /* Keep button text white for contrast */
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.button:hover {
+    background-color: #218838; /* Darker Green on Hover */
+}
+
+#participantsList {
     list-style-type: none;
     padding: 0;
 }
 
-nav ul li {
-    display: inline;
-    margin: 0 15px;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-h1, h2 {
-    margin: 0;
-}
-
-.big-button {
-    display: inline-block;
-    padding: 15px 30px;
-    background-color: #FFAA00; /* Yellow button */
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-.big-button:hover {
-    background-color: #FFA500; /* Darker yellow on hover */
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-table, th, td {
-    border: 1px solid white;
-}
-
-th, td {
+#participantsList li {
+    background: #e9ecef; /* Light Gray Background */
+    color: #004d00; /* Dark green text for list items */
+    margin: 5px 0;
     padding: 10px;
-    text-align: left;
+    border-radius: 5px;
 }
