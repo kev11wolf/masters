@@ -1,12 +1,12 @@
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: #f4f4f4; /* Light gray background */
+    color: #004d00; /* Dark green text color */
 }
 
 header {
-    background: #007bff; /* Masters Theme Color */
-    color: #fff;
+    background: #007bff; /* Masters Theme Color, you might consider changing this */
+    color: #ffffff; /* Keeping header text white for contrast */
     padding: 10px 0;
     text-align: center;
     font-family: 'Playfair Display', serif;
@@ -14,6 +14,7 @@ header {
 
 h1 {
     margin: 0;
+    color: #004d00; /* Dark green for h1 headings */
 }
 
 main {
@@ -26,7 +27,7 @@ section {
 
 .button {
     background-color: #28a745; /* Green Button */
-    color: white;
+    color: white; /* Keep button text white for contrast */
     padding: 10px 20px;
     text-decoration: none;
     border-radius: 5px;
@@ -44,6 +45,7 @@ section {
 
 #participantsList li {
     background: #e9ecef; /* Light Gray Background */
+    color: #004d00; /* Dark green text for list items */
     margin: 5px 0;
     padding: 10px;
     border-radius: 5px;
