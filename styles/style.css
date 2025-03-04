@@ -1,56 +1,161 @@
-body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #ffffff; /* Ensure white background */
-    color: #004d00; /* Set dark green text color for visibility */
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Page Title</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f5f5f5; /* Light background for modern look */
+            color: #004d00; /* Dark green text color for visibility */
+        }
 
-header {
-    background: #004d00; /* Dark green header background */
-    color: #ffffff; /* White text for contrast */
-    padding: 10px 0;
-    text-align: center;
-    font-family: 'Playfair Display', serif;
-}
+        header {
+            background: #004d00; /* Dark green header background */
+            color: #ffffff; /* White text for contrast */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            position: relative;
+        }
 
-h1, h2, h3, p { /* Ensure headers and paragraphs also use dark green */
-    color: #004d00; /* Dark green for all text elements */
-}
+        #logo {
+            max-height: 60px; /* Limit logo size */
+            margin: 0 auto;
+        }
 
-h1 {
-    margin: 0;
-}
+        nav {
+            position: relative;
+        }
 
-main {
-    padding: 20px;
-}
+        .hamburger {
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 30px;
+            background: transparent;
+            border: none;
+            margin-left: auto; /* Align hamburger to the right */
+        }
 
-section {
-    margin: 20px 0;
-}
+        .bar {
+            height: 3px;
+            width: 100%;
+            background-color: white; /* Color of the hamburger bars */
+            transition: all 0.3s ease;
+        }
 
-.button {
-    background-color: #28a745; /* Green Button */
-    color: white; /* White text for button */
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    display: inline-block;
-}
+        .dropdown {
+            display: none; /* Hide by default */
+            position: absolute;
+            right: 0;
+            background-color: #004d00; /* Match header */
+            border-radius: 5px;
+            box-shadow: 0 3px 5px rgba(0,0,0,0.2);
+            z-index: 1; /* Above other content */
+        }
 
-.button:hover {
-    background-color: #218838; /* Darker green on hover */
-}
+        .dropdown a {
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            display: block;
+        }
 
-#participantsList {
-    list-style-type: none;
-    padding: 0;
-}
+        .dropdown a:hover {
+            background-color: #218838; /* Darker green on hover */
+        }
 
-#participantsList li {
-    background: #ffffff; /* Ensure white background for list items */
-    color: #004d00; /* Dark green text for list items */
-    margin: 5px 0;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #004d00; /* Optional border for definition */
-}
+        main {
+            padding: 20px;
+        }
+
+        section {
+            margin: 20px 0;
+        }
+
+        .button {
+            background-color: #28a745; /* Green Button */
+            color: white; /* White text for button */
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        .button:hover {
+            background-color: #218838; /* Darker green on hover */
+        }
+
+        #participantsList {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #participantsList li {
+            background: #ffffff; /* Ensure white background for list items */
+            color: #004d00; /* Dark green text for list items */
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #004d00; /* Optional border for definition */
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img id="logo" src="YOUR_LOGO_URL" alt="Logo"> <!-- Replace 'YOUR_LOGO_URL' with your logo link -->
+    <nav>
+        <button class="hamburger" onclick="toggleDropdown()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </button>
+        <div id="dropdown" class="dropdown">
+            <a href="#register">Register</a>
+            <a href="#leaderboard">Leaderboard</a>
+            <a href="#scores">Scores</a>
+            <a href="#faq">FAQ</a>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <h1>Welcome to Our Website</h1>
+    <section>
+        <p>Content goes here...</p>
+        <a href="#" class="button">Click Me</a>
+    </section>
+    <section>
+        <ul id="participantsList">
+            <li>Participant 1</li>
+            <li>Participant 2</li>
+        </ul>
+    </section>
+</main>
+
+<script>
+    function toggleDropdown() {
+        const dropdown = document.getElementById('dropdown');
+        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+    }
+
+    // Optional: Close dropdown if clicked outside
+    window.onclick = function(event) {
+        if (!event.target.matches('.hamburger')) {
+            const dropdown = document.getElementById('dropdown');
+            if (dropdown.style.display === 'block') {
+                dropdown.style.display = 'none';
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
