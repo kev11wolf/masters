@@ -113,7 +113,7 @@
 <body>
 
 <header>
-    <img id="logo" src="YOUR_LOGO_URL" alt="Logo"> <!-- Replace 'YOUR_LOGO_URL' with the actual URL of your logo image -->
+    <img id="logo" src="https://banner2.cleanpng.com/20180510/syq/avc28q2fw.webp" alt="Logo"> <!-- Replace 'YOUR_LOGO_URL' with the actual URL of your logo image -->
     <nav>
         <button class="hamburger" onclick="toggleDropdown()">
             <div class="bar"></div> <!-- First bar of the hamburger -->
