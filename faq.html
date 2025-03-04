@@ -1,30 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/style.css">
-    <title>FAQ</title>
+    <meta charset="UTF-8"> <!-- Sets the character encoding to UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive design for mobile devices -->
+    <title>FAQ</title> <!-- Page title displayed in the browser tab -->
+    
+    <!-- Importing fonts from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"> <!-- Google Fonts -->
+    
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif; /* Set font for body using Google Fonts */
+            background-color: #f5f5f5; /* Light gray background for a modern look */
+            color: #004d00; /* Dark green text color for contrast */
+        }
+
+        header {
+            background: #004d00; /* Dark green header background */
+            color: #ffffff; /* White text for contrast */
+            display: flex; /* Use flexbox layout for header */
+            justify-content: space-between; /* Space between header elements */
+            align-items: center; /* Center items vertically */
+            padding: 10px 20px; /* Padding around header */
+            position: relative; /* Positioning for dropdown menu if needed */
+        }
+
+        #logo {
+            max-height: 60px; /* Set maximum height for the logo */
+            cursor: pointer; /* Make logo clickable */
+        }
+
+        nav {
+            position: relative; /* Required for dropdown positioning */
+        }
+
+        .hamburger {
+            cursor: pointer; /* Change cursor to pointer for hamburger menu */
+            display: flex; /* Use flexbox for hamburger bars */
+            flex-direction: column; /* Stack bars vertically */
+            justify-content: space-around; /* Space out the bars evenly */
+            width: 30px; /* Set button width */
+            height: 30px; /* Set button height */
+            background: transparent; /* Set background to transparent */
+            border: none; /* Remove any border */
+        }
+
+        .bar {
+            height: 3px; /* Height of each hamburger bar */
+            width: 100%; /* Full width of each bar */
+            background-color: white; /* Color of hamburger bars */
+            transition: all 0.3s ease; /* Smooth transition for hover effects */
+        }
+
+        .dropdown {
+            display: none; /* Hide dropdown by default */
+            position: absolute; /* Position dropdown menu relative to nav */
+            right: 0; /* Align dropdown to the right */
+            background-color: #004d00; /* Match the header background */
+            border-radius: 5px; /* Rounded corners for dropdown */
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* Shadow effect */
+            z-index: 1; /* Ensure dropdown appears above other content */
+        }
+
+        .dropdown a {
+            color: white; /* White text for links */
+            padding: 10px 15px; /* Padding for links */
+            text-decoration: none; /* Remove underline from links */
+            display: block; /* Block display for links */
+        }
+
+        .dropdown a:hover {
+            background-color: #218838; /* Darker green when hovering */
+        }
+
+        main {
+            padding: 20px; /* Padding around main content area */
+        }
+
+        h2 {
+            color: #004d00; /* Maintain consistent text color */
+        }
+
+        h3 {
+            color: #005700; /* Slightly darker color for subsection headings */
+        }
+
+        p {
+            margin-bottom: 15px; /* Space below paragraphs */
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>FAQ</h1>
+        <a href="index.html"> <!-- Logo link to home -->
+            <img id="logo" src="https://i0.wp.com/www.dishinfo.com/wp-content/uploads/2024/04/MastersLogo.jpg?w=800&ssl=1" alt="Logo"> 
+        </a>
         <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="register.html">Register</a></li>
-                <li><a href="leaderboard.html">Leaderboard</a></li>
-                <li><a href="scores.html">Scores</a></li>
-            </ul>
+            <button class="hamburger" onclick="toggleDropdown()">
+                <div class="bar"></div> <!-- First bar of the hamburger icon -->
+                <div class="bar"></div> <!-- Second bar of the hamburger icon -->
+                <div class="bar"></div> <!-- Third bar of the hamburger icon -->
+            </button>
+            <div id="dropdown" class="dropdown">
+                <a href="index.html">Home</a> <!-- Link to Home section -->
+                <a href="register.html">Register</a> <!-- Link to Register section -->
+                <a href="leaderboard.html">Leaderboard</a> <!-- Link to Leaderboard section -->
+                <a href="scores.html">Scores</a> <!-- Link to Scores section -->
+                <a href="faq.html">FAQ</a> <!-- Link to FAQ section -->
+            </div>
         </nav>
     </header>
+
     <main>
-        <h2>Frequently Asked Questions</h2>
+        <h1>Frequently Asked Questions</h1>
         <h3>How does scoring work?</h3>
         <p>Explain the scoring system here.</p>
         <h3>How much does the winner get?</h3>
         <p>Provide information about the prizes here.</p>
         <!-- Add more FAQs as needed -->
     </main>
+
+    <script>
+        // Function to toggle the display of the dropdown menu
+        function toggleDropdown() {
+            const dropdown = document.getElementById('dropdown'); // Get dropdown menu element
+            // Toggle the display state of the dropdown menu
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Close dropdown if clicking outside of it
+        window.onclick = function(event) {
+            if (!event.target.matches('.hamburger')) { // Check if click is outside hamburger
+                const dropdown = document.getElementById('dropdown'); // Get dropdown element
+                if (dropdown.style.display === 'block') { // If it is open
+                    dropdown.style.display = 'none'; // Close the dropdown menu
+                }
+            }
+        }
+    </script>
+
+    <!-- Correctly fetch and load the footer -->
+    <div id="footer"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading footer:', error));
+        });
+    </script>
 </body>
 </html>
