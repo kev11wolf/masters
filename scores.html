@@ -82,12 +82,14 @@
             border-collapse: collapse; /* Collapse table borders */
             margin-top: 20px; /* Space above the table */
             font-family: 'Playfair Display', serif; /* Use a serif font for leaderboard feel */
+            font-size: 16px; /* Default font size */
         }
 
         th, td {
             padding: 10px; /* Padding inside cells */
             border: 1px solid #004d00; /* Dark green border for cells */
             text-align: center; /* Center-align text within cells */
+            word-wrap: break-word; /* Break long words */
         }
 
         th {
@@ -102,6 +104,12 @@
 
         tr:hover {
             background-color: #c1e6c1; /* Slightly darker green on hover */
+        }
+
+        @media (max-width: 768px) {
+            table {
+                font-size: 12px; /* Smaller font size on mobile */
+            }
         }
     </style>
 </head>
@@ -146,6 +154,23 @@
     </main>
 
     <script>
+        // Function to toggle the display of the dropdown menu
+        function toggleDropdown() {
+            const dropdown = document.getElementById('dropdown'); // Get dropdown menu element
+            // Toggle the display state of the dropdown menu
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Close dropdown if clicking outside of it
+        window.onclick = function(event) {
+            if (!event.target.matches('.hamburger')) { // Check if click is outside hamburger
+                const dropdown = document.getElementById('dropdown'); // Get dropdown element
+                if (dropdown.style.display === 'block') { // If it is open
+                    dropdown.style.display = 'none'; // Close the dropdown menu
+                }
+            }
+        }
+
         // Replace the following string with your actual CSV data
         const csvData = `Player\tRound 1\tRound 2\tRound 3\tRound 4\tTotal
 Ludvig Aberg\t60\t60\t60\t60\t240
