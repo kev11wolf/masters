@@ -1,9 +1,36 @@
-<!-- footers.html -->
 <footer style="text-align: center; padding: 20px; background-color: #004d00; color: white;">
-    <p>A Tradtion unlike any other.</p>
+    <p>A Tradition unlike any other.</p>
     
-    <!-- YouTube Video Player -->
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/G97AdMLbfr4?si=QDNZoS1m_UCtICi-&autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <!-- Video Container for Responsive YouTube Video Player -->
+    <div class="video-container">
+        <iframe 
+            src="https://www.youtube.com/embed/G97AdMLbfr4?si=QDNZoS1m_UCtICi-&autoplay=1" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" 
+            allowfullscreen>
+        </iframe>
+    </div>
     
-    <p>&copy;  This masterpiece was created by Kevin. 2025. All Rights Reserved.</p>
+    <p>This masterpiece was created by Kevin. 2025. All Rights Reserved.&copy;</p>
+
+    <style>
+        .video-container {
+            position: relative; /* Relative positioning for the container */
+            padding-bottom: 56.25%; /* Maintain 16:9 aspect ratio */
+            height: 0; /* Set height to zero to allow padding-bottom for spacing */
+            overflow: hidden; /* Hide overflow */
+            max-width: 100%; /* Limit width to ensure responsiveness */
+            margin: 0 auto; /* Center the video container */
+        }
+
+        .video-container iframe {
+            position: absolute; /* Position the iframe absolutely within the container */
+            top: 0; /* Align to top */
+            left: 0; /* Align to left */
+            width: 100%; /* Make width 100% of the container */
+            height: 100%; /* Make height 100% of the container */
+        }
+    </style>
 </footer>
