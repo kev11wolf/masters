@@ -1,115 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leaderboard</title>
+    <meta charset="UTF-8"> <!-- Sets the character encoding to UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive design for mobile devices -->
+    <title>Leaderboard</title> <!-- Title of the webpage displayed in the browser tab -->
+    
+    <!-- Importing fonts from Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
     <style>
         body {
-            font-family: 'Roboto', sans-serif; /* Set font for body */
-            background-color: #f5f5f5; /* Light background for modern look */
-            color: #004d00; /* Dark green text color */
+            font-family: 'Roboto', sans-serif; /* Set font for body using Google Fonts */
+            background-color: #f5f5f5; /* Light gray background for a modern look */
+            color: #004d00; /* Dark green text color for contrast */
         }
 
         header {
             background: #004d00; /* Dark green header background */
             color: #ffffff; /* White text for contrast */
-            display: flex; /* Use flexbox for layout */
+            display: flex; /* Use flexbox layout for header */
             justify-content: space-between; /* Space between logo and menu */
             align-items: center; /* Center items vertically */
             padding: 10px 20px; /* Padding around header */
-            position: relative; /* For dropdown positioning */
+            position: relative; /* Positioning for dropdown menu */
         }
 
         #logo {
-            max-height: 60px; /* Limit logo size */
+            max-height: 60px; /* Set maximum height for the logo */
         }
 
         nav {
-            position: relative; /* Needed for absolute positioning of dropdown */
+            position: relative; /* Required for dropdown positioning */
         }
 
         .hamburger {
-            cursor: pointer; /* Change cursor to pointer */
-            display: flex; /* Use flexbox for bars */
-            flex-direction: column; /* Arrange bars vertically */
-            justify-content: space-around; /* Space between bars */
-            width: 30px; /* Width of hamburger button */
-            height: 30px; /* Height of hamburger button */
-            background: transparent; /* Transparent background */
-            border: none; /* No border */
+            cursor: pointer; /* Change cursor to pointer for hamburger menu */
+            display: flex; /* Use flexbox for hamburger bars */
+            flex-direction: column; /* Stack bars vertically */
+            justify-content: space-around; /* Space out the bars evenly */
+            width: 30px; /* Set button width */
+            height: 30px; /* Set button height */
+            background: transparent; /* Set background to transparent */
+            border: none; /* Remove any border */
         }
 
         .bar {
-            height: 3px; /* Height of each bar */
-            width: 100%; /* Full width */
-            background-color: white; /* White color for bars */
+            height: 3px; /* Height of each hamburger bar */
+            width: 100%; /* Full width of each bar */
+            background-color: white; /* Color of hamburger bars */
             transition: all 0.3s ease; /* Smooth transition for hover effects */
         }
 
         .dropdown {
             display: none; /* Hide dropdown by default */
-            position: absolute; /* Position it absolutely within nav */
-            right: 0; /* Align to the right */
-            background-color: #004d00; /* Match header background */
-            border-radius: 5px; /* Rounded corners */
-            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-            z-index: 1; /* Stack above other content */
+            position: absolute; /* Position dropdown menu relative to nav */
+            right: 0; /* Align dropdown to the right */
+            background-color: #004d00; /* Match the header background */
+            border-radius: 5px; /* Rounded corners for dropdown */
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* Shadow effect */
+            z-index: 1; /* Ensure dropdown appears above other content */
         }
 
         .dropdown a {
             color: white; /* White text for links */
             padding: 10px 15px; /* Padding for links */
-            text-decoration: none; /* Remove underline */
-            display: block; /* Block display for easy clicking */
+            text-decoration: none; /* Remove underline from links */
+            display: block; /* Block display for links */
         }
 
         .dropdown a:hover {
-            background-color: #218838; /* Darker green on hover */
+            background-color: #218838; /* Darker green when hovering */
         }
 
         main {
-            padding: 20px; /* Padding for main content */
+            padding: 20px; /* Padding around main content area */
         }
 
         table {
             width: 100%; /* Full width for table */
-            border-collapse: collapse; /* Collapse borders */
+            border-collapse: collapse; /* Collapse table borders */
             margin-top: 20px; /* Space above the table */
+            font-family: 'Playfair Display', serif; /* Use a serif font for leaderboard feel */
         }
 
         th, td {
-            padding: 10px; /* Padding for cells */
-            border: 1px solid #004d00; /* Border for cells */
-            text-align: left; /* Align text to left */
+            padding: 10px; /* Padding inside cells */
+            border: 1px solid #004d00; /* Dark green border for cells */
+            text-align: center; /* Center-align text within cells */
         }
 
         th {
-            background-color: #004d00; /* Dark green background for headers */
-            color: white; /* White text for headers */
+            background-color: #005700; /* Darker green background for header */
+            color: white; /* White text for header */
+            font-weight: bold; /* Bold text for header */
         }
 
         tr:nth-child(even) {
-            background-color: #f2f2f2; /* Light background for alternate rows */
+            background-color: #e7f7e5; /* Light green alternating row color */
+        }
+
+        tr:hover {
+            background-color: #c1e6c1; /* Slightly darker green on hover */
         }
     </style>
 </head>
 <body>
 
 <header>
-    <img id="logo" src="https://batcaddy.com/cdn/shop/articles/masters_logo.png?v=1680879621&width=750" alt="Logo"> <!-- Replace 'YOUR_LOGO_URL' with your logo link -->
+    <img id="logo" src="https://batcaddy.com/cdn/shop/articles/masters_logo.png?v=1680879621&width=750" alt="Logo"> <!-- Logo for the header -->
     <nav>
         <button class="hamburger" onclick="toggleDropdown()">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
+            <div class="bar"></div> <!-- First bar of the hamburger icon -->
+            <div class="bar"></div> <!-- Second bar of the hamburger icon -->
+            <div class="bar"></div> <!-- Third bar of the hamburger icon -->
         </button>
         <div id="dropdown" class="dropdown">
-            <a href="#register">Register</a>
-            <a href="#leaderboard">Leaderboard</a>
-            <a href="#scores">Scores</a>
-            <a href="#faq">FAQ</a>
+            <a href="#register">Register</a> <!-- Link to Register section -->
+            <a href="#leaderboard">Leaderboard</a> <!-- Link to Leaderboard section -->
+            <a href="#scores">Scores</a> <!-- Link to Scores section -->
+            <a href="#faq">FAQ</a> <!-- Link to FAQ section -->
         </div>
     </nav>
 </header>
@@ -132,54 +141,54 @@
 <script>
 // Function to toggle the display of the dropdown menu
 function toggleDropdown() {
-    const dropdown = document.getElementById('dropdown');
+    const dropdown = document.getElementById('dropdown'); // Get dropdown menu element
+    // Toggle the display state of the dropdown menu
     dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
 }
 
-// Close dropdown if clicking outside
+// Close dropdown if clicking outside of it
 window.onclick = function(event) {
-    if (!event.target.matches('.hamburger')) {
-        const dropdown = document.getElementById('dropdown');
-        if (dropdown.style.display === 'block') {
-            dropdown.style.display = 'none';
+    if (!event.target.matches('.hamburger')) { // Check if click is outside hamburger
+        const dropdown = document.getElementById('dropdown'); // Get dropdown element
+        if (dropdown.style.display === 'block') { // If it is open
+            dropdown.style.display = 'none'; // Close the dropdown menu
         }
     }
 }
 
 // Function to populate the leaderboard table with data from a CSV string
 function populateLeaderboard(csvData) {
-    const tbody = document.querySelector('#leaderboard tbody'); // Select tbody element
+    const tbody = document.querySelector('#leaderboard tbody'); // Select tbody of the table
     const rows = csvData.trim().split('\n'); // Split CSV data into rows
 
-    // Clear existing data
+    // Clear existing data in the table body
     tbody.innerHTML = '';
 
     // Loop through each row of CSV data
     rows.forEach(row => {
-        const columns = row.split('\t'); // Split row into columns
+        const columns = row.split('\t'); // Split each row into columns
         
-        // Create a new table row
+        // Create a new table row element
         const tr = document.createElement('tr');
 
         // Loop through each column and create a cell
         columns.forEach(col => {
-            const td = document.createElement('td');
-            td.textContent = col; // Set cell text to column data
-            tr.appendChild(td); // Append cell to row
+            const td = document.createElement('td'); // Create a new cell
+            td.textContent = col; // Set the text content of the cell
+            tr.appendChild(td); // Append the cell to the row
         });
 
-        tbody.appendChild(tr); // Append the row to the table body
+        tbody.appendChild(tr); // Append the completed row to the table body
     });
 }
 
 // Example CSV data to demonstrate functionality
-// This can be replaced with actual CSV data to be processed
 const csvExample = `Kevin\t1024
 Alice\t850
 John\t920
 Emma\t560`;
 
-// Call the function to populate the leaderboard
+// Call the function to populate the leaderboard with example data
 populateLeaderboard(csvExample);
 
 </script>
