@@ -90,6 +90,20 @@
         .big-button:hover {
             background-color: #218838; /* Darker green on button hover */
         }
+
+        /* Slideshow Styles */
+        .slideshow-container {
+            position: relative;
+            max-width: 100%; /* Limit the maximum width to the container */
+            margin: 20px auto; /* Center the slideshow */
+            overflow: hidden; /* Hide any overflow */
+        }
+
+        .mySlides {
+            display: none; /* Hide all slides by default */
+            width: 100%; /* Responsive width for images */
+            height: auto; /* Maintain aspect ratio */
+        }
     </style>
 </head>
 <body>
@@ -116,9 +130,25 @@
 <main>
     <h1>The Sommerville Masters Golf Pool Invitational</h1> <!-- Main title for the page -->
     <h2>It's that time of year again.</h2>
-    <h3> The Masters tournament has begun in Augusta, GA 🌸</h3> <!-- Subtitle welcoming users -->
+    <h3>The Masters tournament has begun in Augusta, GA 🌸</h3> <!-- Subtitle welcoming users -->
     <p>A tradition unlike any other.</p> <!-- Introductory paragraph -->
     <a href="register.html" class="big-button">Register Now</a> <!-- Button linking to the registration page -->
+
+    <!-- Slideshow Container -->
+    <div class="slideshow-container">
+        <img class="mySlides" src="https://public.augusta.com/s3fs-public/article/images/clubhouse_14.jpg" alt="Slideshow Image 1">
+        <img class="mySlides" src="https://www.hartough.com/uploads/Thumbnails/11th.Augusta.2015.jpg" alt="Slideshow Image 2">
+        <img class="mySlides" src="https://photo-assets.masters.com/images/pics/misc/about_014_records.jpg" alt="Slideshow Image 3">
+        <img class="mySlides" src="https://via.placeholder.com/500x281?text=Image+3" alt="Slideshow Image 4">
+        <img class="mySlides" src="https://via.placeholder.com/500x281?text=Image+3" alt="Slideshow Image 5">
+        <img class="mySlides" src="https://via.placeholder.com/500x281?text=Image+3" alt="Slideshow Image 6">
+        <img class="mySlides" src="https://via.placeholder.com/500x281?text=Image+3" alt="Slideshow Image 7">
+        <img class="mySlides" src="https://via.placeholder.com/500x281?text=Image+3" alt="Slideshow Image 8">
+        <img class="mySlides" src="https://www.hartough.com/uploads/Thumbnails/12.Augusta.jpg" alt="Slideshow Image 9">
+        <img class="mySlides" src="https://via.placeholder.com/500x281?text=Image+3" alt="Slideshow Image 10">
+        <!-- Add more images as needed -->
+        
+    </div>
 </main>
 
 <footer>
@@ -141,6 +171,21 @@ window.onclick = function(event) {
             dropdown.style.display = 'none'; // Close the dropdown menu
         }
     }
+}
+
+// Slideshow functionality
+let slideIndex = 0;
+showSlides(); // Call the function to display the slides
+
+function showSlides() {
+    let slides = document.getElementsByClassName("mySlides"); // Get all slides
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none"; // Hide all slides
+    }
+    slideIndex++; // Increment slide index
+    if (slideIndex > slides.length) {slideIndex = 1} // Reset to first slide if past last
+    slides[slideIndex - 1].style.display = "block"; // Show the current slide
+    setTimeout(showSlides, 5000); // Change image every 5 seconds
 }
 
 // Fetch footer content and insert it into the footer placeholder
