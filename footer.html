@@ -1,31 +1,9 @@
-<!-- footer.html -->
-<footer>
-    <div id="music-player" style="display: none;">
-        <iframe id="ytplayer" type="text/html"
-            width="640" height="390"
-            src="https://www.youtube.com/embed/G97AdMLbfr4?autoplay=1&controls=0&mute=1&loop=1&playlist=G97AdMLbfr4"
-            frameborder="0"></iframe>
-    </div>
+<!-- footers.html -->
+<footer style="text-align: center; padding: 20px; background-color: #004d00; color: white;">
+    <p>Follow us on our journey!</p>
+    
+    <!-- YouTube Video Player -->
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/G97AdMLbfr4?si=QDNZoS1m_UCtICi-&autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    
+    <p>&copy; 2024 Your Company Name. All rights reserved.</p>
 </footer>
-
-<script>
-    // Load YouTube iframe API
-    var tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-    var player;
-    function onYouTubeIframeAPIReady() {
-        player = new YT.Player('ytplayer', {
-            events: {
-                'onReady': onPlayerReady
-            }
-        });
-    }
-
-    function onPlayerReady(event) {
-        // Set volume to 30%
-        event.target.setVolume(30);
-    }
-</script>
