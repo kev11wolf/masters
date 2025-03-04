@@ -27,6 +27,7 @@
 
         #logo {
             max-height: 60px; /* Set maximum height for the logo */
+            cursor: pointer; /* Make logo clickable */
         }
 
         nav {
@@ -107,7 +108,9 @@
 <body>
 
 <header>
-    <img id="logo" src="https://i0.wp.com/www.dishinfo.com/wp-content/uploads/2024/04/MastersLogo.jpg?w=800&ssl=1" alt="Logo"> <!-- Logo for the header -->
+    <a href="index.html"> <!-- Make the logo a clickable link to home -->
+        <img id="logo" src="https://i0.wp.com/www.dishinfo.com/wp-content/uploads/2024/04/MastersLogo.jpg?w=800&ssl=1" alt="Logo"> 
+    </a>
     <nav>
         <button class="hamburger" onclick="toggleDropdown()">
             <div class="bar"></div> <!-- First bar of the hamburger icon -->
@@ -115,6 +118,7 @@
             <div class="bar"></div> <!-- Third bar of the hamburger icon -->
         </button>
         <div id="dropdown" class="dropdown">
+            <a href="index.html">Home</a> <!-- Link to Home section -->
             <a href="register.html">Register</a> <!-- Link to Register section -->
             <a href="leaderboard.html">Leaderboard</a> <!-- Link to Leaderboard section -->
             <a href="scores.html">Scores</a> <!-- Link to Scores section -->
