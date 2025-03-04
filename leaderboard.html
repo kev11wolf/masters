@@ -190,7 +190,20 @@ Emma\t560`;
 
 // Call the function to populate the leaderboard with example data
 populateLeaderboard(csvExample);
+</script>
 
+<!-- Correctly fetch and load the footer -->
+<div id="footer"></div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading footer:', error));
+    });
 </script>
 
 </body>
