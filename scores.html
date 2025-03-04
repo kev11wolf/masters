@@ -1,10 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/style.css">
-    <title>Scores</title>
+    <meta charset="UTF-8"> <!-- Sets the character encoding to UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive design for mobile devices -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"> <!-- Google Fonts -->
+    <title>Scores</title> <!-- Page title displayed in the browser tab -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif; /* Set font for body using Google Fonts */
+            background-color: #f5f5f5; /* Light gray background for a modern look */
+            color: #004d00; /* Dark green text color for contrast */
+        }
+
+        header {
+            background: #004d00; /* Dark green header background */
+            color: #ffffff; /* White text for contrast */
+            display: flex; /* Use flexbox layout for header */
+            justify-content: space-between; /* Space between header elements */
+            align-items: center; /* Center items vertically */
+            padding: 10px 20px; /* Padding around header */
+            position: relative; /* Positioning for dropdown menu if needed */
+        }
+
+        h1 {
+            margin: 0; /* No margin for header title */
+        }
+
+        nav ul {
+            list-style-type: none; /* Remove bullet points from list */
+            padding: 0; /* Remove padding from list */
+            display: flex; /* Display list items in a row */
+            gap: 15px; /* Space between navigation items */
+        }
+
+        nav a {
+            color: white; /* White text for links */
+            text-decoration: none; /* Remove underline from links */
+        }
+
+        nav a:hover {
+            text-decoration: underline; /* Underline links on hover */
+        }
+
+        main {
+            padding: 20px; /* Padding around main content area */
+        }
+
+        table {
+            width: 100%; /* Full width for table */
+            border-collapse: collapse; /* Collapse table borders */
+            margin-top: 20px; /* Space above the table */
+            font-family: 'Playfair Display', serif; /* Use a serif font for leaderboard feel */
+        }
+
+        th, td {
+            padding: 10px; /* Padding inside cells */
+            border: 1px solid #004d00; /* Dark green border for cells */
+            text-align: center; /* Center-align text within cells */
+        }
+
+        th {
+            background-color: #005700; /* Darker green background for headers */
+            color: white; /* White text for headers */
+            font-weight: bold; /* Bold text for headers */
+        }
+
+        tr:nth-child(even) {
+            background-color: #e7f7e5; /* Light green alternating row color */
+        }
+
+        tr:hover {
+            background-color: #c1e6c1; /* Slightly darker green on hover */
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -23,8 +91,12 @@
         <table id="scores">
             <thead>
                 <tr>
-                    <th>Participant</th>
-                    <th>Score</th>
+                    <th>Player</th>
+                    <th>Round 1</th>
+                    <th>Round 2</th>
+                    <th>Round 3</th>
+                    <th>Round 4</th>
+                    <th>Total</th>
                 </tr>
             </thead>
             <tbody>
@@ -33,18 +105,129 @@
         </table>
     </main>
     <script>
-        fetch('scores.csv')
-            .then(response => response.text())
-            .then(data => {
-                const rows = data.split('\n').slice(1);
-                const tableBody = document.querySelector('#scores tbody');
-                rows.forEach(row => {
-                    const cols = row.split(',');
-                    const tr = document.createElement('tr');
-                    tr.innerHTML = `<td>${cols[0]}</td><td>${cols[1]}</td>`;
-                    tableBody.appendChild(tr);
+        // Replace the following string with your actual CSV data
+        const csvData = `Player\tRound 1\tRound 2\tRound 3\tRound 4\tTotal
+Ludvig Aberg\t1\t2\t3\t4\t10
+Byeong Hun An\t2\t3\t4\t5\t14
+Josele Ballester (a)\t3\t4\t5\t6\t18
+Evan Beck (a)\t4\t5\t6\t7\t22
+Christiaan Bezuidenhout\t5\t6\t7\t8\t26
+Akshay Bhatia\t6\t7\t8\t9\t30
+Keegan Bradley\t7\t8\t9\t10\t34
+Sam Burns\t8\t9\t10\t11\t38
+Angel Cabrera\t9\t10\t11\t12\t42
+Brian Campbell\t10\t11\t12\t13\t46
+Rafael Campos\t11\t12\t13\t14\t50
+Patrick Cantlay\t12\t13\t14\t15\t54
+Wyndham Clark\t13\t14\t15\t16\t58
+Corey Conners\t14\t15\t16\t17\t62
+Fred Couples\t15\t16\t17\t18\t66
+Cam Davis\t16\t17\t18\t19\t70
+Jason Day\t17\t18\t19\t20\t74
+Bryson DeChambeau\t18\t19\t20\t21\t78
+Thomas Detry\t19\t20\t21\t22\t82
+Nick Dunlap\t20\t21\t22\t23\t86
+Nico Echavarria\t21\t22\t23\t24\t90
+Austin Eckroat\t22\t23\t24\t25\t94
+Harris English\t23\t24\t25\t26\t98
+Tony Finau\t24\t25\t26\t27\t102
+Matt Fitzpatrick\t25\t26\t27\t28\t106
+Tommy Fleetwood\t26\t27\t28\t29\t110
+Sergio Garcia\t27\t28\t29\t30\t114
+Lucas Glover\t28\t29\t30\t31\t118
+Max Greyserman\t29\t30\t31\t32\t122
+Brian Harman\t30\t31\t32\t33\t126
+Justin Hastings (a)\t31\t32\t33\t34\t130
+Tyrrell Hatton\t32\t33\t34\t35\t134
+Russell Henley\t33\t34\t35\t36\t138
+Tom Hoge\t34\t35\t36\t37\t142
+Nicolai Hojgaard\t35\t36\t37\t38\t146
+Rasmus Hojgaard\t36\t37\t38\t39\t150
+Max Homa\t37\t38\t39\t40\t154
+Billy Horschel\t38\t39\t40\t41\t158
+Viktor Hovland\t39\t40\t41\t42\t162
+Sungjae Im\t40\t41\t42\t43\t166
+Dustin Johnson\t41\t42\t43\t44\t170
+Zach Johnson\t42\t43\t44\t45\t174
+Noah Kent (a)\t43\t44\t45\t46\t178
+Tom Kim\t44\t45\t46\t47\t182
+Chris Kirk\t45\t46\t47\t48\t186
+Patton Kizzire\t46\t47\t48\t49\t190
+Brooks Koepka\t47\t48\t49\t50\t194
+Bernhard Langer\t48\t49\t50\t51\t198
+Thriston Lawrence\t49\t50\t51\t52\t202
+Min Woo Lee\t50\t51\t52\t53\t206
+Shane Lowry\t51\t52\t53\t54\t210
+Robert MacIntyre\t52\t53\t54\t55\t214
+Hideki Matsuyama\t53\t54\t55\t56\t218
+Denny McCarthy\t54\t55\t56\t57\t222
+Matt McCarty\t55\t56\t57\t58\t226
+Rory McIlroy\t56\t57\t58\t59\t230
+Maverick McNealy\t57\t58\t59\t60\t234
+Phil Mickelson\t58\t59\t60\t61\t238
+Collin Morikawa\t59\t60\t61\t62\t242
+Joaquin Niemann\t60\t61\t62\t63\t246
+Jose Maria Olazabal\t61\t62\t63\t64\t250
+Matthieu Pavon\t62\t63\t64\t65\t254
+Taylor Pendrith\t63\t64\t65\t66\t258
+J.T. Poston\t64\t65\t66\t67\t262
+Jon Rahm\t65\t66\t67\t68\t266
+Aaron Rai\t66\t67\t68\t69\t270
+Patrick Reed\t67\t68\t69\t70\t274
+Davis Riley\t68\t69\t70\t71\t278
+Justin Rose\t69\t70\t71\t72\t282
+Xander Schauffele\t70\t71\t72\t73\t286
+Scottie Scheffler\t71\t72\t73\t74\t290
+Adam Schenk\t72\t73\t74\t75\t294
+Charl Schwartzel\t73\t74\t75\t76\t298
+Adam Scott\t74\t75\t76\t77\t302
+Vijay Singh\t75\t76\t77\t78\t306
+Cameron Smith\t76\t77\t78\t79\t310
+Jordan Spieth\t77\t78\t79\t80\t314
+Sepp Straka\t78\t79\t80\t81\t318
+Hiroshi Tai (a)\t79\t80\t81\t82\t322
+Nick Taylor\t80\t81\t82\t83\t326
+Sahith Theegala\t81\t82\t83\t84\t330
+Justin Thomas\t82\t83\t84\t85\t334
+Davis Thompson\t83\t84\t85\t86\t338
+Jhonattan Vegas\t84\t85\t86\t87\t342
+Bubba Watson\t85\t86\t87\t88\t346
+Mike Weir\t86\t87\t88\t89\t350
+Danny Willett\t87\t88\t89\t90\t354
+Tiger Woods\t88\t89\t90\t91\t358
+Cameron Young\t89\t90\t91\t92\t362
+Kevin Yu\t90\t91\t92\t93\t366
+Will Zalatoris\t91\t92\t93\t94\t370`;
+
+        // Function to populate the scores table with data from the CSV string
+        function populateScores(csvData) {
+            const tbody = document.querySelector('#scores tbody'); // Select tbody of the table
+            const rows = csvData.trim().split('\n').slice(1); // Split data into rows and remove header row
+
+            // Clear existing rows in tbody
+            tbody.innerHTML = '';
+
+            // Loop through each row of CSV data
+            rows.forEach(row => {
+                const columns = row.split('\t'); // Split row into columns
+
+                // Create a new table row
+                const tr = document.createElement('tr');
+
+                // Loop through each column to create cells
+                columns.forEach(col => {
+                    const td = document.createElement('td'); // Create a new cell
+                    td.textContent = col; // Set text content to column data
+                    tr.appendChild(td); // Append cell to the row
                 });
+
+                tbody.appendChild(tr); // Append the completed row to the table body
             });
+        }
+
+        // Call the function to populate the leaderboard with the example CSV data
+        populateScores(csvData);
+
     </script>
 </body>
 </html>
