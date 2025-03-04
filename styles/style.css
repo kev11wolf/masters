@@ -1,160 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Page Title</title>
+    <meta charset="UTF-8"> <!-- Sets the character set for the document to UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive design for mobile devices -->
+    <title>Your Page Title</title> <!-- Title of the webpage displayed in the browser tab -->
+    
+    <!-- Importing fonts from Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
     <style>
         body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #f5f5f5; /* Light background for modern look */
+            font-family: 'Roboto', sans-serif; /* Set font family for the body */
+            background-color: #f5f5f5; /* Light gray background for a modern look */
             color: #004d00; /* Dark green text color for visibility */
         }
 
         header {
-            background: #004d00; /* Dark green header background */
+            background: #004d00; /* Dark green background for the header */
             color: #ffffff; /* White text for contrast */
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            position: relative;
+            display: flex; /* Use flexbox layout */
+            justify-content: space-between; /* Space items evenly in the header */
+            align-items: center; /* Center items vertically */
+            padding: 10px 20px; /* Add padding around the header */
+            position: relative; /* Allows dropdown to be positioned absolutely */
         }
 
         #logo {
-            max-height: 60px; /* Limit logo size */
-            margin: 0 auto;
+            max-height: 60px; /* Set maximum height for the logo */
+            margin: 0 auto; /* Center the logo horizontally */
         }
 
         nav {
-            position: relative;
+            position: relative; /* Position relative to allow dropdown positioning */
         }
 
         .hamburger {
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            width: 30px;
-            height: 30px;
-            background: transparent;
-            border: none;
-            margin-left: auto; /* Align hamburger to the right */
+            cursor: pointer; /* Change cursor to pointer when hovering */
+            display: flex; /* Use flexbox to align the bars */
+            flex-direction: column; /* Stack bars vertically */
+            justify-content: space-around; /* Space out the bars evenly */
+            width: 30px; /* Set width of the hamburger button */
+            height: 30px; /* Set height of the hamburger button */
+            background: transparent; /* Set background to transparent */
+            border: none; /* Remove any border */
+            margin-left: auto; /* Align hamburger menu to the right */
         }
 
         .bar {
-            height: 3px;
-            width: 100%;
-            background-color: white; /* Color of the hamburger bars */
-            transition: all 0.3s ease;
+            height: 3px; /* Set height of each bar in the hamburger */
+            width: 100%; /* Set width of each bar to 100% */
+            background-color: white; /* White color for the bars */
+            transition: all 0.3s ease; /* Smooth transition effect */
         }
 
         .dropdown {
-            display: none; /* Hide by default */
-            position: absolute;
-            right: 0;
-            background-color: #004d00; /* Match header */
-            border-radius: 5px;
-            box-shadow: 0 3px 5px rgba(0,0,0,0.2);
-            z-index: 1; /* Above other content */
+            display: none; /* Hide dropdown by default */
+            position: absolute; /* Position dropdown absolutely */
+            right: 0; /* Align dropdown to the right of the nav */
+            background-color: #004d00; /* Match the dropdown background with the header */
+            border-radius: 5px; /* Round the corners of the dropdown */
+            box-shadow: 0 3px 5px rgba(0,0,0,0.2); /* Add a shadow effect */
+            z-index: 1; /* Make sure dropdown is above other content */
         }
 
         .dropdown a {
-            color: white;
-            padding: 10px 15px;
-            text-decoration: none;
-            display: block;
+            color: white; /* Text color for links in dropdown */
+            padding: 10px 15px; /* Padding inside dropdown links */
+            text-decoration: none; /* Remove underline from links */
+            display: block; /* Make links block elements for better click area */
         }
 
         .dropdown a:hover {
-            background-color: #218838; /* Darker green on hover */
+            background-color: #218838; /* Darker green on hover effect */
         }
 
         main {
-            padding: 20px;
+            padding: 20px; /* Add padding around main content */
         }
 
         section {
-            margin: 20px 0;
+            margin: 20px 0; /* Add margin between sections */
         }
 
         .button {
-            background-color: #28a745; /* Green Button */
-            color: white; /* White text for button */
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            display: inline-block;
+            background-color: #28a745; /* Green background color for buttons */
+            color: white; /* White text for buttons */
+            padding: 10px 20px; /* Padding inside buttons */
+            text-decoration: none; /* Remove underline from button link */
+            border-radius: 5px; /* Round corners of the button */
+            display: inline-block; /* Make the button an inline block element */
         }
 
         .button:hover {
-            background-color: #218838; /* Darker green on hover */
+            background-color: #218838; /* Darker green on hover effect for button */
         }
 
         #participantsList {
-            list-style-type: none;
-            padding: 0;
+            list-style-type: none; /* Remove default list bullet points */
+            padding: 0; /* Remove default padding */
         }
 
         #participantsList li {
-            background: #ffffff; /* Ensure white background for list items */
+            background: #ffffff; /* White background for list items */
             color: #004d00; /* Dark green text for list items */
-            margin: 5px 0;
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #004d00; /* Optional border for definition */
+            margin: 5px 0; /* Margin between list items */
+            padding: 10px; /* Padding inside list items */
+            border-radius: 5px; /* Round corners of list items */
+            border: 1px solid #004d00; /* Border to define list items */
         }
     </style>
 </head>
 <body>
 
 <header>
-    <img id="logo" src="YOUR_LOGO_URL" alt="Logo"> <!-- Replace 'YOUR_LOGO_URL' with your logo link -->
+    <img id="logo" src="YOUR_LOGO_URL" alt="Logo"> <!-- Replace 'YOUR_LOGO_URL' with the actual URL of your logo image -->
     <nav>
         <button class="hamburger" onclick="toggleDropdown()">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
+            <div class="bar"></div> <!-- First bar of the hamburger -->
+            <div class="bar"></div> <!-- Second bar of the hamburger -->
+            <div class="bar"></div> <!-- Third bar of the hamburger -->
         </button>
         <div id="dropdown" class="dropdown">
-            <a href="#register">Register</a>
-            <a href="#leaderboard">Leaderboard</a>
-            <a href="#scores">Scores</a>
-            <a href="#faq">FAQ</a>
+            <a href="#register">Register</a> <!-- Link to Register -->
+            <a href="#leaderboard">Leaderboard</a> <!-- Link to Leaderboard -->
+            <a href="#scores">Scores</a> <!-- Link to Scores -->
+            <a href="#faq">FAQ</a> <!-- Link to FAQ -->
         </div>
     </nav>
 </header>
 
 <main>
-    <h1>Welcome to Our Website</h1>
+    <h1>Welcome to Our Website</h1> <!-- Main heading -->
     <section>
-        <p>Content goes here...</p>
-        <a href="#" class="button">Click Me</a>
+        <p>Content goes here...</p> <!-- Placeholder for content -->
+        <a href="#" class="button">Click Me</a> <!-- Button with a link -->
     </section>
     <section>
-        <ul id="participantsList">
-            <li>Participant 1</li>
-            <li>Participant 2</li>
+        <ul id="participantsList"> <!-- List of participants -->
+            <li>Participant 1</li> <!-- Example participant -->
+            <li>Participant 2</li> <!-- Example participant -->
         </ul>
     </section>
 </main>
 
 <script>
-    function toggleDropdown() {
-        const dropdown = document.getElementById('dropdown');
-        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-    }
+// Function to toggle the display of the dropdown menu
+function toggleDropdown() {
+    const dropdown = document.getElementById('dropdown'); // Get the dropdown element
+    // Toggle between showing and hiding the dropdown based on its current state
+    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+}
 
-    // Optional: Close dropdown if clicked outside
-    window.onclick = function(event) {
-        if (!event.target.matches('.hamburger')) {
-            const dropdown = document.getElementById('dropdown');
-            if (dropdown.style.display === 'block') {
-                dropdown.style.display = 'none';
-            }
+// Optional: Close dropdown if clicked outside of it
+window.onclick = function(event) {
+    // If the clicked element isn't the hamburger button, hide the dropdown
+    if (!event.target.matches('.hamburger')) {
+        const dropdown = document.getElementById('dropdown'); // Get the dropdown element
+        if (dropdown.style.display === 'block') {
+            dropdown.style.display = 'none'; // Hide dropdown
         }
     }
+}
 </script>
 
 </body>
