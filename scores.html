@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8"> <!-- Sets the character encoding to UTF-8 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive design for mobile devices -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"> <!-- Google Fonts -->
     <title>Scores</title> <!-- Page title displayed in the browser tab -->
+    
+    <!-- Importing fonts from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"> <!-- Google Fonts -->
+    
     <style>
         body {
             font-family: 'Roboto', sans-serif; /* Set font for body using Google Fonts */
@@ -22,24 +25,52 @@
             position: relative; /* Positioning for dropdown menu if needed */
         }
 
-        h1 {
-            margin: 0; /* No margin for header title */
+        #logo {
+            max-height: 60px; /* Set maximum height for the logo */
+            cursor: pointer; /* Make logo clickable */
         }
 
-        nav ul {
-            list-style-type: none; /* Remove bullet points from list */
-            padding: 0; /* Remove padding from list */
-            display: flex; /* Display list items in a row */
-            gap: 15px; /* Space between navigation items */
+        nav {
+            position: relative; /* Required for dropdown positioning */
         }
 
-        nav a {
+        .hamburger {
+            cursor: pointer; /* Change cursor to pointer for hamburger menu */
+            display: flex; /* Use flexbox for hamburger bars */
+            flex-direction: column; /* Stack bars vertically */
+            justify-content: space-around; /* Space out the bars evenly */
+            width: 30px; /* Set button width */
+            height: 30px; /* Set button height */
+            background: transparent; /* Set background to transparent */
+            border: none; /* Remove any border */
+        }
+
+        .bar {
+            height: 3px; /* Height of each hamburger bar */
+            width: 100%; /* Full width of each bar */
+            background-color: white; /* Color of hamburger bars */
+            transition: all 0.3s ease; /* Smooth transition for hover effects */
+        }
+
+        .dropdown {
+            display: none; /* Hide dropdown by default */
+            position: absolute; /* Position dropdown menu relative to nav */
+            right: 0; /* Align dropdown to the right */
+            background-color: #004d00; /* Match the header background */
+            border-radius: 5px; /* Rounded corners for dropdown */
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* Shadow effect */
+            z-index: 1; /* Ensure dropdown appears above other content */
+        }
+
+        .dropdown a {
             color: white; /* White text for links */
+            padding: 10px 15px; /* Padding for links */
             text-decoration: none; /* Remove underline from links */
+            display: block; /* Block display for links */
         }
 
-        nav a:hover {
-            text-decoration: underline; /* Underline links on hover */
+        .dropdown a:hover {
+            background-color: #218838; /* Darker green when hovering */
         }
 
         main {
@@ -76,18 +107,27 @@
 </head>
 <body>
     <header>
-        <h1>Scores</h1>
+        <a href="index.html"> <!-- Make the logo a clickable link to home -->
+            <img id="logo" src="https://i0.wp.com/www.dishinfo.com/wp-content/uploads/2024/04/MastersLogo.jpg?w=800&ssl=1" alt="Logo"> 
+        </a>
         <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="register.html">Register</a></li>
-                <li><a href="leaderboard.html">Leaderboard</a></li>
-                <li><a href="faq.html">FAQ</a></li>
-            </ul>
+            <button class="hamburger" onclick="toggleDropdown()">
+                <div class="bar"></div> <!-- First bar of the hamburger icon -->
+                <div class="bar"></div> <!-- Second bar of the hamburger icon -->
+                <div class="bar"></div> <!-- Third bar of the hamburger icon -->
+            </button>
+            <div id="dropdown" class="dropdown">
+                <a href="index.html">Home</a> <!-- Link to Home section -->
+                <a href="register.html">Register</a> <!-- Link to Register section -->
+                <a href="leaderboard.html">Leaderboard</a> <!-- Link to Leaderboard section -->
+                <a href="scores.html">Scores</a> <!-- Link to Scores section -->
+                <a href="faq.html">FAQ</a> <!-- Link to FAQ section -->
+            </div>
         </nav>
     </header>
+
     <main>
-        <h2>Scores of Participants</h2>
+        <h1>Scores of Participants</h1>
         <table id="scores">
             <thead>
                 <tr>
@@ -104,100 +144,101 @@
             </tbody>
         </table>
     </main>
+
     <script>
         // Replace the following string with your actual CSV data
-        const csvData = `Player	Round 1	Round 2	Round 3	Round 4	Total
-Ludvig Aberg	60	60	60	60	240
-Byeong Hun An	61	61	61	61	244
-Josele Ballester (a)	62	62	62	62	248
-Evan Beck (a)	63	63	63	63	252
-Christiaan Bezuidenhout	64	64	64	64	256
-Akshay Bhatia	65	65	65	65	260
-Keegan Bradley	66	66	66	66	264
-Sam Burns	67	67	67	67	268
-Angel Cabrera	68	68	68	68	272
-Brian Campbell	69	69	69	69	276
-Rafael Campos	70	70	70	70	280
-Patrick Cantlay	71	71	71	71	284
-Wyndham Clark	72	72	72	72	288
-Corey Conners	73	73	73	73	292
-Fred Couples	74	74	74	74	296
-Cam Davis	75	75	75	75	300
-Jason Day	76	76	76	76	304
-Bryson DeChambeau	77	77	77	77	308
-Thomas Detry	78	78	78	78	312
-Nick Dunlap	79	79	79	79	316
-Nico Echavarria	80	80	80	80	320
-Austin Eckroat	81	81	81	81	324
-Harris English	82	82	82	82	328
-Tony Finau	83	83	83	83	332
-Matt Fitzpatrick	84	84	84	84	336
-Tommy Fleetwood	85	85	85	85	340
-Sergio Garcia	86	86	86	86	344
-Lucas Glover	87	87	87	87	348
-Max Greyserman	88	88	88	88	352
-Brian Harman	89	89	89	89	356
-Justin Hastings (a)	90	90	90	90	360
-Tyrrell Hatton	91	91	91	91	364
-Russell Henley	92	92	92	92	368
-Tom Hoge	93	93	93	93	372
-Nicolai Hojgaard	94	94	94	94	376
-Rasmus Hojgaard	95	95	95	95	380
-Max Homa	96	96	96	96	384
-Billy Horschel	97	97	97	97	388
-Viktor Hovland	98	98	98	98	392
-Sungjae Im	99	99	99	99	396
-Dustin Johnson	100	100	100	100	400
-Zach Johnson	101	101	101	101	404
-Noah Kent (a)	102	102	102	102	408
-Tom Kim	103	103	103	103	412
-Chris Kirk	104	104	104	104	416
-Patton Kizzire	105	105	105	105	420
-Brooks Koepka	106	106	106	106	424
-Bernhard Langer	107	107	107	107	428
-Thriston Lawrence	108	108	108	108	432
-Min Woo Lee	109	109	109	109	436
-Shane Lowry	110	110	110	110	440
-Robert MacIntyre	111	111	111	111	444
-Hideki Matsuyama	112	112	112	112	448
-Denny McCarthy	113	113	113	113	452
-Matt McCarty	114	114	114	114	456
-Rory McIlroy	115	115	115	115	460
-Maverick McNealy	116	116	116	116	464
-Phil Mickelson	117	117	117	117	468
-Collin Morikawa	118	118	118	118	472
-Joaquin Niemann	119	119	119	119	476
-Jose Maria Olazabal	120	120	120	120	480
-Matthieu Pavon	121	121	121	121	484
-Taylor Pendrith	122	122	122	122	488
-J.T. Poston	123	123	123	123	492
-Jon Rahm	124	124	124	124	496
-Aaron Rai	125	125	125	125	500
-Patrick Reed	126	126	126	126	504
-Davis Riley	127	127	127	127	508
-Justin Rose	128	128	128	128	512
-Xander Schauffele	129	129	129	129	516
-Scottie Scheffler	130	130	130	130	520
-Adam Schenk	131	131	131	131	524
-Charl Schwartzel	132	132	132	132	528
-Adam Scott	133	133	133	133	532
-Vijay Singh	134	134	134	134	536
-Cameron Smith	135	135	135	135	540
-Jordan Spieth	136	136	136	136	544
-Sepp Straka	137	137	137	137	548
-Hiroshi Tai (a)	138	138	138	138	552
-Nick Taylor	139	139	139	139	556
-Sahith Theegala	140	140	140	140	560
-Justin Thomas	141	141	141	141	564
-Davis Thompson	142	142	142	142	568
-Jhonattan Vegas	143	143	143	143	572
-Bubba Watson	144	144	144	144	576
-Mike Weir	145	145	145	145	580
-Danny Willett	146	146	146	146	584
-Tiger Woods	147	147	147	147	588
-Cameron Young	148	148	148	148	592
-Kevin Yu	149	149	149	149	596
-Will Zalatoris	150	150	150	150	600`;
+        const csvData = `Player\tRound 1\tRound 2\tRound 3\tRound 4\tTotal
+Ludvig Aberg\t60\t60\t60\t60\t240
+Byeong Hun An\t61\t61\t61\t61\t244
+Josele Ballester (a)\t62\t62\t62\t62\t248
+Evan Beck (a)\t63\t63\t63\t63\t252
+Christiaan Bezuidenhout\t64\t64\t64\t64\t256
+Akshay Bhatia\t65\t65\t65\t65\t260
+Keegan Bradley\t66\t66\t66\t66\t264
+Sam Burns\t67\t67\t67\t67\t268
+Angel Cabrera\t68\t68\t68\t68\t272
+Brian Campbell\t69\t69\t69\t69\t276
+Rafael Campos\t70\t70\t70\t70\t280
+Patrick Cantlay\t71\t71\t71\t71\t284
+Wyndham Clark\t72\t72\t72\t72\t288
+Corey Conners\t73\t73\t73\t73\t292
+Fred Couples\t74\t74\t74\t74\t296
+Cam Davis\t75\t75\t75\t75\t300
+Jason Day\t76\t76\t76\t76\t304
+Bryson DeChambeau\t77\t77\t77\t77\t308
+Thomas Detry\t78\t78\t78\t78\t312
+Nick Dunlap\t79\t79\t79\t79\t316
+Nico Echavarria\t80\t80\t80\t80\t320
+Austin Eckroat\t81\t81\t81\t81\t324
+Harris English\t82\t82\t82\t82\t328
+Tony Finau\t83\t83\t83\t83\t332
+Matt Fitzpatrick\t84\t84\t84\t84\t336
+Tommy Fleetwood\t85\t85\t85\t85\t340
+Sergio Garcia\t86\t86\t86\t86\t344
+Lucas Glover\t87\t87\t87\t87\t348
+Max Greyserman\t88\t88\t88\t88\t352
+Brian Harman\t89\t89\t89\t89\t356
+Justin Hastings (a)\t90\t90\t90\t90\t360
+Tyrrell Hatton\t91\t91\t91\t91\t364
+Russell Henley\t92\t92\t92\t92\t368
+Tom Hoge\t93\t93\t93\t93\t372
+Nicolai Hojgaard\t94\t94\t94\t94\t376
+Rasmus Hojgaard\t95\t95\t95\t95\t380
+Max Homa\t96\t96\t96\t96\t384
+Billy Horschel\t97\t97\t97\t97\t388
+Viktor Hovland\t98\t98\t98\t98\t392
+Sungjae Im\t99\t99\t99\t99\t396
+Dustin Johnson\t100\t100\t100\t100\t400
+Zach Johnson\t101\t101\t101\t101\t404
+Noah Kent (a)\t102\t102\t102\t102\t408
+Tom Kim\t103\t103\t103\t103\t412
+Chris Kirk\t104\t104\t104\t104\t416
+Patton Kizzire\t105\t105\t105\t105\t420
+Brooks Koepka\t106\t106\t106\t106\t424
+Bernhard Langer\t107\t107\t107\t107\t428
+Thriston Lawrence\t108\t108\t108\t108\t432
+Min Woo Lee\t109\t109\t109\t109\t436
+Shane Lowry\t110\t110\t110\t110\t440
+Robert MacIntyre\t111\t111\t111\t111\t444
+Hideki Matsuyama\t112\t112\t112\t112\t448
+Denny McCarthy\t113\t113\t113\t113\t452
+Matt McCarty\t114\t114\t114\t114\t456
+Rory McIlroy\t115\t115\t115\t115\t460
+Maverick McNealy\t116\t116\t116\t116\t464
+Phil Mickelson\t117\t117\t117\t117\t468
+Collin Morikawa\t118\t118\t118\t118\t472
+Joaquin Niemann\t119\t119\t119\t119\t476
+Jose Maria Olazabal\t120\t120\t120\t120\t480
+Matthieu Pavon\t121\t121\t121\t121\t484
+Taylor Pendrith\t122\t122\t122\t122\t488
+J.T. Poston\t123\t123\t123\t123\t492
+Jon Rahm\t124\t124\t124\t124\t496
+Aaron Rai\t125\t125\t125\t125\t500
+Patrick Reed\t126\t126\t126\t126\t504
+Davis Riley\t127\t127\t127\t127\t508
+Justin Rose\t128\t128\t128\t128\t512
+Xander Schauffele\t129\t129\t129\t129\t516
+Scottie Scheffler\t130\t130\t130\t130\t520
+Adam Schenk\t131\t131\t131\t131\t524
+Charl Schwartzel\t132\t132\t132\t132\t528
+Adam Scott\t133\t133\t133\t133\t532
+Vijay Singh\t134\t134\t134\t134\t536
+Cameron Smith\t135\t135\t135\t135\t540
+Jordan Spieth\t136\t136\t136\t136\t544
+Sepp Straka\t137\t137\t137\t137\t548
+Hiroshi Tai (a)\t138\t138\t138\t138\t552
+Nick Taylor\t139\t139\t139\t139\t556
+Sahith Theegala\t140\t140\t140\t140\t560
+Justin Thomas\t141\t141\t141\t141\t564
+Davis Thompson\t142\t142\t142\t142\t568
+Jhonattan Vegas\t143\t143\t143\t143\t572
+Bubba Watson\t144\t144\t144\t144\t576
+Mike Weir\t145\t145\t145\t145\t580
+Danny Willett\t146\t146\t146\t146\t584
+Tiger Woods\t147\t147\t147\t147\t588
+Cameron Young\t148\t148\t148\t148\t592
+Kevin Yu\t149\t149\t149\t149\t596
+Will Zalatoris\t150\t150\t150\t150\t600`;
 
         // Function to populate the scores table with data from the CSV string
         function populateScores(csvData) {
@@ -225,9 +266,23 @@ Will Zalatoris	150	150	150	150	600`;
             });
         }
 
-        // Call the function to populate the leaderboard with the example CSV data
+        // Call the function to populate the scores table with the example CSV data
         populateScores(csvData);
 
+    </script>
+
+    <!-- Correctly fetch and load the footer -->
+    <div id="footer"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading footer:', error));
+        });
     </script>
 </body>
 </html>
