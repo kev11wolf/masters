@@ -3,71 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/style.css">
     <title>Leaderboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif; /* Set font for body */
+            background-color: #f5f5f5; /* Light background for modern look */
+            color: #004d00; /* Dark green text color */
+        }
+
+        header {
+            background: #004d00; /* Dark green header background */
+            color: #ffffff; /* White text for contrast */
+            display: flex; /* Use flexbox for layout */
+            justify-content: space-between; /* Space between logo and menu */
+            align-items: center; /* Center items vertically */
+            padding: 10px 20px; /* Padding around header */
+            position: relative; /* For dropdown positioning */
+        }
+
+        #logo {
+            max-height: 60px; /* Limit logo size */
+        }
+
+        nav {
+            position: relative; /* Needed for absolute positioning of dropdown */
+        }
+
+        .hamburger {
+            cursor: pointer; /* Change cursor to pointer */
+            display: flex; /* Use flexbox for bars */
+            flex-direction: column; /* Arrange bars vertically */
+            justify-content: space-around; /* Space between bars */
+            width: 30px; /* Width of hamburger button */
+            height: 30px; /* Height of hamburger button */
+            background: transparent; /* Transparent background */
+            border: none; /* No border */
+        }
+
+        .bar {
+            height: 3px; /* Height of each bar */
+            width: 100%; /* Full width */
+            background-color: white; /* White color for bars */
+            transition: all 0.3s ease; /* Smooth transition for hover effects */
+        }
+
+        .dropdown {
+            display: none; /* Hide dropdown by default */
+            position: absolute; /* Position it absolutely within nav */
+            right: 0; /* Align to the right */
+            background-color: #004d00; /* Match header background */
+            border-radius: 5px; /* Rounded corners */
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+            z-index: 1; /* Stack above other content */
+        }
+
+        .dropdown a {
+            color: white; /* White text for links */
+            padding: 10px 15px; /* Padding for links */
+            text-decoration: none; /* Remove underline */
+            display: block; /* Block display for easy clicking */
+        }
+
+        .dropdown a:hover {
+            background-color: #218838; /* Darker green on hover */
+        }
+
+        main {
+            padding: 20px; /* Padding for main content */
+        }
+
+        table {
+            width: 100%; /* Full width for table */
+            border-collapse: collapse; /* Collapse borders */
+            margin-top: 20px; /* Space above the table */
+        }
+
+        th, td {
+            padding: 10px; /* Padding for cells */
+            border: 1px solid #004d00; /* Border for cells */
+            text-align: left; /* Align text to left */
+        }
+
+        th {
+            background-color: #004d00; /* Dark green background for headers */
+            color: white; /* White text for headers */
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2; /* Light background for alternate rows */
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Leaderboard</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="register.html">Register</a></li>
-                <li><a href="scores.html">Scores</a></li>
-                <li><a href="faq.html">FAQ</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <h2>Current Standings</h2>
-        <table id="leaderboard">
-            <thead>
-                <tr>
-                    <th>Participant</th>
-                    <th>Score</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Data will be populated here -->
-            </tbody>
-        </table>
-        <div id="music-player">
-            <audio id="background-music" loop>
-                <source src="https://archive.org/details/tvtunes_7756.mp3" type="audio/mpeg">
-                Your browser does not support the audio tag.
-            </audio>
-            <label for="volume">Volume:</label>
-            <input type="range" id="volume" min="0" max="1" step="0.1" value="0.5" />
+
+<header>
+    <img id="logo" src="https://www.cleanpng.com/png-augusta-national-golf-club-2018-masters-tournament-1943655/" alt="Logo"> <!-- Replace 'YOUR_LOGO_URL' with your logo link -->
+    <nav>
+        <button class="hamburger" onclick="toggleDropdown()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </button>
+        <div id="dropdown" class="dropdown">
+            <a href="#register">Register</a>
+            <a href="#leaderboard">Leaderboard</a>
+            <a href="#scores">Scores</a>
+            <a href="#faq">FAQ</a>
         </div>
-    </main>
-    
-    <script>
-        // Fetch and display the leaderboard data
-        fetch('leaderboard.csv')
-            .then(response => response.text())
-            .then(data => {
-                const rows = data.split('\n').slice(1);
-                const tableBody = document.querySelector('#leaderboard tbody');
-                rows.forEach(row => {
-                    const cols = row.split(',');
-                    const tr = document.createElement('tr');
-                    tr.innerHTML = `<td>${cols[0]}</td><td>${cols[1]}</td>`;
-                    tableBody.appendChild(tr);
-                });
-            });
+    </nav>
+</header>
 
-        // Get the audio element and volume input
-        const audio = document.getElementById('background-music');
-        const volumeControl = document.getElementById('volume');
+<main>
+    <h1>Leaderboard</h1>
+    <table id="leaderboard">
+        <thead>
+            <tr>
+                <th>Participant</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Dynamic content will be inserted here -->
+        </tbody>
+    </table>
+</main>
 
-        // Set the initial volume
-        audio.volume = volumeControl.value;
-        audio.play();  // Start playing the music when the page loads
+<script>
+// Function to toggle the display of the dropdown menu
+function toggleDropdown() {
+    const dropdown = document.getElementById('dropdown');
+    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+}
 
-        // Update the audio volume when the range input changes
-        volumeControl.addEventListener('input', function() {
-            audio.volume = this.value;
+// Close dropdown if clicking outside
+window.onclick = function(event) {
+    if (!event.target.matches('.hamburger')) {
+        const dropdown = document.getElementById('dropdown');
+        if (dropdown.style.display === 'block') {
+            dropdown.style.display = 'none';
+        }
+    }
+}
+
+// Function to populate the leaderboard table with data from a CSV string
+function populateLeaderboard(csvData) {
+    const tbody = document.querySelector('#leaderboard tbody'); // Select tbody element
+    const rows = csvData.trim().split('\n'); // Split CSV data into rows
+
+    // Clear existing data
+    tbody.innerHTML = '';
+
+    // Loop through each row of CSV data
+    rows.forEach(row => {
+        const columns = row.split('\t'); // Split row into columns
+        
+        // Create a new table row
+        const tr = document.createElement('tr');
+
+        // Loop through each column and create a cell
+        columns.forEach(col => {
+            const td = document.createElement('td');
+            td.textContent = col; // Set cell text to column data
+            tr.appendChild(td); // Append cell to row
         });
-    </script>
+
+        tbody.appendChild(tr); // Append the row to the table body
+    });
+}
+
+// Example CSV data to demonstrate functionality
+// This can be replaced with actual CSV data to be processed
+const csvExample = `Kevin\t1024
+Alice\t850
+John\t920
+Emma\t560`;
+
+// Call the function to populate the leaderboard
+populateLeaderboard(csvExample);
+
+</script>
+
 </body>
 </html>
