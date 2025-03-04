@@ -1,7 +1,7 @@
 <footer style="text-align: center; padding: 20px; background-color: #004d00; color: white;">
     <p>A Tradition unlike any other.</p>
     
-    <!-- Video Container for Responsive YouTube Video Player -->
+    <!-- Video Container for Responsive YouTube Video Player with Max Width -->
     <div class="video-container">
         <iframe 
             src="https://www.youtube.com/embed/G97AdMLbfr4?si=QDNZoS1m_UCtICi-&autoplay=1" 
@@ -21,7 +21,8 @@
             padding-bottom: 56.25%; /* Maintain 16:9 aspect ratio */
             height: 0; /* Set height to zero to allow padding-bottom for spacing */
             overflow: hidden; /* Hide overflow */
-            max-width: 100%; /* Limit width to ensure responsiveness */
+            max-width: 500px; /* Set maximum width to 500 pixels */
+            width: 100%; /* Allow it to scale down to the width of the screen */
             margin: 0 auto; /* Center the video container */
         }
 
