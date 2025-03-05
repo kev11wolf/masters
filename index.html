@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/style.css">
     <title>The Sommerville Masters Golf Pool Invitational</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
@@ -18,59 +17,12 @@
         header {
             background: #1a4831;
             color: #ffffff;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             padding: 10px 20px;
-            position: relative;
         }
 
         #logo {
             max-height: 80px;
             cursor: pointer;
-        }
-
-        nav {
-            position: relative;
-        }
-
-        .hamburger {
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            width: 30px;
-            height: 30px;
-            background: transparent;
-            border: none;
-        }
-
-        .bar {
-            height: 3px;
-            width: 100%;
-            background-color: white;
-            transition: all 0.3s ease;
-        }
-
-        .dropdown {
-            display: none;
-            position: absolute;
-            right: 0;
-            background-color: #1a4831;
-            border-radius: 5px;
-            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-        }
-
-        .dropdown a {
-            color: white;
-            padding: 10px 15px;
-            text-decoration: none;
-            display: block;
-        }
-
-        .dropdown a:hover {
-            background-color: #218838;
         }
 
         main {
@@ -88,10 +40,6 @@
             margin-top: 10px;
         }
 
-        .big-button:hover {
-            background-color: #218838;
-        }
-
         /* Slideshow Styles */
         .slideshow-container {
             position: relative;
@@ -101,20 +49,18 @@
         }
 
         .mySlides {
-            width: 100%; /* Responsiveness */
-            max-width: 600px; /* Limit the maximum width */
-            margin: 0 auto; /* Center images */
+            display: none;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
             opacity: 0; /* Start as invisible */
-            transition: opacity 1s ease; /* Transition for fade effect */
             position: absolute; /* Positioning for overlapping */
-            top: 0;
-            left: 0;
-            visibility: hidden; /* Hide element initially */
+            transition: opacity 1s ease; /* Transition for fade effect */
         }
 
         .active {
+            display: block; /* Show the active slide */
             opacity: 1; /* Fully visible */
-            visibility: visible; /* Ensure visibility to show */
         }
     </style>
 </head>
@@ -125,19 +71,6 @@
     <a href="index.html">
         <img id="logo" src="https://i0.wp.com/www.dishinfo.com/wp-content/uploads/2024/04/MastersLogo.jpg?w=800&ssl=1" alt="Logo">
     </a>
-    <nav>
-        <button class="hamburger" onclick="toggleDropdown()">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-        </button>
-        <div id="dropdown" class="dropdown">
-            <a href="register.html">Register</a>
-            <a href="leaderboard.html">Leaderboard</a>
-            <a href="scores.html">Scores</a>
-            <a href="faq.html">FAQ</a>
-        </div>
-    </nav>
 </header>
 
 <main>
@@ -161,34 +94,14 @@
     </div>
 </main>
 
-<footer>
-    <div id="footer"></div>
-</footer>
-
 <script>
-// Function to toggle the display of the dropdown menu
-function toggleDropdown() {
-    const dropdown = document.getElementById('dropdown');
-    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-}
-
-// Close dropdown if clicking outside of it
-window.onclick = function(event) {
-    if (!event.target.matches('.hamburger')) {
-        const dropdown = document.getElementById('dropdown');
-        if (dropdown.style.display === 'block') {
-            dropdown.style.display = 'none';
-        }
-    }
-}
-
 // Slideshow functionality
 let slideIndex = 0;
 showSlides();
 
 function showSlides() {
     let slides = document.getElementsByClassName("mySlides");
-    
+
     // Hide all slides first
     for (let i = 0; i < slides.length; i++) {
         slides[i].classList.remove("active"); // Remove active class
@@ -197,22 +110,12 @@ function showSlides() {
     // Move to the next slide
     slideIndex++;
     if (slideIndex > slides.length) { slideIndex = 1 } // Loop back to first
-    
+
     slides[slideIndex - 1].classList.add("active"); // Show the current slide
 
     // Change image every 5 seconds
     setTimeout(showSlides, 5000); 
 }
-
-// Fetch footer content and insert it into the footer placeholder
-document.addEventListener("DOMContentLoaded", function() {
-    fetch('footer.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('footer').innerHTML = data;
-        })
-        .catch(error => console.error('Error loading footer:', error));
-});
 </script>
 </body>
 
