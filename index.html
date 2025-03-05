@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/style.css">
     <title>The Sommerville Masters Golf Pool Invitational</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
@@ -29,69 +28,6 @@
             cursor: pointer;
         }
 
-        nav {
-            position: relative;
-        }
-
-        .hamburger {
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            width: 30px;
-            height: 30px;
-            background: transparent;
-            border: none;
-        }
-
-        .bar {
-            height: 3px;
-            width: 100%;
-            background-color: white;
-            transition: all 0.3s ease;
-        }
-
-        .dropdown {
-            display: none;
-            position: absolute;
-            right: 0;
-            background-color: #1a4831;
-            border-radius: 5px;
-            box-shadow: 0 3px 5px rgba(0,0,0,0.2);
-            z-index: 1;
-        }
-
-        .dropdown a {
-            color: white;
-            padding: 10px 15px;
-            text-decoration: none;
-            display: block;
-        }
-
-        .dropdown a:hover {
-            background-color: #218838;
-        }
-
-        main {
-            padding: 20px;
-        }
-
-        .big-button {
-            background-color: #1a4831;
-            color: white;
-            padding: 15px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            display: inline-block;
-            font-size: 18px;
-            margin-top: 10px;
-        }
-
-        .big-button:hover {
-            background-color: #218838;
-        }
-
-        /* Slideshow Styles */
         .slideshow-container {
             position: relative;
             max-width: 100%;
@@ -100,7 +36,7 @@
         }
 
         .mySlides {
-            display: none; /* Hide all slides */
+            display: none; /* Hide all slides by default */
             width: 100%;  /* Make images responsive */
             max-width: 600px; /* Set maximum width for the images */
             height: auto; /* Maintain aspect ratio */
@@ -126,19 +62,6 @@
     <a href="index.html"> 
         <img id="logo" src="https://i0.wp.com/www.dishinfo.com/wp-content/uploads/2024/04/MastersLogo.jpg?w=800&ssl=1" alt="Logo"> 
     </a>
-    <nav>
-        <button class="hamburger" onclick="toggleDropdown()">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-        </button>
-        <div id="dropdown" class="dropdown">
-            <a href="register.html">Register</a>
-            <a href="leaderboard.html">Leaderboard</a>
-            <a href="scores.html">Scores</a>
-            <a href="faq.html">FAQ</a>
-        </div>
-    </nav>
 </header>
 
 <main>
@@ -146,9 +69,7 @@
     <h2>It's that time of year again.</h2>
     <h3>The Masters tournament has begun in Augusta, GA 🌸</h3>
     <p>A tradition unlike any other.</p>
-    <a href="register.html" class="big-button">Register Now</a>
 
-    <!-- Slideshow Container -->
     <div class="slideshow-container">
         <img class="mySlides active" src="https://public.augusta.com/s3fs-public/article/images/clubhouse_14.jpg" alt="Slideshow Image 1">
         <img class="mySlides" src="https://www.hartough.com/uploads/Thumbnails/11th.Augusta.2015.jpg" alt="Slideshow Image 2">
@@ -167,28 +88,12 @@
 </footer>
 
 <script>
-// Function to toggle the display of the dropdown menu
-function toggleDropdown() {
-    const dropdown = document.getElementById('dropdown'); // Get dropdown menu element
-    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block'; // Toggle dropdown
-}
-
-// Close dropdown if clicking outside of it
-window.onclick = function(event) {
-    if (!event.target.matches('.hamburger')) { // Check if click is outside the hamburger menu
-        const dropdown = document.getElementById('dropdown');
-        if (dropdown.style.display === 'block') {
-            dropdown.style.display = 'none'; // Close the dropdown menu
-        }
-    }
-}
-
 // Slideshow functionality
 let slideIndex = 0;
 showSlides(); // Call function to start showing slides
 
 function showSlides() {
-    let slides = document.getElementsByClassName("mySlides"); // Get all slides
+    const slides = document.getElementsByClassName("mySlides"); // Get all slides
     for (let i = 0; i < slides.length; i++) {
         slides[i].classList.remove("active"); // Remove active class from all slides
     }
