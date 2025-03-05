@@ -91,6 +91,16 @@
         .big-button:hover {
             background-color: #218838; /* Button hover color */
         }
+
+        footer {
+            background-color: #1a4831; /* Footer background color */
+            color: white; /* Footer text color */
+            text-align: center; /* Center align the text in footer */
+            padding: 20px; /* Padding for footer */
+            position: relative; /* Necessary for future positioning */
+            bottom: 0; /* Stick to bottom */
+            width: 100%; /* Full width */
+        }
     </style>
 </head>
 <body>
@@ -118,6 +128,8 @@
         <a href="https://docs.google.com/forms/d/e/1FAIpQLScZPNE_cAdVMHHLPrieOEw5L__Wf-6wbaAUr5GIjYbwJDMMew/viewform?usp=header" target="_blank" class="big-button">Complete the Registration</a>
     </main>
 
+    <div id="footer"></div> <!-- Placeholder for the footer -->
+
     <script>
         // Function to toggle the display of the dropdown menu
         function toggleDropdown() {
@@ -135,6 +147,16 @@
                 }
             }
         }
+
+        // Correctly fetch and load the footer
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading footer:', error));
+        });
     </script>
 </body>
 </html>
