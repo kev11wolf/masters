@@ -1,20 +1,22 @@
-<footer style="text-align: center; padding: 20px; background-color: #1a4831; color: white;">
-    <div class="video-container">
-        <iframe 
-            id="randomVideo" 
-            title="YouTube video player" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            referrerpolicy="strict-origin-when-cross-origin" 
-            allowfullscreen 
-            src=""> <!-- The src will be set by JavaScript -->
-        </iframe>
-    </div>
-    
-    <p>Website created by K-Dawg.</p> 
-    <p>&copy; 2025. All Rights Reserved.</p>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Autoplay Example</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        footer {
+            text-align: center; 
+            padding: 20px; 
+            background-color: #1a4831; 
+            color: white;
+        }
         .video-container {
             position: relative;
             padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
@@ -24,7 +26,6 @@
             width: 100%; /* Width of the container */
             margin: 0 auto; /* Center the video */
         }
-
         .video-container iframe {
             position: absolute;
             top: 0;
@@ -33,6 +34,24 @@
             height: 100%;
         }
     </style>
+</head>
+<body>
+    <footer>
+        <div class="video-container">
+            <iframe 
+                id="randomVideo" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerpolicy="strict-origin-when-cross-origin" 
+                allowfullscreen 
+                src=""> <!-- The src will be set by JavaScript -->
+            </iframe>
+        </div>
+        
+        <p>Website created by K-Dawg.</p> 
+        <p>&copy; 2025. All Rights Reserved.</p>
+    </footer>
 
     <script>
         // Array of YouTube video embed links with autoplay and mute
@@ -56,4 +75,5 @@
         // Load a random video when the page loads
         window.onload = loadRandomVideo;
     </script>
-</footer>
+</body>
+</html>
