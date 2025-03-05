@@ -100,23 +100,17 @@
         }
 
         .mySlides {
-            display: none;
+            display: none; /* Hide all slides */
             width: 100%;
             max-width: 600px;
-            height: auto;
             margin: 0 auto;
-            transition: opacity 1s ease-in-out; /* Add transition effect */
-            position: absolute; /* Position slides absolutely within the container */
-            top: 0;
-            left: 0;
-        }
-
-        .fade {
+            transition: opacity 1s ease-in-out; /* Fade transition on opacity */
             opacity: 0; /* Set initial opacity to 0 */
         }
 
-        .fade.in {
-            opacity: 1; /* Change opacity when in view */
+        .active {
+            display: block; /* Show the active slide */
+            opacity: 1; /* Set opacity to 1 for the active slide */
         }
     </style>
 </head>
@@ -150,15 +144,15 @@
 
     <!-- Slideshow Container -->
     <div class="slideshow-container">
-        <img class="mySlides fade" src="https://public.augusta.com/s3fs-public/article/images/clubhouse_14.jpg" alt="Slideshow Image 1">
-        <img class="mySlides fade" src="https://www.hartough.com/uploads/Thumbnails/11th.Augusta.2015.jpg" alt="Slideshow Image 2">
-        <img class="mySlides fade" src="https://photo-assets.masters.com/images/pics/misc/about_014_records.jpg" alt="Slideshow Image 3">
-        <img class="mySlides fade" src="https://golf.com/wp-content/uploads/2021/04/ShotaHidekiCaddie.jpg?width=1280" alt="Slideshow Image 4">
-        <img class="mySlides fade" src="https://golfweek.usatoday.com/gcdn/authoring/images/smg/2024/11/15/SGLF/76349797007-87-777989065.jpeg?width=1320&height=828&fit=crop&format=pjpg&auto=webp" alt="Slideshow Image 5">
-        <img class="mySlides fade" src="https://d23jngptvnttd7.cloudfront.net/2022/11/11192258/tiger-woods-chops-to-16th-2005-masters-1.jpg" alt="Slideshow Image 6">
-        <img class="mySlides fade" src="https://golf.com/wp-content/uploads/2024/04/brysonsign.jpg?width=1280" alt="Slideshow Image 7">
-        <img class="mySlides fade" src="https://preview.redd.it/tiger-woods-and-tree-congratulate-each-other-on-long-v0-h1r0rfrkaiuc1.jpeg?auto=webp&s=20ff8a5890ef57fba10368aea82420f695c82c7f" alt="Slideshow Image 8">
-        <img class="mySlides fade" src="https://www.hartough.com/uploads/Thumbnails/12.Augusta.jpg" alt="Slideshow Image 9">
+        <img class="mySlides" src="https://public.augusta.com/s3fs-public/article/images/clubhouse_14.jpg" alt="Slideshow Image 1">
+        <img class="mySlides" src="https://www.hartough.com/uploads/Thumbnails/11th.Augusta.2015.jpg" alt="Slideshow Image 2">
+        <img class="mySlides" src="https://photo-assets.masters.com/images/pics/misc/about_014_records.jpg" alt="Slideshow Image 3">
+        <img class="mySlides" src="https://golf.com/wp-content/uploads/2021/04/ShotaHidekiCaddie.jpg?width=1280" alt="Slideshow Image 4">
+        <img class="mySlides" src="https://golfweek.usatoday.com/gcdn/authoring/images/smg/2024/11/15/SGLF/76349797007-87-777989065.jpeg?width=1320&height=828&fit=crop&format=pjpg&auto=webp" alt="Slideshow Image 5">
+        <img class="mySlides" src="https://d23jngptvnttd7.cloudfront.net/2022/11/11192258/tiger-woods-chops-to-16th-2005-masters-1.jpg" alt="Slideshow Image 6">
+        <img class="mySlides" src="https://golf.com/wp-content/uploads/2024/04/brysonsign.jpg?width=1280" alt="Slideshow Image 7">
+        <img class="mySlides" src="https://preview.redd.it/tiger-woods-and-tree-congratulate-each-other-on-long-v0-h1r0rfrkaiuc1.jpeg?auto=webp&s=20ff8a5890ef57fba10368aea82420f695c82c7f" alt="Slideshow Image 8">
+        <img class="mySlides" src="https://www.hartough.com/uploads/Thumbnails/12.Augusta.jpg" alt="Slideshow Image 9">
     </div>
 </main>
 
@@ -192,17 +186,13 @@ function showSlides() {
     
     // Hide all slides
     for (let i = 0; i < slides.length; i++) {
-        slides[i].classList.remove("in"); // Remove 'in' class to trigger fade out
-        slides[i].style.display = "none"; // In case of direct CSS conflicts
+        slides[i].classList.remove("active"); // Remove 'active' class from all
     }
+    
     slideIndex++;
     if (slideIndex > slides.length) { slideIndex = 1 } // Loop back to the first slide
-
-    slides[slideIndex - 1].style.display = "block"; // Show the current slide
-    // Use setTimeout for a slight delay before adding the 'in' class for fading effect
-    setTimeout(() => {
-        slides[slideIndex - 1].classList.add("in"); // Add fade-in class
-    }, 50); // Allow some time for display to switch before fading in
+    
+    slides[slideIndex - 1].classList.add("active"); // Show the current slide
 
     setTimeout(showSlides, 5000); // Change image every 5 seconds
 }
