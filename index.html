@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -100,25 +101,26 @@
         }
 
         .mySlides {
-            display: none; /* Hide all slides */
-            width: 100%;
-            max-width: 600px;
-            margin: 0 auto;
-            transition: opacity 1s ease-in-out; /* Fade transition on opacity */
-            opacity: 0; /* Set initial opacity to 0 */
+            display: none; /* Hide all slides by default */
+            width: 100%; /* Responsiveness */
+            max-width: 600px; /* Limit the maximum width */
+            margin: 0 auto; /* Center images */
+            opacity: 0; /* Start as invisible */
+            transition: opacity 1s ease; /* Transition for fade effect */
         }
 
         .active {
             display: block; /* Show the active slide */
-            opacity: 1; /* Set opacity to 1 for the active slide */
+            opacity: 1; /* Fully visible */
         }
     </style>
 </head>
+
 <body>
 
 <header>
     <a href="index.html">
-        <img id="logo" src="https://i0.wp.com/www.dishinfo.com/wp-content/uploads/2024/04/MastersLogo.jpg?w=800&ssl=1" alt="Logo"> 
+        <img id="logo" src="https://i0.wp.com/www.dishinfo.com/wp-content/uploads/2024/04/MastersLogo.jpg?w=800&ssl=1" alt="Logo">
     </a>
     <nav>
         <button class="hamburger" onclick="toggleDropdown()">
@@ -184,17 +186,19 @@ showSlides();
 function showSlides() {
     let slides = document.getElementsByClassName("mySlides");
     
-    // Hide all slides
+    // Hide all slides first
     for (let i = 0; i < slides.length; i++) {
-        slides[i].classList.remove("active"); // Remove 'active' class from all
+        slides[i].classList.remove("active"); // Remove active class
     }
     
+    // Move to the next slide
     slideIndex++;
-    if (slideIndex > slides.length) { slideIndex = 1 } // Loop back to the first slide
+    if (slideIndex > slides.length) { slideIndex = 1 } // Loop back to first
     
     slides[slideIndex - 1].classList.add("active"); // Show the current slide
 
-    setTimeout(showSlides, 5000); // Change image every 5 seconds
+    // Change image every 5 seconds
+    setTimeout(showSlides, 5000); 
 }
 
 // Fetch footer content and insert it into the footer placeholder
@@ -207,6 +211,5 @@ document.addEventListener("DOMContentLoaded", function() {
         .catch(error => console.error('Error loading footer:', error));
 });
 </script>
-
 </body>
 </html>
