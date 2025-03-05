@@ -105,6 +105,17 @@
             max-width: 600px; /* Set maximum width for the images */
             height: auto; /* Maintain aspect ratio */
             margin: 0 auto; /* Center images in the slideshow */
+            border: 20px solid transparent; /* 20 pixel border space */
+            transition: opacity 1s ease-in-out; /* Smooth transition for fade effect */
+            position: absolute; /* Allow absolute positioning */
+            top: 0; /* Align with the top */
+            left: 0; /* Align with the left */
+            opacity: 0; /* Start with opacity 0 for fade-in */
+        }
+
+        .active {
+            opacity: 1; /* Fully show the active slide */
+            border-color: #1a4831; /* Colored border for the active slide */
         }
     </style>
 </head>
@@ -138,7 +149,7 @@
 
     <!-- Slideshow Container -->
     <div class="slideshow-container">
-        <img class="mySlides" src="https://public.augusta.com/s3fs-public/article/images/clubhouse_14.jpg" alt="Slideshow Image 1">
+        <img class="mySlides active" src="https://public.augusta.com/s3fs-public/article/images/clubhouse_14.jpg" alt="Slideshow Image 1">
         <img class="mySlides" src="https://www.hartough.com/uploads/Thumbnails/11th.Augusta.2015.jpg" alt="Slideshow Image 2">
         <img class="mySlides" src="https://photo-assets.masters.com/images/pics/misc/about_014_records.jpg" alt="Slideshow Image 3">
         <img class="mySlides" src="https://golf.com/wp-content/uploads/2021/04/ShotaHidekiCaddie.jpg?width=1280" alt="Slideshow Image 4">
@@ -148,7 +159,6 @@
         <img class="mySlides" src="https://preview.redd.it/tiger-woods-and-tree-congratulate-each-other-on-long-v0-h1r0rfrkaiuc1.jpeg?auto=webp&s=20ff8a5890ef57fba10368aea82420f695c82c7f" alt="Slideshow Image 8">
         <img class="mySlides" src="https://www.hartough.com/uploads/Thumbnails/12.Augusta.jpg" alt="Slideshow Image 9">
         <!-- Add more images as needed -->
-        
     </div>
 </main>
 
@@ -181,16 +191,25 @@ showSlides(); // Call the function to display the slides
 function showSlides() {
     let slides = document.getElementsByClassName("mySlides"); // Get all slides
     for (let i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none"; // Hide all slides
+        slides[i].style.display = "none"; // Hide all slides initially
+        slides[i].classList.remove("active"); // Remove active class for all slides
     }
     slideIndex++; // Increment slide index
-    if (slideIndex > slides.length) {slideIndex = 1} // Reset to first slide if past last
+    if (slideIndex > slides.length) { slideIndex = 1; } // Reset to first slide if past last
     slides[slideIndex - 1].style.display = "block"; // Show the current slide
+    slides[slideIndex - 1].classList.add("active"); // Add active class to current slide
+    setTimeout(() => {
+        // Fade out and then fade in
+        slides[slideIndex - 1].style.opacity = 1; // Ensure active slide is visible
+        setTimeout(() => {
+            slides[slideIndex - 1].style.opacity = 0; // Fade out after delay
+        }, 4500); // Fade out after 4.5 seconds
+    }, 100); // Allow time for the fade effect to take place
     setTimeout(showSlides, 5000); // Change image every 5 seconds
 }
 
 // Fetch footer content and insert it into the footer placeholder
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     fetch('footer.html') // Fetch the footer content from footer.html
         .then(response => response.text()) // Convert the response to text
         .then(data => {
