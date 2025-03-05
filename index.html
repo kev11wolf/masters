@@ -101,17 +101,20 @@
         }
 
         .mySlides {
-            display: none; /* Hide all slides by default */
             width: 100%; /* Responsiveness */
             max-width: 600px; /* Limit the maximum width */
             margin: 0 auto; /* Center images */
             opacity: 0; /* Start as invisible */
             transition: opacity 1s ease; /* Transition for fade effect */
+            position: absolute; /* Positioning for overlapping */
+            top: 0;
+            left: 0;
+            visibility: hidden; /* Hide element initially */
         }
 
         .active {
-            display: block; /* Show the active slide */
             opacity: 1; /* Fully visible */
+            visibility: visible; /* Ensure visibility to show */
         }
     </style>
 </head>
@@ -212,4 +215,5 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 </body>
+
 </html>
