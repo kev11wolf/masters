@@ -106,6 +106,20 @@
             height: auto; /* Maintain aspect ratio */
             margin: 0 auto; /* Center images in the slideshow */
         }
+
+        /* Styles for the image next to the paragraph */
+        .image-paragraph {
+            display: flex; /* Use flexbox for layout */
+            align-items: center; /* Align items vertically */
+            justify-content: center; /* Center content (can adjust this based on preference) */
+        }
+
+        .image-paragraph img {
+            max-width: 400px; /* Set max width for the image */
+            width: auto; /* Allow the width to adjust based on its original size */
+            height: auto; /* Maintain aspect ratio */
+            margin-right: 20px; /* Space between image and text */
+        }
     </style>
 </head>
 <body>
@@ -135,8 +149,12 @@
         
         Welcome to The Masters at Augusta National Golf Club.</h2>
     <h3> </h3> <!-- Subtitle welcoming users -->
-    <p>A tradition unlike any other.
-    🌸</p> <!-- Introductory paragraph -->
+    
+    <div class="image-paragraph">
+        <img src="https://golfdigest.sports.sndimg.com/content/dam/images/golfdigest/fullset/2017/04/27/5901ef4355566d7a285ae1d8_nantz.jpg.rend.hgtvcom.966.544.suffix/1573313127891.jpeg" alt="Descriptive Alt Text"> <!-- Replace with the actual image URL -->
+        <p>A tradition unlike any other. 🌸</p> <!-- Introductory paragraph -->
+    </div>
+
     <a href="register.html" class="big-button">Register Now</a> <!-- Button linking to the registration page -->
 
     <!-- Slideshow Container -->
