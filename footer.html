@@ -39,13 +39,13 @@
     <footer>
         <div class="video-container">
             <iframe 
-                id="randomVideo" 
+                id="videoPlayer" 
                 title="YouTube video player" 
                 frameborder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                 referrerpolicy="strict-origin-when-cross-origin" 
                 allowfullscreen 
-                src=""> <!-- The src will be set by JavaScript -->
+                src="<iframe width="560" height="315" src="https://www.youtube.com/embed/G97AdMLbfr4?si=0Lw8BYfojvo6tSFI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>"> <!-- Set desired video source here -->
             </iframe>
         </div>
         
@@ -54,26 +54,8 @@
     </footer>
 
     <script>
-        // Array of YouTube video embed links with autoplay and mute
-        const videoLinks = [
-            "<iframe width="560" height="315" src="https://www.youtube.com/embed/G97AdMLbfr4?si=B-30Y7SyjzNBWzYM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>",
-            "https://www.youtube.com/embed/Pg4XEu2yXVU?autoplay=1&mute=1",
-            "https://www.youtube.com/embed/vcObgJ1UMeo?autoplay=1&mute=1",
-            "https://www.youtube.com/embed/QEshaRQo2Dk?autoplay=1&mute=1",
-            "https://www.youtube.com/embed/aquroNVlZoY?autoplay=1&mute=1",
-            "https://www.youtube.com/embed/2W2L82G5yHk?autoplay=1&mute=1",
-            "https://www.youtube.com/embed/fbsZJYrIJTw?autoplay=1&mute=1"
-        ];
-
-        // Function to randomly select a video
-        function loadRandomVideo() {
-            const randomIndex = Math.floor(Math.random() * videoLinks.length);
-            const randomVideoLink = videoLinks[randomIndex];
-            document.getElementById('randomVideo').src = randomVideoLink; // Set the source of the iframe
-        }
-
-        // Load a random video when the page loads
-        window.onload = loadRandomVideo;
+        // Optionally, you can add code here if you want to dynamically set or change the video source later
+        // For now, we just set the iframe src directly in HTML
     </script>
 </body>
 </html>
