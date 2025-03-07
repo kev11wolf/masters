@@ -19,10 +19,12 @@
         }
         .video-container {
             position: relative;
-            width: 500px; /* Set width to 500 pixels */
-            height: 282px; /* Set height to 282 pixels */
+            max-width: 500px; /* Maximum width */
+            width: 100%; /* Responsive width */
+            height: auto; /* Height will be adjusted automatically */
             overflow: hidden;
             margin: 0 auto; /* Center the video */
+            aspect-ratio: 16 / 9; /* Set aspect ratio to 16:9 */
         }
         .video-container iframe {
             position: absolute;
