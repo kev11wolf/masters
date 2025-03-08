@@ -1,63 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Past Results - The Sommerville Masters Golf Pool Invitational</title>
-    <link rel="stylesheet" href="styles/style.css"> <!-- Link to your CSS file for consistent styling -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8"> <!-- Sets the character encoding to UTF-8 to support all characters -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures the page is responsive on mobile devices -->
+    <title>The Sommerville Masters Golf Pool Invitational - Past Results</title> <!-- The title displayed in the browser tab -->
+    <link rel="stylesheet" href="styles/style.css"> <!-- Links to an external CSS file for styling -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"> <!-- Imports fonts from Google Fonts -->
     <style>
         body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #f5f5f5;
-            color: #1a4831;
-            text-align: center;
-            padding: 20px;
+            font-family: 'Roboto', sans-serif; /* Set default font for the body */
+            background-color: #f5f5f5; /* Light gray background for a modern look */
+            color: #1a4831; /* Dark green text color for contrast */
+            text-align: center; /* Center text and inline elements */
+        }
+
+        header {
+            background: #1a4831; /* Dark green header background */
+            color: #ffffff; /* White text for contrast in the header */
+            display: flex; /* Use flexbox layout for header elements */
+            justify-content: space-between; /* Space between the logo and nav items */
+            align-items: center; /* Center the items vertically */
+            padding: 10px 20px; /* Padding around header elements */
+        }
+
+        #logo {
+            max-height: 80px; /* Logo max height */
+            cursor: pointer; /* Change cursor to pointer when hovering over the logo */
+        }
+
+        nav {
+            position: relative; /* Required for absolute positioning of dropdown */
+        }
+
+        .hamburger {
+            cursor: pointer; /* Change cursor to pointer for hamburger menu */
+            display: flex; /* Use flexbox for hamburger icon */
+            flex-direction: column; /* Stack hamburger bars vertically */
+            justify-content: space-around; /* Space out the bars evenly */
+            width: 30px; /* Set width for hamburger button */
+            height: 30px; /* Set height for hamburger button */
+            background: transparent; /* Transparent background */
+            border: none; /* No border */
+        }
+
+        .bar {
+            height: 3px; /* Height for each bar in the hamburger icon */
+            width: 100%; /* Full width of each bar */
+            background-color: white; /* Color of hamburger bars */
+            transition: all 0.3s ease; /* Smooth transition for hover effects */
+        }
+
+        .dropdown {
+            display: none; /* Hide dropdown menu by default */
+            position: absolute; /* Absolute positioning for dropdown */
+            right: 0; /* Align dropdown to the right of header */
+            background-color: #1a4831; /* Match dropdown background with header */
+            border-radius: 5px; /* Rounded corners for dropdown */
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* Shadow for dropdown */
+            z-index: 1; /* Ensure dropdown appears above other content */
+        }
+
+        .dropdown a {
+            color: white; /* White text for dropdown links */
+            padding: 10px 15px; /* Padding around dropdown links */
+            text-decoration: none; /* No underline for links */
+            display: block; /* Block display for links */
+        }
+
+        .dropdown a:hover {
+            background-color: #218838; /* Darker green on hover */
         }
 
         table {
             width: 100%;
-            margin: 20px 0;
-            border-collapse: collapse;
+            margin: 20px 0; /* Space above and below tables */
+            border-collapse: collapse; /* Eliminate double borders */
             background-color: white; /* Background of the table */
         }
 
         th, td {
             border: 1px solid #1a4831; /* Border color matching the theme */
-            padding: 10px;
-            text-align: center;
+            padding: 10px; /* Space in table cells */
+            text-align: center; /* Center text in table */
         }
 
         th {
             background-color: #218838; /* Header cell background */
-            color: white;
+            color: white; /* Header text color */
+        }
+
+        .video-container {
+            max-width: 500px; /* Max width of video */
+            margin: 0 auto; /* Center video container */
+            aspect-ratio: 16 / 9; /* Maintain aspect ratio for video */
+            overflow: hidden; /* Hide overflow from video */
         }
 
         img {
             max-width: 100%; /* Responsive image */
             height: auto; /* Maintain aspect ratio */
-            margin-top: 20px; /* Spacing above the image */
         }
 
-        .video-container {
-            position: relative;
-            max-width: 500px; /* Maximum width */
-            width: 100%; /* Responsive width */
-            height: 200px; /* Height will be adjusted automatically */
-            overflow: hidden;
-            margin: 0 auto; /* Center the video */
-            aspect-ratio: 16 / 9; /* Set aspect ratio to 16:9 */
-        }
-        
         footer {
-            text-align: center; 
-            padding: 20px; 
-            background-color: #1a4831; 
-            color: white;
+            text-align: center; /* Center text in footer */
+            padding: 20px; /* Space around footer content */
+            background-color: #1a4831; /* Footer background color */
+            color: white; /* Footer text color */
         }
     </style>
 </head>
 <body>
+
+<header>
+    <a href="index.html"> <!-- Make the logo clickable to return to home -->
+        <img id="logo" src="https://i0.wp.com/www.dishinfo.com/wp-content/uploads/2024/04/MastersLogo.jpg?w=800&ssl=1" alt="Logo"> 
+    </a>
+    <nav>
+        <button class="hamburger" onclick="toggleDropdown()"> <!-- Hamburger button to toggle the dropdown menu -->
+            <div class="bar"></div> <!-- First bar of hamburger icon -->
+            <div class="bar"></div> <!-- Second bar of hamburger icon -->
+            <div class="bar"></div> <!-- Third bar of hamburger icon -->
+        </button>
+        <div id="dropdown" class="dropdown">
+            <a href="register.html">Register</a> <!-- Link to Register -->
+            <a href="leaderboard.html">Leaderboard</a> <!-- Link to Leaderboard -->
+            <a href="scores.html">Scores</a> <!-- Link to Scores -->
+            <a href="faq.html">FAQ</a> <!-- Link to FAQ -->
+            <a href="past-results.html">Past Results</a> <!-- Link to Past Results page -->
+        </div>
+    </nav>
+</header>
+
+<main>
     <h1>Past Results</h1>
     <table>
         <thead>
@@ -87,45 +161,65 @@
         </tbody>
     </table>
 
-    <img src="https://example.com/path-to-your-image.jpg" alt="Past Results Image"> <!-- Replace with your image URL -->
+    <img src="https://example.com/path-to-your-image.jpg" alt="Past Results Image"> <!-- Placeholder image URL -->
 
-    <footer>
-        <div class="video-container">
-            <iframe 
-                id="videoPlayer" 
-                title="YouTube video player" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                referrerpolicy="strict-origin-when-cross-origin" 
-                allowfullscreen 
-                src="https://www.youtube.com/embed/YOUR_VIDEO_ID?enablejsapi=1&autoplay=1&mute=0"></iframe> <!-- Replace YOUR_VIDEO_ID with the actual video ID -->
-        </div>
-        <p>Website created by K-Dawg.</p>
-        <p>&copy; 2025. All Rights Reserved.</p>
-    </footer>
+    <div class="video-container">
+        <iframe 
+            title="YouTube video player" 
+            id="videoPlayer" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" 
+            allowfullscreen 
+            src="https://www.youtube.com/embed/YOUR_VIDEO_ID?enablejsapi=1&autoplay=1&mute=0"></iframe> <!-- Replace YOUR_VIDEO_ID with the actual video ID -->
+    </div>
+</main>
 
-    <script>
-        // Load the Iframe API code asynchronously
-        var tag = document.createElement('script');
-        tag.src = "https://www.youtube.com/iframe_api";
-        var firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+<footer>
+    <p>Website created by K-Dawg.</p>
+    <p>&copy; 2025. All Rights Reserved.</p>
+</footer>
 
-        // Create the YouTube player
-        var player;
-        function onYouTubeIframeAPIReady() {
-            player = new YT.Player('videoPlayer', {
-                events: {
-                    'onReady': onPlayerReady
-                }
-            });
+<script>
+// Function to toggle the display of the dropdown menu
+function toggleDropdown() {
+    const dropdown = document.getElementById('dropdown'); // Get dropdown menu element
+    // Toggle the display state of the dropdown menu
+    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+}
+
+// Close dropdown if clicking outside of it
+window.onclick = function(event) {
+    if (!event.target.matches('.hamburger')) { // Check if click is outside the hamburger menu
+        const dropdown = document.getElementById('dropdown'); // Get dropdown element
+        if (dropdown.style.display === 'block') { // If it is open
+            dropdown.style.display = 'none'; // Close the dropdown menu
         }
+    }
+}
 
-        // The API will call this function when the video player is ready
-        function onPlayerReady(event) {
-            event.target.setVolume(30); // Set the volume to 30%
-            event.target.playVideo(); // Autoplay the video
+// Load the Iframe API code asynchronously
+var tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+// Create the YouTube player
+var player;
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('videoPlayer', {
+        events: {
+            'onReady': onPlayerReady
         }
-    </script>
+    });
+}
+
+// The API will call this function when the video player is ready
+function onPlayerReady(event) {
+    event.target.setVolume(30); // Set the volume to 30%
+    event.target.playVideo(); // Autoplay the video
+}
+</script>
+
 </body>
 </html>
