@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles/style.css"> <!-- Links to an external CSS file for styling -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"> <!-- Imports fonts from Google Fonts -->
     <style>
-        /* CSS styles (same as before) */
+        /* CSS styles */
         body {
             font-family: 'Roboto', sans-serif; /* Set default font for the body */
             background-color: #f5f5f5; /* Light gray background for a modern look */
@@ -22,10 +22,11 @@
             justify-content: space-between; /* Space between the logo and nav items */
             align-items: center; /* Center the items vertically */
             padding: 10px 20px; /* Padding around header elements */
+            position: relative; /* Positioning for dropdown menu */
         }
 
         #logo {
-            max-height: 80px; /* Logo max height */
+            max-height: 60px; /* Reduce maximum height for the logo */
             cursor: pointer; /* Change cursor to pointer when hovering over the logo */
         }
 
@@ -170,6 +171,7 @@
 </main>
 
 <footer>
+    <div id="footer"></div> <!-- Placeholder for footer content loaded via JS -->
     <p>Website created by K-Dawg.</p>
     <p>&copy; 2025. All Rights Reserved.</p>
 </footer>
