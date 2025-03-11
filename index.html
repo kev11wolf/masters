@@ -25,7 +25,7 @@
         }
 
         #logo {
-            max-height: 80px; /* Increase maximum height for the logo */
+            max-height: 60px; /* Reduce maximum height for the logo */
             cursor: pointer; /* Change cursor to pointer when hovering over the logo */
         }
 
@@ -34,21 +34,19 @@
         }
 
         .logo-container {
-            width: 60px; /* Adjust width to increase clickable area */
-            height: 50px; /* Adjust height to increase clickable area */
             display: flex; /* Center the logo and text within the container */
             align-items: center; /* Center vertically */
             cursor: pointer; /* Change cursor to pointer */
         }
 
         .logo-container img {
-            max-width: 100%; /* Ensure logo fits within container */
-            max-height: 100%; /* Ensure logo fits within container */
+            max-width: 40px; /* Adjust size of the logo */
+            max-height: 40px; /* Adjust size of the logo */
         }
 
         .menu-text {
-            margin-left: 10px; /* Space between logo and text */
-            font-size: 16px; /* Font size for the word "menu" */
+            margin-left: 5px; /* Space between logo and text */
+            font-size: 14px; /* Reduce font size for the word "menu" */
             color: white; /* Color for the text */
         }
 
@@ -64,7 +62,7 @@
 
         .dropdown a {
             color: white; /* White text for dropdown links */
-            padding: 10px 15px; /* Padding around dropdown links */
+            padding: 15px 20px; /* Increased padding around dropdown links for larger clickable area */
             text-decoration: none; /* No underline for links */
             display: block; /* Block display for links */
         }
@@ -131,7 +129,7 @@
     </a>
     <nav>
         <div class="logo-container" onclick="toggleDropdown()"> <!-- New clickable logo for dropdown -->
-            <img src="https://cdn.imgbin.com/19/14/1/azalea-spring-flower-azalea-flower-Vwjnx0FJ.jpg" alt="Azalea Logo"> <!-- Replace with your Azalea logo URL -->
+            <img src="https://example.com/path-to-your-azalea-logo.png" alt="Azalea Logo"> <!-- Replace with your Azalea logo URL -->
             <span class="menu-text">Menu</span> <!-- Text next to the logo -->
         </div>
         <div id="dropdown" class="dropdown">
