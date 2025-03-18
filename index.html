@@ -37,16 +37,17 @@
             display: flex; /* Center the logo and text within the container */
             align-items: center; /* Center vertically */
             cursor: pointer; /* Change cursor to pointer */
+            padding: 10px; /* Add padding for larger clickable area */
         }
 
         .logo-container img {
-            max-width: 40px; /* Adjust size of the logo */
-            max-height: 40px; /* Adjust size of the logo */
+            max-width: 50px; /* Adjust size of the azalea logo */
+            max-height: 50px; /* Adjust size of the azalea logo */
+            margin-right: 8px; /* Space between logo and text */
         }
 
         .menu-text {
-            margin-left: 5px; /* Space between logo and text */
-            font-size: 14px; /* Reduce font size for the word "menu" */
+            font-size: 16px; /* Increase font size for the menu text */
             color: white; /* Color for the text */
         }
 
@@ -62,7 +63,7 @@
 
         .dropdown a {
             color: white; /* White text for dropdown links */
-            padding: 50px 50px; /* Increased padding around dropdown links for larger clickable area */
+            padding: 15px 20px; /* Padding around dropdown links for comfort */
             text-decoration: none; /* No underline for links */
             display: block; /* Block display for links */
         }
@@ -129,14 +130,14 @@
     </a>
     <nav>
         <div class="logo-container" onclick="toggleDropdown()"> <!-- New clickable logo for dropdown -->
-            <img src="https://flowervectors.com/wp-content/uploads/beautiful-azalea-flower-transparent.png"> <!-- Replace with your Azalea logo URL -->
+            <img src="https://flowervectors.com/wp-content/uploads/beautiful-azalea-flower-transparent.png" alt="Azalea Logo"> <!-- Replace with your Azalea logo URL -->
             <span class="menu-text">Menu</span> <!-- Text next to the logo -->
         </div>
         <div id="dropdown" class="dropdown">
-            <a href="register">Register</a> <!-- Link to Register -->
-            <a href="leaderboard">Leaderboard</a> <!-- Link to Leaderboard -->
-            <a href="scores">Scores</a> <!-- Link to Scores -->
-            <a href="faq">FAQ</a> <!-- Link to FAQ -->
+            <a href="register.html">Register</a> <!-- Link to Register -->
+            <a href="leaderboard.html">Leaderboard</a> <!-- Link to Leaderboard -->
+            <a href="scores.html">Scores</a> <!-- Link to Scores -->
+            <a href="faq.html">FAQ</a> <!-- Link to FAQ -->
             <a href="past-results.html">Past Results</a> <!-- Link to the Past Results page -->
         </div>
     </nav>
