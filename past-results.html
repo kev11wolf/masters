@@ -4,110 +4,106 @@
     <meta charset="UTF-8"> <!-- Sets the character encoding to UTF-8 to support all characters -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures the page is responsive on mobile devices -->
     <title>The Sommerville Masters Golf Pool Invitational - Past Results</title> <!-- The title displayed in the browser tab -->
-    <link rel="stylesheet" href="styles/style.css"> <!-- Links to an external CSS file for styling -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"> <!-- Imports fonts from Google Fonts -->
+    
+    <!-- Importing fonts from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
     <style>
-        html, body {
-            height: 100%; /* Ensures body can take the full height of the viewport */
+        body {
+            font-family: 'Roboto', sans-serif; /* Set font for body using Google Fonts */
+            background-color: #f5f5f5; /* Light gray background for a modern look */
+            color: #1a4831; /* Dark green text color for contrast */
             margin: 0; /* Remove default margin */
             padding: 0; /* Remove default padding */
-            font-family: 'Roboto', sans-serif; /* Set default font */
-            background-color: #ffffff; /* White background */
-            color: #2c2c2c; /* Dark gray text */
-            display: flex;
-            flex-direction: column; /* Allows footer to be placed at the bottom */
         }
 
         header {
             background: #1a4831; /* Dark green header background */
-            color: #ffffff; /* White text for contrast in the header */
-            display: flex; /* Use flexbox layout for header elements */
-            justify-content: space-between; /* Space between the logo and nav items */
-            align-items: center; /* Center the items vertically */
-            padding: 15px 20px; /* Padding around header elements */
+            color: #ffffff; /* White text for contrast */
+            display: flex; /* Use flexbox layout for header */
+            justify-content: space-between; /* Space between logo and menu */
+            align-items: center; /* Center items vertically */
+            padding: 10px 20px; /* Padding around header */
+            position: relative; /* Positioning for dropdown menu */
         }
 
         #logo {
-            max-height: 60px; /* Reduce maximum height for the logo */
-            cursor: pointer; /* Change cursor to pointer when hovering over the logo */
+            max-height: 60px; /* Set maximum height for the logo */
+            cursor: pointer; /* Make logo clickable */
         }
 
         nav {
-            position: relative; /* Required for absolute positioning of dropdown */
+            position: relative; /* Required for dropdown positioning */
         }
 
         .hamburger {
             cursor: pointer; /* Change cursor to pointer for hamburger menu */
-            display: flex; /* Use flexbox for hamburger icon */
-            flex-direction: column; /* Stack hamburger bars vertically */
+            display: flex; /* Use flexbox for hamburger bars */
+            flex-direction: column; /* Stack bars vertically */
             justify-content: space-around; /* Space out the bars evenly */
-            width: 30px; /* Set width for hamburger button */
-            height: 30px; /* Set height for hamburger button */
-            background: transparent; /* Transparent background */
-            border: none; /* No border */
+            width: 30px; /* Set button width */
+            height: 30px; /* Set button height */
+            background: transparent; /* Set background to transparent */
+            border: none; /* Remove any border */
         }
 
         .bar {
-            height: 3px; /* Height for each bar in the hamburger icon */
+            height: 3px; /* Height of each hamburger bar */
             width: 100%; /* Full width of each bar */
             background-color: white; /* Color of hamburger bars */
             transition: all 0.3s ease; /* Smooth transition for hover effects */
         }
 
         .dropdown {
-            display: none; /* Hide dropdown menu by default */
-            position: absolute; /* Absolute positioning for dropdown */
-            right: 0; /* Align dropdown to the right of header */
-            background-color: #1a4831; /* Match dropdown background with header */
+            display: none; /* Hide dropdown by default */
+            position: absolute; /* Position dropdown menu relative to nav */
+            right: 0; /* Align dropdown to the right */
+            background-color: #1a4831; /* Match the header background */
             border-radius: 5px; /* Rounded corners for dropdown */
-            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* Shadow for dropdown */
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* Shadow effect */
             z-index: 1; /* Ensure dropdown appears above other content */
         }
 
         .dropdown a {
-            color: white; /* White text for dropdown links */
-            padding: 15px 20px; /* Padding around dropdown links */
-            text-decoration: none; /* No underline for links */
+            color: white; /* White text for links */
+            padding: 10px 15px; /* Padding for links */
+            text-decoration: none; /* Remove underline from links */
             display: block; /* Block display for links */
         }
 
         .dropdown a:hover {
-            background-color: #1a48318; /* Darker green on hover */
+            background-color: #218838; /* Darker green when hovering */
         }
 
         main {
-            flex: 1; /* This allows main to take up the remaining space */
             padding: 20px; /* Padding around main content area */
         }
 
-        h1, h2 {
+        h1 {
             color: #1a4831; /* Dark green for header text */
         }
 
         table {
-            width: 100%;
-            margin: 20px 0; /* Space above and below tables */
-            border-collapse: collapse; /* Eliminate double borders */
+            width: 100%; /* Full width for table */
+            border-collapse: collapse; /* Collapse table borders */
+            margin-top: 20px; /* Space above the table */
             background-color: white; /* Background of the table */
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Light shadow for table */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow for table */
         }
 
         th, td {
-            border: 1px solid #1a4831; /* Border color matching the theme */
-            padding: 12px; /* Space in table cells */
-            text-align: center; /* Center text in table */
+            padding: 10px; /* Padding inside cells */
+            border: 1px solid #1a4831; /* Dark green border for cells */
+            text-align: center; /* Center-align text within cells */
         }
 
         th {
-            background-color: #1a4831; /* Header cell background */
-            color: white; /* Header text color */
+            background-color: #1a4831; /* Darker green background for header */
+            color: white; /* White text for header */
         }
 
-        .video-container {
-            max-width: 80%; /* Max width of video */
-            margin: 20px auto; /* Center video container */
-            aspect-ratio: 16 / 9; /* Maintain aspect ratio for video */
-            overflow: hidden; /* Hide overflow from video */
+        tr:nth-child(even) {
+            background-color: #e7f7e5; /* Light green alternating row color */
         }
 
         footer {
@@ -123,7 +119,7 @@
 
 <header>
     <a href="index.html">
-        <img id="logo" src="https://i0.wp.com/www.dishinfo.com/wp-content/uploads/2024/04/MastersLogo.jpg?w=800&ssl=1" alt="Logo"> 
+        <img id="logo" src="https://i0.wp.com/www.dishinfo.com/wp-content/uploads/2024/04/MastersLogo.jpg?w=800&ssl=1" alt="Logo">
     </a>
     <nav>
         <button class="hamburger" onclick="toggleDropdown()">
@@ -182,49 +178,36 @@
     </div>
 </main>
 
-<footer>
-    <p>Website created by K-Dawg.</p>
-    <p>&copy; 2025. All Rights Reserved.</p>
-</footer>
+<!-- Correctly fetch and load the footer -->
+<div id="footer"></div>
 
 <script>
 // Function to toggle the display of the dropdown menu
 function toggleDropdown() {
-    const dropdown = document.getElementById('dropdown');
-    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+    const dropdown = document.getElementById('dropdown'); // Get dropdown menu element
+    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block'; // Toggle the display
 }
 
 // Close dropdown if clicking outside of it
 window.onclick = function(event) {
-    if (!event.target.matches('.hamburger')) {
-        const dropdown = document.getElementById('dropdown');
-        if (dropdown.style.display === 'block') {
-            dropdown.style.display = 'none';
+    if (!event.target.matches('.hamburger')) { // Check if click is outside hamburger
+        const dropdown = document.getElementById('dropdown'); // Get dropdown element
+        if (dropdown.style.display === 'block') { // If it is open
+            dropdown.style.display = 'none'; // Close the dropdown menu
         }
     }
 }
 
-// Load the Iframe API code asynchronously
-var tag = document.createElement('script');
-tag.src = "https://www.youtube.com/iframe_api";
-var firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+// Load the footer from an external HTML file asynchronously
+document.addEventListener("DOMContentLoaded", function() {
+    fetch('footer.html') // Fetch the footer HTML from the external file
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer').innerHTML = data; // Insert the footer HTML
+        })
+        .catch(error => console.error('Error loading footer:', error)); // Handle any errors
+});
 
-// Create the YouTube player
-var player;
-function onYouTubeIframeAPIReady() {
-    player = new YT.Player('videoPlayer', {
-        events: {
-            'onReady': onPlayerReady
-        }
-    });
-}
-
-// The API will call this function when the video player is ready
-function onPlayerReady(event) {
-    event.target.setVolume(30); // Set the volume to 30%
-    event.target.playVideo(); // Autoplay the video
-}
 </script>
 
 </body>
