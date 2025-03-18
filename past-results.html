@@ -7,13 +7,15 @@
     <link rel="stylesheet" href="styles/style.css"> <!-- Links to an external CSS file for styling -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"> <!-- Imports fonts from Google Fonts -->
     <style>
-        body {
-            font-family: 'Roboto', sans-serif; /* Set default font for the body */
-            background-color: #ffffff; /* White background for a clean look */
-            color: #2c2c2c; /* Dark gray text for contrast */
-            text-align: center; /* Center text and inline elements */
+        html, body {
+            height: 100%; /* Ensures body can take the full height of the viewport */
             margin: 0; /* Remove default margin */
             padding: 0; /* Remove default padding */
+            font-family: 'Roboto', sans-serif; /* Set default font */
+            background-color: #ffffff; /* White background */
+            color: #2c2c2c; /* Dark gray text */
+            display: flex;
+            flex-direction: column; /* Allows footer to be placed at the bottom */
         }
 
         header {
@@ -23,7 +25,6 @@
             justify-content: space-between; /* Space between the logo and nav items */
             align-items: center; /* Center the items vertically */
             padding: 15px 20px; /* Padding around header elements */
-            position: relative; /* Positioning for dropdown menu */
         }
 
         #logo {
@@ -71,10 +72,11 @@
         }
 
         .dropdown a:hover {
-            background-color: #218838; /* Darker green on hover */
+            background-color: #1a48318; /* Darker green on hover */
         }
 
         main {
+            flex: 1; /* This allows main to take up the remaining space */
             padding: 20px; /* Padding around main content area */
         }
 
@@ -97,7 +99,7 @@
         }
 
         th {
-            background-color: #218838; /* Header cell background */
+            background-color: #1a4831; /* Header cell background */
             color: white; /* Header text color */
         }
 
@@ -113,8 +115,6 @@
             padding: 20px; /* Space around footer content */
             background-color: #2c2c2c; /* Dark gray footer background */
             color: white; /* Footer text color */
-            position: relative; /* Positioning */
-            bottom: 0; /* Stick to the bottom */
             width: 100%; /* Full width */
         }
     </style>
@@ -122,21 +122,21 @@
 <body>
 
 <header>
-    <a href="index.html"> <!-- Make the logo clickable to return to home -->
+    <a href="index.html">
         <img id="logo" src="https://i0.wp.com/www.dishinfo.com/wp-content/uploads/2024/04/MastersLogo.jpg?w=800&ssl=1" alt="Logo"> 
     </a>
     <nav>
-        <button class="hamburger" onclick="toggleDropdown()"> <!-- Hamburger button to toggle the dropdown menu -->
-            <div class="bar"></div> <!-- First bar of hamburger icon -->
-            <div class="bar"></div> <!-- Second bar of hamburger icon -->
-            <div class="bar"></div> <!-- Third bar of hamburger icon -->
+        <button class="hamburger" onclick="toggleDropdown()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
         </button>
         <div id="dropdown" class="dropdown">
-            <a href="register.html">Register</a> <!-- Link to Register -->
-            <a href="leaderboard.html">Leaderboard</a> <!-- Link to Leaderboard -->
-            <a href="scores.html">Scores</a> <!-- Link to Scores -->
-            <a href="faq.html">FAQ</a> <!-- Link to FAQ -->
-            <a href="past-results.html">Past Results</a> <!-- Link to Past Results page -->
+            <a href="register.html">Register</a>
+            <a href="leaderboard.html">Leaderboard</a>
+            <a href="scores.html">Scores</a>
+            <a href="faq.html">FAQ</a>
+            <a href="past-results.html">Past Results</a>
         </div>
     </nav>
 </header>
@@ -161,13 +161,12 @@
             </tr>
             <tr>
                 <td>2022</td>
-                <td>Dima Kyle</td>
+                <td>Dima</td>
             </tr>
             <tr>
                 <td>2021</td>
                 <td>I don't remember</td>
             </tr>
-            <!-- Add more rows as needed -->
         </tbody>
     </table>
 
@@ -191,17 +190,16 @@
 <script>
 // Function to toggle the display of the dropdown menu
 function toggleDropdown() {
-    const dropdown = document.getElementById('dropdown'); // Get dropdown menu element
-    // Toggle the display state of the dropdown menu
+    const dropdown = document.getElementById('dropdown');
     dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
 }
 
 // Close dropdown if clicking outside of it
 window.onclick = function(event) {
-    if (!event.target.matches('.hamburger')) { // Check if click is outside the hamburger menu
-        const dropdown = document.getElementById('dropdown'); // Get dropdown element
-        if (dropdown.style.display === 'block') { // If it is open
-            dropdown.style.display = 'none'; // Close the dropdown menu
+    if (!event.target.matches('.hamburger')) {
+        const dropdown = document.getElementById('dropdown');
+        if (dropdown.style.display === 'block') {
+            dropdown.style.display = 'none';
         }
     }
 }
