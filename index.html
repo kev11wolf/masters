@@ -1,222 +1,225 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html> <!-- Defines this document as an HTML5 document -->
+<html lang="en"> <!-- Specifies the language of the document as English -->
 <head>
-    <meta charset="UTF-8"> <!-- Sets the character encoding to UTF-8 to support all characters -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures the page is responsive on mobile devices -->
-    <link rel="stylesheet" href="styles/style.css"> <!-- Links to an external CSS file for styling -->
-    <title>The Sommerville Masters Golf Pool Invitational</title> <!-- The title displayed in the browser tab -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"> <!-- Imports fonts from Google Fonts -->
+    <meta charset="UTF-8"> <!-- Sets the character encoding to UTF-8, enabling a wide range of characters including special symbols -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures the webpage is responsive, scaling properly on various screen sizes -->
+    <link rel="stylesheet" href="styles/style.css"> <!-- Links an external CSS file for styling; changing this link would direct to a different stylesheet -->
+    <title>The Sommerville Masters Golf Pool Invitational</title> <!-- Sets the title of the webpage, displayed in the browser tab -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"> <!-- Imports fonts from Google Fonts for text styling -->
     <style>
+        /* CSS styles embedded in the document */
         body {
-            font-family: 'Roboto', sans-serif; /* Set default font for the body */
-            background-color: #f5f5f5; /* Light gray background for a modern look */
-            color: #1a4831; /* Dark green text color for contrast */
-            text-align: center; /* Center text and inline elements */
+            font-family: 'Roboto', sans-serif; /* Sets the default font for the entire body to Roboto; changing this will modify the text font */
+            background-color: #f5f5f5; /* Light gray background for the body, creating a clean aesthetic */
+            color: #1a4831; /* Sets the text color to dark green for readability and aesthetics */
+            text-align: center; /* Centers all text and inline elements */
         }
 
         header {
-            background: #1a4831; /* Dark green header background */
-            color: #ffffff; /* White text for contrast in the header */
-            display: flex; /* Use flexbox layout for header elements */
-            justify-content: space-between; /* Space between the logo and nav items */
-            align-items: center; /* Center the items vertically */
-            padding: 0px 0px; /* Padding around header elements */
-            position: relative; /* Positioning for dropdown menu */
+            background: #1a4831; /* Dark green background for the header */
+            color: #ffffff; /* White text color for visibility against the dark background */
+            display: flex; /* Uses flexbox layout to arrange child elements in a row */
+            justify-content: space-between; /* Distributes space between child elements in the header */
+            align-items: center; /* Vertically centers child elements within the header */
+            padding: 0px 0px; /* Sets top/bottom padding to 0 and left/right to 0; adjusting this will change spacing within the header */
+            position: relative; /* Sets positioning context for any absolutely positioned child elements */
         }
 
         #logo {
-            max-height: 60px; /* Reduce maximum height for the logo */
-            cursor: pointer; /* Change cursor to pointer when hovering over the logo */
+            max-height: 60px; /* Restricts logo height to 60 pixels; change this to alter the logo size */
+            cursor: pointer; /* Changes cursor to pointer on hover, indicating it's clickable */
         }
 
         nav {
-            position: relative; /* Required for absolute positioning of dropdown */
+            position: relative; /* Necessary for absolute positioning of dropdown menu within the navigation */
         }
 
         .logo-container {
-            display: flex; /* Center the logo and text within the container */
-            align-items: center; /* Center vertically */
-            cursor: pointer; /* Change cursor to pointer */
-            padding: 30px; /* Add padding for larger clickable area */
+            display: flex; /* Makes logo and text horizontally aligned using flexbox */
+            align-items: center; /* Vertically centers the content within this container */
+            cursor: pointer; /* Indicates this log is clickable */
+            padding: 30px; /* Adds space around the logo and text, increasing the clickable area */
         }
 
         .logo-container img {
-            max-width: 50px; /* Adjust size of the azalea logo */
-            max-height: 50px; /* Adjust size of the azalea logo */
-            margin-right: 8px; /* Space between logo and text */
+            max-width: 50px; /* Restricts the logo image width to 50 pixels; changing this alters the size */
+            max-height: 50px; /* Restricts the logo image height to 50 pixels */
+            margin-right: 8px; /* Adds space between the logo image and the text */
         }
 
         .menu-text {
-            font-size: 16px; /* Increase font size for the menu text */
-            color: white; /* Color for the text */
+            font-size: 16px; /* Increases font size of the menu text; modifying this changes the readability */
+            color: white; /* Sets menu text color to white for contrast against the header background */
         }
 
         .dropdown {
-            display: none; /* Hide dropdown menu by default */
-            position: absolute; /* Absolute positioning for dropdown */
-            right: 0; /* Align dropdown to the right of header */
-            background-color: #1a4831; /* Match dropdown background with header */
-            border-radius: 5px; /* Rounded corners for dropdown */
-            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2); /* Shadow for dropdown */
-            z-index: 1; /* Ensure dropdown appears above other content */
+            display: none; /* Hides the dropdown menu by default; changing to 'block' would make it visible */
+            position: absolute; /* Absolutely positions it relative to the nearest positioned ancestor */
+            right: 0; /* Aligns the dropdown to the right side of the header */
+            background-color: #1a4831; /* Matches the dropdown's background to the header's background */
+            border-radius: 5px; /* Gives the dropdown corners a rounded appearance */
+            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow to create depth */
+            z-index: 1; /* Ensures the dropdown appears above other overlapping content */
         }
 
         .dropdown a {
-            color: white; /* White text for dropdown links */
-            padding: 15px 20px; /* Padding around dropdown links for comfort */
-            text-decoration: none; /* No underline for links */
-            display: block; /* Block display for links */
+            color: white; /* Sets link text color in the dropdown to white */
+            padding: 15px 20px; /* Adds padding around links for comfort and size */
+            text-decoration: none; /* Ensures links have no underline, for a cleaner look */
+            display: block; /* Makes links block elements, allowing them to fill the available width */
         }
 
         .dropdown a:hover {
-            background-color: #218838; /* Darker green on hover */
+            background-color: #218838; /* Changes background color of dropdown links on hover for feedback */
         }
 
         main {
-            padding: 20px; /* Padding around main content area */
+            padding: 20px; /* Adds padding around the main content area */
         }
 
         .big-button {
-            background-color: #1a4831; /* Green background for the button */
-            color: white; /* White text color */
-            padding: 20px 20px; /* Padding for button */
-            text-decoration: none; /* No underline */
-            border-radius: 5px; /* Rounded corners for button */
-            display: inline-block; /* Button as inline-block element */
-            font-size: 18px; /* Font size for button text */
-            margin-top: 10px; /* Add top margin for spacing */
+            background-color: #1a4831; /* Sets the button's background color to green */
+            color: white; /* Sets the button text color to white for visibility */
+            padding: 20px 20px; /* Adds padding around the button's content */
+            text-decoration: none; /* Removes underline from the button text for a more button-like appearance */
+            border-radius: 5px; /* Applies rounded corners to the button */
+            display: inline-block; /* Makes the button behave like a block element but remain inline with others */
+            font-size: 18px; /* Sets the text size in the button; increasing this will alter readability */
+            margin-top: 10px; /* Adds space above the button */
         }
 
         .big-button:hover {
-            background-color: #218838; /* Darker green on button hover */
+            background-color: #218838; /* Changes button background color on hover for user interaction feedback */
         }
 
-        /* Slideshow Styles */
+        /* Styles for slideshow */
         .slideshow-container {
-            position: relative;
-            max-width: 100%; /* Limit the maximum width to the container */
-            margin: 20px auto; /* Center the slideshow */
-            overflow: hidden; /* Hide any overflow */
+            position: relative; /* Positions the slideshow elements relative to this container */
+            max-width: 100%; /* Sets maximum width to ensure responsiveness */
+            margin: 20px auto; /* Centers the slideshow in the middle of the page with auto margins */
+            overflow: hidden; /* Hides any element that overflows the container */
         }
 
         .mySlides {
-            display: none; /* Hide all slides by default */
-            width: 100%; /* Make images responsive */
-            max-width: 600px; /* Set maximum width for the images */
-            height: auto; /* Maintain aspect ratio */
-            margin: 0 auto; /* Center images in the slideshow */
+            display: none; /* Hides all slides in the slideshow by default */
+            width: 100%; /* Makes the images stretch to fill the container width */
+            max-width: 600px; /* Restricts maximum width of slides to 600 pixels */
+            height: auto; /* Maintains the aspect ratio of images */
+            margin: 0 auto; /* Centers images in the slideshow */
         }
 
-        /* Styles for the image next to the paragraph */
+        /* Styles for images next to paragraphs */
         .image-paragraph {
-            display: flex; /* Use flexbox for layout */
-            align-items: center; /* Align items vertically */
-            justify-content: center; /* Center content (can adjust this based on preference) */
+            display: flex; /* Allows image and text to be aligned next to each other using flexbox */
+            align-items: center; /* Vertically centers image and text */
+            justify-content: center; /* Centers the entire content within this container */
         }
 
         .image-paragraph img {
-            max-width: 400px; /* Set max width for the image */
-            width: auto; /* Allow the width to adjust based on its original size */
-            height: auto; /* Maintain aspect ratio */
-            margin-right: 20px; /* Space between image and text */
+            max-width: 400px; /* Limits the width of the image to a maximum of 400 pixels */
+            width: auto; /* Allows the image to resize according to its original aspect ratio */
+            height: auto; /* Maintains aspect ratio of images when resized */
+            margin-right: 20px; /* Adds space between the image and the adjoining text */
         }
     </style>
 </head>
 <body>
 
 <header>
-    <a href="index.html"> <!-- Make the logo clickable to return to home -->
+    <a href="index.html"> <!-- Makes the logo clickable, directing users back to the home page -->
         <img id="logo" src="https://i0.wp.com/www.dishinfo.com/wp-content/uploads/2024/04/MastersLogo.jpg?w=800&ssl=1" alt="Logo"> 
+        <!-- Image of the logo; changing the src URL changes the logo displayed -->
     </a>
     <nav>
-        <div class="logo-container" onclick="toggleDropdown()"> <!-- New clickable logo for dropdown -->
-            <img src="https://flowervectors.com/wp-content/uploads/beautiful-azalea-flower-transparent.png" alt="Azalea Logo"> <!-- Replace with your Azalea logo URL -->
-            <span class="menu-text">Menu</span> <!-- Text next to the logo -->
+        <div class="logo-container" onclick="toggleDropdown()"> <!-- Creates a container for the menu logo; clicking it will trigger the dropdown toggle -->
+            <img src="https://flowervectors.com/wp-content/uploads/beautiful-azalea-flower-transparent.png" alt="Azalea Logo"> 
+            <!-- Logo image for the menu; changing src changes the displayed logo -->
+            <span class="menu-text">Menu</span> <!-- Text next to the logo indicating it opens the menu -->
         </div>
-        <div id="dropdown" class="dropdown">
-            <a href="register.html">Register</a> <!-- Link to Register -->
-            <a href="leaderboard.html">Leaderboard</a> <!-- Link to Leaderboard -->
-            <a href="scores.html">Scores</a> <!-- Link to Scores -->
-            <a href="faq.html">FAQ</a> <!-- Link to FAQ -->
-            <a href="past-results.html">Past Results</a> <!-- Link to the Past Results page -->
+        <div id="dropdown" class="dropdown"> <!-- Dropdown menu for navigation links; ID allows JavaScript to manipulate visibility -->
+            <a href="register.html">Register</a> <!-- Link to the registration page -->
+            <a href="leaderboard.html">Leaderboard</a> <!-- Link to the leaderboard page -->
+            <a href="scores.html">Scores</a> <!-- Link to the scores page -->
+            <a href="faq.html">FAQ</a> <!-- Link to the frequently asked questions page -->
+            <a href="past-results.html">Past Results</a> <!-- Link to past results of the tournament -->
         </div>
     </nav>
 </header>
 
 <main>
-    <h1>The 2025 Sommerville Masters Golf Pool Invitational</h1> <!-- Main title for the page -->
-    <h2>Hello Friends. </h2>
-    <h2>It's that time of year again. </h2>
+    <h1>The 2025 Sommerville Masters Golf Pool Invitational</h1> <!-- Main title of the webpage -->
+    <h2>Hello Friends. </h2> <!-- Subheading welcoming visitors -->
+    <h2>It's that time of year again. </h2> <!-- Subheading introducing the event -->
         
     <h2>Welcome to The Masters at Augusta National Golf Club.</h2>
 
     <div class="image-paragraph">
-        <img src="https://golfdigest.sports.sndimg.com/content/dam/images/golfdigest/fullset/2017/04/27/5901ef4355566d7a285ae1d8_nantz.jpg.rend.hgtvcom.966.544.suffix/1573313127891.jpeg" alt="Descriptive Alt Text"> <!-- Replace with the actual image URL -->
+        <img src="https://golfdigest.sports.sndimg.com/content/dam/images/golfdigest/fullset/2017/04/27/5901ef4355566d7a285ae1d8_nantz.jpg.rend.hgtvcom.966.544.suffix/1573313127891.jpeg" alt="Descriptive Alt Text">
+        <!-- Image to accompany text; changing the src will alter the displayed image -->
     </div>
-    <p>A tradition unlike any other. 🌸</p>
-    <a href="register.html" class="big-button">Register Now</a> <!-- Button linking to the registration page -->
+    <p>A tradition unlike any other. 🌸</p> <!-- Paragraph text; modify the text to change the statement -->
+    <a href="register.html" class="big-button">Register Now</a> <!-- Button linking to the registration page; changing text can modify the button's call-to-action -->
 
     <!-- Slideshow Container -->
     <div class="slideshow-container">
-        <img class="mySlides" src="https://public.augusta.com/s3fs-public/article/images/clubhouse_14.jpg" alt="Slideshow Image 1">
-        <img class="mySlides" src="https://www.hartough.com/uploads/Thumbnails/11th.Augusta.2015.jpg" alt="Slideshow Image 2">
-        <img class="mySlides" src="https://photo-assets.masters.com/images/pics/misc/about_014_records.jpg" alt="Slideshow Image 3">
-        <img class="mySlides" src="https://golf.com/wp-content/uploads/2021/04/ShotaHidekiCaddie.jpg?width=1280" alt="Slideshow Image 4">
-        <img class="mySlides" src="https://golfweek.usatoday.com/gcdn/authoring/images/smg/2024/11/15/SGLF/76349797007-87-777989065.jpeg?width=1320&height=828&fit=crop&format=pjpg&auto=webp" alt="Slideshow Image 5">
-        <img class="mySlides" src="https://d23jngptvnttd7.cloudfront.net/2022/11/11192258/tiger-woods-chops-to-16th-2005-masters-1.jpg" alt="Slideshow Image 6">
-        <img class="mySlides" src="https://golf.com/wp-content/uploads/2024/04/brysonsign.jpg?width=1280" alt="Slideshow Image 7">
-        <img class="mySlides" src="https://preview.redd.it/tiger-woods-and-tree-congratulate-each-other-on-long-v0-h1r0rfrkaiuc1.jpeg?auto=webp&s=20ff8a5890ef57fba10368aea82420f695c82c7f" alt="Slideshow Image 8">
-        <img class="mySlides" src="https://www.hartough.com/uploads/Thumbnails/12.Augusta.jpg" alt="Slideshow Image 9">
-        <!-- Add more images as needed -->
-        
+        <img class="mySlides" src="https://public.augusta.com/s3fs-public/article/images/clubhouse_14.jpg" alt="Slideshow Image 1"> <!-- First image in the slideshow -->
+        <img class="mySlides" src="https://www.hartough.com/uploads/Thumbnails/11th.Augusta.2015.jpg" alt="Slideshow Image 2"> <!-- Second image -->
+        <img class="mySlides" src="https://photo-assets.masters.com/images/pics/misc/about_014_records.jpg" alt="Slideshow Image 3"> <!-- Third image -->
+        <img class="mySlides" src="https://golf.com/wp-content/uploads/2021/04/ShotaHidekiCaddie.jpg?width=1280" alt="Slideshow Image 4"> <!-- Fourth image -->
+        <img class="mySlides" src="https://golfweek.usatoday.com/gcdn/authoring/images/smg/2024/11/15/SGLF/76349797007-87-777989065.jpeg?width=1320&height=828&fit=crop&format=pjpg&auto=webp" alt="Slideshow Image 5"> <!-- Fifth image -->
+        <img class="mySlides" src="https://d23jngptvnttd7.cloudfront.net/2022/11/11192258/tiger-woods-chops-to-16th-2005-masters-1.jpg" alt="Slideshow Image 6"> <!-- Sixth image -->
+        <img class="mySlides" src="https://golf.com/wp-content/uploads/2024/04/brysonsign.jpg?width=1280" alt="Slideshow Image 7"> <!-- Seventh image -->
+        <img class="mySlides" src="https://preview.redd.it/tiger-woods-and-tree-congratulate-each-other-on-long-v0-h1r0rfrkaiuc1.jpeg?auto=webp&s=20ff8a5890ef57fba10368aea82420f695c82c7f" alt="Slideshow Image 8"> <!-- Eighth image -->
+        <img class="mySlides" src="https://www.hartough.com/uploads/Thumbnails/12.Augusta.jpg" alt="Slideshow Image 9"> <!-- Ninth image -->
+        <!-- Additional images can be added as needed, just replicate the <img class="mySlides" ... > structure -->
     </div>
 </main>
 
 <footer>
-    <div id="footer"></div> <!-- Placeholder for footer content loaded via JS -->
+    <div id="footer"></div> <!-- Placeholder div for footer content; footer content can be dynamically loaded with JavaScript -->
 </footer>
 
 <script>
 // Function to toggle the display of the dropdown menu
 function toggleDropdown() {
-    const dropdown = document.getElementById('dropdown'); // Get dropdown menu element
-    // Toggle the display state of the dropdown menu
-    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+    const dropdown = document.getElementById('dropdown'); // Retrieves the dropdown element by its ID
+    // Toggles the dropdown's visibility state
+    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block'; // If currently 'block', change to 'none'; else change to 'block'
 }
 
-// Close dropdown if clicking outside of it
+// Closes the dropdown if clicking outside of it
 window.onclick = function(event) {
-    if (!event.target.matches('.logo-container')) { // Check if click is outside the logo container
-        const dropdown = document.getElementById('dropdown'); // Get dropdown element
-        if (dropdown.style.display === 'block') { // If it is open
-            dropdown.style.display = 'none'; // Close the dropdown menu
+    if (!event.target.matches('.logo-container')) { // Checks if the clicked target is not the logo container
+        const dropdown = document.getElementById('dropdown'); // Retrieves dropdown element
+        if (dropdown.style.display === 'block') { // If the dropdown is currently visible
+            dropdown.style.display = 'none'; // Hides the dropdown menu
         }
     }
 }
 
-// Slideshow functionality
-let slideIndex = 0;
-showSlides(); // Call the function to display the slides
+// Slideshow functionality starts here
+let slideIndex = 0; // Initializes slide index to 0, indicating the first slide
+showSlides(); // Calls showSlides function to display the initial slide
 
 function showSlides() {
-    let slides = document.getElementsByClassName("mySlides"); // Get all slides
+    let slides = document.getElementsByClassName("mySlides"); // Retrieves all elements with the class mySlides
     for (let i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none"; // Hide all slides
+        slides[i].style.display = "none"; // Hides all slides
     }
-    slideIndex++; // Increment slide index
-    if (slideIndex > slides.length) {slideIndex = 1} // Reset to first slide if past last
-    slides[slideIndex - 1].style.display = "block"; // Show the current slide
-    setTimeout(showSlides, 5000); // Change image every 5 seconds
+    slideIndex++; // Increments the slide index to move to the next slide
+    if (slideIndex > slides.length) {slideIndex = 1} // Resets index to 1 if it exceeds the total number of slides
+    slides[slideIndex - 1].style.display = "block"; // Displays the current slide based on the updated index
+    setTimeout(showSlides, 5000); // Calls showSlides again after 5 seconds to change the slide
 }
 
-// Fetch footer content and insert it into the footer placeholder
-document.addEventListener("DOMContentLoaded", function() {
-    fetch('footer.html') // Fetch the footer content from footer.html
-        .then(response => response.text()) // Convert the response to text
+// Fetch footer content from an external HTML file
+document.addEventListener("DOMContentLoaded", function() { // Waits for the DOM to fully load before executing the following
+    fetch('footer.html') // Fetches content from footer.html
+        .then(response => response.text()) // Converts the fetched response to text
         .then(data => {
-            document.getElementById('footer').innerHTML = data; // Insert footer content
+            document.getElementById('footer').innerHTML = data; // Inserts the fetched footer content into the placeholder div
         })
-        .catch(error => console.error('Error loading footer:', error)); // Log errors (if any)
+        .catch(error => console.error('Error loading footer:', error)); // Logs any errors to the console
 });
 </script>
 
