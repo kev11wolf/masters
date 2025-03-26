@@ -34,22 +34,17 @@
             position: relative; /* Required for dropdown positioning */
         }
 
-        .hamburger {
-            cursor: pointer; /* Change cursor to pointer for hamburger menu */
-            display: flex; /* Use flexbox for hamburger bars */
-            flex-direction: column; /* Stack bars vertically */
-            justify-content: space-around; /* Space out the bars evenly */
-            width: 30px; /* Set button width */
-            height: 30px; /* Set button height */
-            background: transparent; /* Set background to transparent */
-            border: none; /* Remove any border */
+        .logo-container {
+            display: flex; /* Flexbox for layout */
+            align-items: center; /* Center items vertically */
+            cursor: pointer; /* Change cursor to pointer */
+            padding: 10px; /* Space around menu icon */
         }
 
-        .bar {
-            height: 3px; /* Height of each hamburger bar */
-            width: 100%; /* Full width of each bar */
-            background-color: white; /* Color of hamburger bars */
-            transition: all 0.3s ease; /* Smooth transition for hover effects */
+        .menu-text {
+            color: white; /* Text color for the menu */
+            font-size: 16px; /* Font size for menu text */
+            margin-left: 8px; /* Space between logo and text */
         }
 
         .dropdown {
@@ -119,18 +114,17 @@
             <img id="logo" src="https://i0.wp.com/www.dishinfo.com/wp-content/uploads/2024/04/MastersLogo.jpg?w=800&ssl=1" alt="Logo"> 
         </a>
         <nav>
-            <button class="hamburger" onclick="toggleDropdown()">
-                <div class="bar"></div> <!-- First bar of the hamburger icon -->
-                <div class="bar"></div> <!-- Second bar of the hamburger icon -->
-                <div class="bar"></div> <!-- Third bar of the hamburger icon -->
-            </button>
+            <div class="logo-container" onclick="toggleDropdown()"> <!-- Clickable container for dropdown -->
+                <img src="https://flowervectors.com/wp-content/uploads/beautiful-azalea-flower-transparent.png" alt="Menu Logo" width="30" height="30"> 
+                <span class="menu-text">Menu</span> <!-- Text next to menu icon -->
+            </div>
             <div id="dropdown" class="dropdown">
                 <a href="index.html">Home</a> <!-- Link to Home section -->
                 <a href="register.html">Register</a> <!-- Link to Register section -->
                 <a href="leaderboard.html">Leaderboard</a> <!-- Link to Leaderboard section -->
                 <a href="scores.html">Scores</a> <!-- Link to Scores section -->
                 <a href="faq.html">FAQ</a> <!-- Link to FAQ section -->
-                    <a href="past-results.html">Past Results</a> <!-- Link to the Past Results page -->
+                <a href="past-results.html">Past Results</a> <!-- Link to the Past Results page -->
             </div>
         </nav>
     </header>
@@ -146,6 +140,7 @@
                     <th>Round 3</th>
                     <th>Round 4</th>
                     <th>Total</th>
+                    <th>Tier</th>
                 </tr>
             </thead>
             <tbody>
@@ -158,13 +153,12 @@
         // Function to toggle the display of the dropdown menu
         function toggleDropdown() {
             const dropdown = document.getElementById('dropdown'); // Get dropdown menu element
-            // Toggle the display state of the dropdown menu
-            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block'; // Toggle the display state
         }
 
         // Close dropdown if clicking outside of it
         window.onclick = function(event) {
-            if (!event.target.matches('.hamburger')) { // Check if click is outside hamburger
+            if (!event.target.closest('.logo-container')) { // Check if click is outside logo container
                 const dropdown = document.getElementById('dropdown'); // Get dropdown element
                 if (dropdown.style.display === 'block') { // If it is open
                     dropdown.style.display = 'none'; // Close the dropdown menu
@@ -178,93 +172,7 @@ Ludvig Aberg	72	72	72	72	288	1
 Byeong Hun An	72	72	72	72	288	1
 Josele Ballester (a)	72	72	72	72	288	1
 Evan Beck (a)	72	72	72	72	288	1
-Christiaan Bezuidenhout	72	72	72	72	288	1
-Akshay Bhatia	72	72	72	72	288	1
-Keegan Bradley	72	72	72	72	288	1
-Sam Burns	72	72	72	72	288	1
-Angel Cabrera	72	72	72	72	288	1
-Brian Campbell	72	72	72	72	288	1
-Rafael Campos	72	72	72	72	288	1
-Patrick Cantlay	72	72	72	72	288	1
-Wyndham Clark	72	72	72	72	288	1
-Corey Conners	72	72	72	72	288	1
-Fred Couples	72	72	72	72	288	1
-Cam Davis	72	72	72	72	288	1
-Jason Day	72	72	72	72	288	1
-Bryson DeChambeau	72	72	72	72	288	1
-Thomas Detry	72	72	72	72	288	1
-Nick Dunlap	72	72	72	72	288	1
-Nico Echavarria	72	72	72	72	288	1
-Austin Eckroat	72	72	72	72	288	1
-Harris English	72	72	72	72	288	1
-Tony Finau	72	72	72	72	288	1
-Matt Fitzpatrick	72	72	72	72	288	1
-Tommy Fleetwood	72	72	72	72	288	1
-Sergio Garcia	72	72	72	72	288	2
-Lucas Glover	72	72	72	72	288	2
-Max Greyserman	72	72	72	72	288	2
-Brian Harman	72	72	72	72	288	2
-Justin Hastings (a)	72	72	72	72	288	2
-Tyrrell Hatton	72	72	72	72	288	2
-Russell Henley	72	72	72	72	288	2
-Tom Hoge	72	72	72	72	288	2
-Nicolai Hojgaard	72	72	72	72	288	2
-Rasmus Hojgaard	72	72	72	72	288	2
-Max Homa	72	72	72	72	288	2
-Billy Horschel	72	72	72	72	288	2
-Viktor Hovland	72	72	72	72	288	2
-Sungjae Im	72	72	72	72	288	2
-Dustin Johnson	72	72	72	72	288	2
-Zach Johnson	72	72	72	72	288	2
-Noah Kent (a)	72	72	72	72	288	2
-Tom Kim	72	72	72	72	288	2
-Chris Kirk	72	72	72	72	288	2
-Patton Kizzire	72	72	72	72	288	2
-Brooks Koepka	72	72	72	72	288	2
-Bernhard Langer	72	72	72	72	288	2
-Thriston Lawrence	72	72	72	72	288	2
-Min Woo Lee	72	72	72	72	288	3
-Shane Lowry	72	72	72	72	288	3
-Robert MacIntyre	72	72	72	72	288	3
-Hideki Matsuyama	72	72	72	72	288	3
-Denny McCarthy	72	72	72	72	288	3
-Matt McCarty	72	72	72	72	288	3
-Rory McIlroy	72	72	72	72	288	3
-Maverick McNealy	72	72	72	72	288	3
-Phil Mickelson	72	72	72	72	288	3
-Collin Morikawa	72	72	72	72	288	3
-Joaquin Niemann	72	72	72	72	288	3
-Jose Maria Olazabal	72	72	72	72	288	3
-Matthieu Pavon	72	72	72	72	288	3
-Taylor Pendrith	72	72	72	72	288	3
-J.T. Poston	72	72	72	72	288	3
-Jon Rahm	72	72	72	72	288	4
-Aaron Rai	72	72	72	72	288	4
-Patrick Reed	72	72	72	72	288	4
-Davis Riley	72	72	72	72	288	4
-Justin Rose	72	72	72	72	288	4
-Xander Schauffele	72	72	72	72	288	4
-Scottie Scheffler	72	72	72	72	288	4
-Adam Schenk	72	72	72	72	288	4
-Charl Schwartzel	72	72	72	72	288	4
-Adam Scott	72	72	72	72	288	4
-Vijay Singh	72	72	72	72	288	4
-Cameron Smith	72	72	72	72	288	4
-Jordan Spieth	72	72	72	72	288	4
-Sepp Straka	72	72	72	72	288	4
-Hiroshi Tai (a)	72	72	72	72	288	4
-Nick Taylor	72	72	72	72	288	4
-Sahith Theegala	72	72	72	72	288	4
-Justin Thomas	72	72	72	72	288	4
-Davis Thompson	72	72	72	72	288	4
-Jhonattan Vegas	72	72	72	72	288	4
-Bubba Watson	72	72	72	72	288	4
-Mike Weir	72	72	72	72	288	4
-Danny Willett	72	72	72	72	288	4
-Tiger Woods	72	72	72	72	288	4
-Cameron Young	72	72	72	72	288	4
-Kevin Yu	72	72	72	72	288	4
-Will Zalatoris	72	72	72	72	288	4`;
+... [Keep the rest of your CSV data] ...`;
 
         // Function to populate the scores table with data from the CSV string
         function populateScores(csvData) {
