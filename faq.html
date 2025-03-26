@@ -22,7 +22,6 @@
             justify-content: space-between; /* Space between header elements */
             align-items: center; /* Center items vertically */
             padding: 10px 20px; /* Padding around header */
-            position: relative; /* Positioning for dropdown menu if needed */
         }
 
         #logo {
@@ -34,22 +33,22 @@
             position: relative; /* Required for dropdown positioning */
         }
 
-        .hamburger {
-            cursor: pointer; /* Change cursor to pointer for hamburger menu */
-            display: flex; /* Use flexbox for hamburger bars */
-            flex-direction: column; /* Stack bars vertically */
-            justify-content: space-around; /* Space out the bars evenly */
-            width: 30px; /* Set button width */
-            height: 30px; /* Set button height */
-            background: transparent; /* Set background to transparent */
-            border: none; /* Remove any border */
+        .logo-container {
+            display: flex; /* Makes logo and text horizontally aligned using flexbox */
+            align-items: center; /* Vertically centers the content within this container */
+            cursor: pointer; /* Indicates this log is clickable */
+            padding: 0px; /* Adds space around the logo and text, increasing the clickable area */
         }
 
-        .bar {
-            height: 3px; /* Height of each hamburger bar */
-            width: 100%; /* Full width of each bar */
-            background-color: white; /* Color of hamburger bars */
-            transition: all 0.3s ease; /* Smooth transition for hover effects */
+        .logo-container img {
+            max-width: 50px; /* Restricts the logo image width to 50 pixels */
+            max-height: 50px; /* Restricts the logo image height to 50 pixels */
+            margin-right: 8px; /* Adds space between the logo image and the text */
+        }
+
+        .menu-text {
+            font-size: 16px; /* Increases font size of the menu text */
+            color: white; /* Sets menu text color to white for contrast against the header background */
         }
 
         .dropdown {
@@ -58,7 +57,7 @@
             right: 0; /* Align dropdown to the right */
             background-color: #1a4831; /* Match the header background */
             border-radius: 5px; /* Rounded corners for dropdown */
-            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* Shadow effect */
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
             z-index: 1; /* Ensure dropdown appears above other content */
         }
 
@@ -96,18 +95,17 @@
             <img id="logo" src="https://i0.wp.com/www.dishinfo.com/wp-content/uploads/2024/04/MastersLogo.jpg?w=800&ssl=1" alt="Logo"> 
         </a>
         <nav>
-            <button class="hamburger" onclick="toggleDropdown()">
-                <div class="bar"></div> <!-- First bar of the hamburger icon -->
-                <div class="bar"></div> <!-- Second bar of the hamburger icon -->
-                <div class="bar"></div> <!-- Third bar of the hamburger icon -->
-            </button>
+            <div class="logo-container" onclick="toggleDropdown()"> <!-- Clickable container for dropdown -->
+                <img src="https://flowervectors.com/wp-content/uploads/beautiful-azalea-flower-transparent.png" alt="Azalea Logo"> 
+                <span class="menu-text">Menu</span> <!-- Text next to logo -->
+            </div>
             <div id="dropdown" class="dropdown">
                 <a href="index.html">Home</a> <!-- Link to Home section -->
                 <a href="register.html">Register</a> <!-- Link to Register section -->
                 <a href="leaderboard.html">Leaderboard</a> <!-- Link to Leaderboard section -->
                 <a href="scores.html">Scores</a> <!-- Link to Scores section -->
                 <a href="faq.html">FAQ</a> <!-- Link to FAQ section -->
-                    <a href="past-results.html">Past Results</a> <!-- Link to the Past Results page -->
+                <a href="past-results.html">Past Results</a> <!-- Link to the Past Results page -->
             </div>
         </nav>
     </header>
@@ -115,9 +113,9 @@
     <main>
         <h1>Frequently Asked Questions</h1>
         <h3>How does scoring work?</h3>
-        <p>Your score is the cummulative total of the four lowest scores out of your respective players. If any of your playeres do not make the cut, then their 3rd and 4th round score will automatically be +10 over par.</p>
+        <p>Your score is the cumulative total of the four lowest scores out of your respective players. If any of your players do not make the cut, then their 3rd and 4th round scores will automatically be +10 over par.</p>
         <h3>How much does the winner get?</h3>
-        <p>Buy in is $20, winner takes all.</p>
+        <p>Buy-in is $20; winner takes all.</p>
         <!-- Add more FAQs as needed -->
     </main>
 
@@ -125,13 +123,12 @@
         // Function to toggle the display of the dropdown menu
         function toggleDropdown() {
             const dropdown = document.getElementById('dropdown'); // Get dropdown menu element
-            // Toggle the display state of the dropdown menu
-            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block'; // Toggle the display state
         }
 
         // Close dropdown if clicking outside of it
         window.onclick = function(event) {
-            if (!event.target.matches('.hamburger')) { // Check if click is outside hamburger
+            if (!event.target.closest('.logo-container')) { // Check if click is outside logo container
                 const dropdown = document.getElementById('dropdown'); // Get dropdown element
                 if (dropdown.style.display === 'block') { // If it is open
                     dropdown.style.display = 'none'; // Close the dropdown menu
