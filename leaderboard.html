@@ -1,129 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"> <!-- Sets the character encoding to UTF-8 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive design for mobile devices -->
-    <title>Leaderboard</title> <!-- Title of the webpage displayed in the browser tab -->
-    
-    <!-- Importing fonts from Google Fonts -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    
     <style>
         body {
-            font-family: 'Roboto', sans-serif; /* Set font for body using Google Fonts */
-            background-color: #f5f5f5; /* Light gray background for a modern look */
-            color: #1a4831; /* Dark green text color for contrast */
+            font-family: 'Roboto', sans-serif; 
+            background-color: #f5f5f5;
+            color: #1a4831;
         }
 
         header {
-            background: #1a4831; /* Dark green header background */
-            color: #ffffff; /* White text for contrast */
-            display: flex; /* Use flexbox layout for header */
-            justify-content: space-between; /* Space between logo and menu */
-            align-items: center; /* Center items vertically */
-            padding: 10px 20px; /* Padding around header */
-            position: relative; /* Positioning for dropdown menu */
+            background: #1a4831; 
+            color: #ffffff; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 10px 20px;
+            position: relative; 
         }
 
         #logo {
-            max-height: 60px; /* Set maximum height for the logo */
-            cursor: pointer; /* Make logo clickable */
+            max-height: 60px; 
+            cursor: pointer; 
         }
 
         nav {
-            position: relative; /* Required for dropdown positioning */
+            position: relative; 
         }
 
-        .hamburger {
-            cursor: pointer; /* Change cursor to pointer for hamburger menu */
-            display: flex; /* Use flexbox for hamburger bars */
-            flex-direction: column; /* Stack bars vertically */
-            justify-content: space-around; /* Space out the bars evenly */
-            width: 30px; /* Set button width */
-            height: 30px; /* Set button height */
-            background: transparent; /* Set background to transparent */
-            border: none; /* Remove any border */
+        .logo-container {
+            display: flex; 
+            align-items: center; 
+            cursor: pointer; 
+            padding: 10px; 
         }
 
-        .bar {
-            height: 3px; /* Height of each hamburger bar */
-            width: 100%; /* Full width of each bar */
-            background-color: white; /* Color of hamburger bars */
-            transition: all 0.3s ease; /* Smooth transition for hover effects */
+        .menu-text {
+            color: white; 
+            font-size: 16px; 
+            margin-left: 8px; /* Space between logo and text */
         }
 
         .dropdown {
-            display: none; /* Hide dropdown by default */
-            position: absolute; /* Position dropdown menu relative to nav */
-            right: 0; /* Align dropdown to the right */
-            background-color: #1a4831; /* Match the header background */
-            border-radius: 5px; /* Rounded corners for dropdown */
-            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* Shadow effect */
-            z-index: 1; /* Ensure dropdown appears above other content */
+            display: none; 
+            position: absolute; 
+            right: 0; 
+            background-color: #1a4831; 
+            border-radius: 5px;
+            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1; 
         }
 
         .dropdown a {
-            color: white; /* White text for links */
-            padding: 10px 15px; /* Padding for links */
-            text-decoration: none; /* Remove underline from links */
-            display: block; /* Block display for links */
+            color: white; 
+            padding: 15px 20px; 
+            text-decoration: none; 
+            display: block; 
         }
 
         .dropdown a:hover {
-            background-color: #218838; /* Darker green when hovering */
+            background-color: #218838; 
         }
 
         main {
-            padding: 20px; /* Padding around main content area */
+            padding: 20px; 
         }
 
         table {
-            width: 100%; /* Full width for table */
-            border-collapse: collapse; /* Collapse table borders */
-            margin-top: 20px; /* Space above the table */
-            font-family: 'Playfair Display', serif; /* Use a serif font for leaderboard feel */
+            width: 100%; 
+            border-collapse: collapse; 
+            margin-top: 20px; 
+            font-family: 'Playfair Display', serif; 
         }
 
         th, td {
-            padding: 10px; /* Padding inside cells */
-            border: 1px solid #1a4831; /* Dark green border for cells */
-            text-align: center; /* Center-align text within cells */
+            padding: 10px; 
+            border: 1px solid #1a4831; 
+            text-align: center; 
         }
 
         th {
-            background-color: #1a4831; /* Darker green background for header */
-            color: white; /* White text for header */
-            font-weight: bold; /* Bold text for header */
+            background-color: #1a4831; 
+            color: white; 
+            font-weight: bold; 
         }
 
         tr:nth-child(even) {
-            background-color: #e7f7e5; /* Light green alternating row color */
+            background-color: #e7f7e5; 
         }
 
         tr:hover {
-            background-color: #c1e6c1; /* Slightly darker green on hover */
+            background-color: #c1e6c1; 
         }
     </style>
 </head>
 <body>
 
 <header>
-    <a href="index.html"> <!-- Make the logo a clickable link to home -->
+    <a href="index.html"> 
         <img id="logo" src="https://i0.wp.com/www.dishinfo.com/wp-content/uploads/2024/04/MastersLogo.jpg?w=800&ssl=1" alt="Logo"> 
     </a>
     <nav>
-        <button class="hamburger" onclick="toggleDropdown()">
-            <div class="bar"></div> <!-- First bar of the hamburger icon -->
-            <div class="bar"></div> <!-- Second bar of the hamburger icon -->
-            <div class="bar"></div> <!-- Third bar of the hamburger icon -->
-        </button>
+        <div class="logo-container" onclick="toggleDropdown()">
+            <img src="https://flowervectors.com/wp-content/uploads/beautiful-azalea-flower-transparent.png" alt="Menu Logo" width="30" height="30"> 
+            <span class="menu-text">Menu</span>
+        </div>
         <div id="dropdown" class="dropdown">
-            <a href="index.html">Home</a> <!-- Link to Home section -->
-            <a href="register.html">Register</a> <!-- Link to Register section -->
-            <a href="leaderboard.html">Leaderboard</a> <!-- Link to Leaderboard section -->
-            <a href="scores.html">Scores</a> <!-- Link to Scores section -->
-            <a href="faq.html">FAQ</a> <!-- Link to FAQ section -->
-                <a href="past-results.html">Past Results</a> <!-- Link to the Past Results page -->
+            <a href="index.html">Home</a>
+            <a href="register.html">Register</a>
+            <a href="leaderboard.html">Leaderboard</a>
+            <a href="scores.html">Scores</a>
+            <a href="faq.html">FAQ</a>
+            <a href="past-results.html">Past Results</a>
         </div>
     </nav>
 </header>
@@ -146,44 +137,38 @@
 <script>
 // Function to toggle the display of the dropdown menu
 function toggleDropdown() {
-    const dropdown = document.getElementById('dropdown'); // Get dropdown menu element
-    // Toggle the display state of the dropdown menu
+    const dropdown = document.getElementById('dropdown');
     dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
 }
 
 // Close dropdown if clicking outside of it
 window.onclick = function(event) {
-    if (!event.target.matches('.hamburger')) { // Check if click is outside hamburger
-        const dropdown = document.getElementById('dropdown'); // Get dropdown element
-        if (dropdown.style.display === 'block') { // If it is open
-            dropdown.style.display = 'none'; // Close the dropdown menu
+    if (!event.target.matches('.logo-container') && !event.target.matches('#dropdown a')) { 
+        const dropdown = document.getElementById('dropdown');
+        if (dropdown.style.display === 'block') {
+            dropdown.style.display = 'none';
         }
     }
 }
 
 // Function to populate the leaderboard table with data from a CSV string
 function populateLeaderboard(csvData) {
-    const tbody = document.querySelector('#leaderboard tbody'); // Select tbody of the table
-    const rows = csvData.trim().split('\n'); // Split CSV data into rows
+    const tbody = document.querySelector('#leaderboard tbody');
+    const rows = csvData.trim().split('\n');
 
-    // Clear existing data in the table body
     tbody.innerHTML = '';
 
-    // Loop through each row of CSV data
     rows.forEach(row => {
-        const columns = row.split('\t'); // Split each row into columns
-        
-        // Create a new table row element
+        const columns = row.split('\t');
         const tr = document.createElement('tr');
 
-        // Loop through each column and create a cell
         columns.forEach(col => {
-            const td = document.createElement('td'); // Create a new cell
-            td.textContent = col; // Set the text content of the cell
-            tr.appendChild(td); // Append the cell to the row
+            const td = document.createElement('td');
+            td.textContent = col;
+            tr.appendChild(td);
         });
 
-        tbody.appendChild(tr); // Append the completed row to the table body
+        tbody.appendChild(tr);
     });
 }
 
@@ -197,7 +182,6 @@ Kevin 2\t920
 populateLeaderboard(csvExample);
 </script>
 
-<!-- Correctly fetch and load the footer -->
 <div id="footer"></div>
 
 <script>
