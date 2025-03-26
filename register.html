@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"> <!-- Specifies the language of the document as English -->
+<html lang="en">
 <head>
     <meta charset="UTF-8"> <!-- Sets the character encoding to UTF-8 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive design for mobile devices -->
@@ -15,6 +15,7 @@
             color: #1a4831; /* Dark green text color for contrast */
             margin: 0; /* Remove default margin */
             padding: 0; /* Remove default padding */
+            text-align: center; /* Center align all text */
         }
 
         header {
@@ -37,28 +38,15 @@
         }
 
         .logo-container {
-            display: flex; /* Makes logo and menu text horizontally aligned using flexbox */
-            align-items: center; /* Vertically centers the content within this container */
-            cursor: pointer; /* Indicates this log is clickable */
-            padding: 0; /* Removes additional padding around logo */
+            display: flex; /* Makes logo and menu icon horizontally aligned */
+            align-items: center; /* Vertically centers the content */
+            cursor: pointer; /* Indicates this logo is clickable */
         }
 
-        .hamburger {
-            cursor: pointer; /* Change cursor to pointer for hamburger menu */
-            display: flex; /* Use flexbox for hamburger bars */
-            flex-direction: column; /* Stack bars vertically */
-            justify-content: space-around; /* Space out the bars evenly */
-            width: 30px; /* Set button width */
-            height: 30px; /* Set button height */
-            background: transparent; /* Set background to transparent */
-            border: none; /* Remove any border */
-        }
-
-        .bar {
-            height: 3px; /* Height of each hamburger bar */
-            width: 100%; /* Full width of each bar */
-            background-color: white; /* Color of hamburger bars */
-            transition: all 0.3s ease; /* Smooth transition for hover effects */
+        .menu-text {
+            color: white; 
+            font-size: 16px; /* Font size for menu text */
+            margin-left: 8px; /* Space between icon and text */
         }
 
         .dropdown {
@@ -84,7 +72,6 @@
 
         main {
             padding: 20px; /* Padding around main content area */
-            text-align: center; /* Center align the text */
         }
 
         .big-button {
@@ -106,8 +93,6 @@
             color: white; /* Footer text color */
             text-align: center; /* Center align the text in footer */
             padding: 20px; /* Padding for footer */
-            position: relative; /* Necessary for future positioning */
-            bottom: 0; /* Stick to bottom */
             width: 100%; /* Full width */
         }
     </style>
@@ -119,19 +104,16 @@
         </a>
         <nav>
             <div class="logo-container" onclick="toggleDropdown()"> <!-- Logo container for dropdown functionality -->
-                <button class="hamburger">
-                    <div class="bar"></div> <!-- First bar of the hamburger icon -->
-                    <div class="bar"></div> <!-- Second bar of the hamburger icon -->
-                    <div class="bar"></div> <!-- Third bar of the hamburger icon -->
-                </button>
+                <img src="https://flowervectors.com/wp-content/uploads/beautiful-azalea-flower-transparent.png" alt="Menu Logo" width="30" height="30"> 
+                <span class="menu-text">Menu</span>
             </div>
             <div id="dropdown" class="dropdown"> <!-- Dropdown menu for navigation -->
-            <a href="index.html">Home</a>
-            <a href="register.html">Register</a>
-            <a href="leaderboard.html">Pick 'Em Leaderboard</a>
-            <a href="scores.html">Masters Leaderboard</a>
-            <a href="faq.html">FAQ</a>
-            <a href="past-results.html">Past Results</a>
+                <a href="index.html">Home</a>
+                <a href="register.html">Register</a>
+                <a href="leaderboard.html">Pick 'Em Leaderboard</a>
+                <a href="scores.html">Masters Leaderboard</a>
+                <a href="faq.html">FAQ</a>
+                <a href="past-results.html">Past Results</a>
             </div>
         </nav>
     </header>
@@ -139,7 +121,6 @@
         <h2>Join the Tournament!</h2>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLScZPNE_cAdVMHHLPrieOEw5L__Wf-6wbaAUr5GIjYbwJDMMew/viewform?usp=header" target="_blank" class="big-button">Complete the Registration</a>
     </main>
-    <br><br><br> 
     <div id="footer"></div> <!-- Placeholder for the footer -->
 
     <script>
@@ -152,7 +133,7 @@
 
         // Close dropdown if clicking outside of it
         window.onclick = function(event) {
-            if (!event.target.matches('.hamburger') && !event.target.closest('.logo-container')) { // Check if click is outside hamburger
+            if (!event.target.closest('.logo-container')) { // Check if click is outside menu
                 const dropdown = document.getElementById('dropdown'); // Get dropdown element
                 if (dropdown.style.display === 'block') { // If it is open
                     dropdown.style.display = 'none'; // Close the dropdown menu
@@ -165,7 +146,7 @@
             fetch('footer.html')
                 .then(response => response.text())
                 .then(data => {
-                    document.getElementById('footer').innerHTML = data;
+                    document.getElementById('footer').innerHTML = data; // Insert fetched footer content
                 })
                 .catch(error => console.error('Error loading footer:', error));
         });
