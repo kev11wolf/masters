@@ -36,22 +36,21 @@
             position: relative; /* Required for dropdown positioning */
         }
 
-        .hamburger {
-            cursor: pointer; /* Change cursor to pointer for hamburger menu */
-            display: flex; /* Use flexbox for hamburger bars */
-            flex-direction: column; /* Stack bars vertically */
-            justify-content: space-around; /* Space out the bars evenly */
-            width: 30px; /* Set button width */
-            height: 30px; /* Set button height */
-            background: transparent; /* Set background to transparent */
-            border: none; /* Remove any border */
+        .logo-container {
+            display: flex; /* Makes logo and text horizontally aligned using flexbox */
+            align-items: center; /* Vertically centers the content within this container */
+            cursor: pointer; /* Indicates this log is clickable */
         }
 
-        .bar {
-            height: 3px; /* Height of each hamburger bar */
-            width: 100%; /* Full width of each bar */
-            background-color: white; /* Color of hamburger bars */
-            transition: all 0.3s ease; /* Smooth transition for hover effects */
+        .logo-container img {
+            max-width: 50px; /* Restricts the logo image width */
+            max-height: 50px; /* Restricts the logo image height */
+            margin-right: 8px; /* Adds space between the logo image and the text */
+        }
+
+        .menu-text {
+            font-size: 16px; /* Increases font size of the menu text */
+            color: white; /* Sets menu text color to white for contrast against the header background */
         }
 
         .dropdown {
@@ -122,11 +121,10 @@
         <img id="logo" src="https://i0.wp.com/www.dishinfo.com/wp-content/uploads/2024/04/MastersLogo.jpg?w=800&ssl=1" alt="Logo">
     </a>
     <nav>
-        <button class="hamburger" onclick="toggleDropdown()">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-        </button>
+        <div class="logo-container" onclick="toggleDropdown()">
+            <img src="https://flowervectors.com/wp-content/uploads/beautiful-azalea-flower-transparent.png" alt="Azalea Logo"> 
+            <span class="menu-text">Menu</span> <!-- Text next to logo -->
+        </div>
         <div id="dropdown" class="dropdown">
             <a href="register.html">Register</a>
             <a href="leaderboard.html">Leaderboard</a>
@@ -165,8 +163,9 @@
             </tr>
         </tbody>
     </table>
-<br><br><br><br><br>
-<!-- Correctly fetch and load the footer -->
+    <br><br><br><br><br>
+</main>
+
 <div id="footer"></div>
 
 <script>
@@ -178,7 +177,7 @@ function toggleDropdown() {
 
 // Close dropdown if clicking outside of it
 window.onclick = function(event) {
-    if (!event.target.matches('.hamburger')) { // Check if click is outside hamburger
+    if (!event.target.closest('.logo-container')) { // Check if click is outside logo container
         const dropdown = document.getElementById('dropdown'); // Get dropdown element
         if (dropdown.style.display === 'block') { // If it is open
             dropdown.style.display = 'none'; // Close the dropdown menu
