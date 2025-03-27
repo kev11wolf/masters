@@ -35,7 +35,11 @@
         }
         .fact-joke-container {
             margin-top: 20px;
-            color: #ffffff; /* Set text color to white for better readability */
+            color: white; /* Set text color to white for better readability */
+        }
+        #randomFact, #randomJoke {
+            margin: 10px 0; /* Add a little space between the fact and joke */
+            font-size: 1.2em; /* Optional for better readability */
         }
     </style>
 </head>
@@ -251,13 +255,13 @@
             "Why did the golfer take a ladder? To reach the high score!"
         ];
 
-        // Function to get random item from an array
+        // Function to get a random item from an array
         function getRandomItem(array) {
             const randomIndex = Math.floor(Math.random() * array.length);
             return array[randomIndex];
         }
 
-        // Function to display random fact and joke
+        // Function to display a random fact and joke
         function displayRandomFactAndJoke() {
             document.getElementById('randomFact').textContent = getRandomItem(facts);
             document.getElementById('randomJoke').textContent = getRandomItem(jokes);
