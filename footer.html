@@ -26,241 +26,6 @@
             margin: 0 auto; /* Center the video */
             aspect-ratio: 16 / 9; /* Set aspect ratio to 16:9 */
         }
-        .stats {
-            margin-bottom: 10px;
-        }
-    </style>
-</head>
-<body>
-    <footer>
-        <div class="video-container">
-            <iframe 
-                id="videoPlayer" 
-                title="YouTube video player" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                referrerpolicy="strict-origin-when-cross-origin" 
-                allowfullscreen 
-                src="https://www.youtube.com/embed/G97AdMLbfr4?enablejsapi=1&autoplay=1&mute=0"></iframe>  <!-- Enable JS API -->
-        </div>
-        
-        <!-- Live Stats Section -->
-        <div class="stats" id="liveStats"></div>
-        
-        <p>Website created by K-Dawg.</p> 
-        <p>&copy; 2025. All Rights Reserved.</p>
-    </footer>
-
-    <script>
-        // Load the Iframe API code asynchronously
-        var tag = document.createElement('script');
-        tag.src = "https://www.youtube.com/iframe_api";
-        var firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-        // Create the YouTube player
-        var player;
-        function onYouTubeIframeAPIReady() {
-            player = new YT.Player('videoPlayer', {
-                events: {
-                    'onReady': onPlayerReady
-                }
-            });
-        }
-
-        // The API will call this function when the video player is ready
-        function onPlayerReady(event) {
-            event.target.setVolume(10); // Set the volume to 10%
-            event.target.playVideo(); // Autoplay the video
-        }
-
-        // Get current weather data for Augusta, GA
-        async function getWeather() {
-            const apiKey = 'fe6f88a4d1b079bb672fbfed13866211'; // Your API Key
-            const city = 'Augusta, GA'; 
-            const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`;
-            
-            try {
-                const response = await fetch(url);
-                const data = await response.json();
-                return {
-                    temperature: Math.round(data.main.temp), // Temp in Fahrenheit
-                    condition: data.weather[0].description, // Weather condition
-                };
-            } catch (error) {
-                console.error('Error fetching the weather data:', error);
-                return {
-                    temperature: 'N/A',
-                    condition: 'N/A'
-                };
-            }
-        }
-
-        // Expanded fun facts about Augusta National Golf Club
-        const funFacts = [
-            "Augusta National Golf Club is known for its beautiful azaleas that bloom in April.",
-            "The Masters is the only major tournament held at the same course every year.",
-            "The green jacket awarded to the champion is a symbol of membership at Augusta National.",
-            "The course was founded in 1933 by Bobby Jones and Clifford Roberts.",
-            "The pine trees lining the fairways are estimated to be over 100 years old.",
-            "Augusta National was originally designed as a plant nursery.",
-            "The course was extended to 13th hole in the 1930s to create a par-5 hole.",
-            "The tournament was first held in 1934.",
-            "Jack Nicklaus holds the record for the most Masters wins with six.",
-            "The Masters has been televised live since 1956.",
-            "Only one woman, Condoleezza Rice, has ever been made a member.",
-            "The 12th hole, named 'Golden Bell', is one of the most famous in golf.",
-            "Bobby Jones never played professionally, but he's considered one of the greatest golfers.",
-            "The Masters tournament features champions celebrating their victory with a ceremonial dinner.",
-            "The Masters has a tradition of champions taking their first victory lap with the green jacket.",
-            "Membership fees at Augusta National are reportedly free, but there’s a long waiting list.",
-            "The tournament features an exclusive invitation-only system for participants.",
-            "The scoreboards at Augusta are manually updated by workers on the course.",
-            "The Masters features one of the largest galleries of any golf tournament.",
-            "The flowers around the course are cared for meticulously year-round.",
-            "The pond near the 12th hole has swallowed countless golf balls over the years.",
-            "The official Masters Tournament app provides real-time updates and information.",
-            "The clubhouse at Augusta National has undergone several renovations over the years.",
-            "The first green jacket was awarded in 1949 to Sam Snead.",
-            "Augusta National covers 365 acres.",
-            "The tournament's winner receives a replica of the Masters trophy and a green jacket.",
-            "The course layout has changed significantly throughout its history.",
-            "There is a par-3 contest held the day before the main tournament starts.",
-            "The nod to traditional decorum prohibits cell phones from the course.",
-            "It was the first major tournament in the U.S. to be broadcast on TV.",
-            "The club seeks to maintain a sense of exclusivity in its operations.",
-            "Augusta National’s caddies who carry players’ bags wear white jumpsuits.",
-            "The course holds iconic holes named after famous individuals involved in its founding.",
-            "The Masters has been played in every month of April since its inception.",
-            "The prestigious tournament showcases amateur and professional golf in parallel.",
-            "Augusta is known for its rich history, hosting legendary players.",
-            "The course has a rigorous maintenance plan to ensure peak condition.",
-            "The tournament awards honorary memberships to previous champions.",
-            "The golf course features rolling terrain and manicured fairways.",
-            "The famous 16th hole is known for its dramatic water hazard.",
-            "Over the years, the course has been a favorite among many celebrities.",
-            "The tournament has cultivated a legacy of live performances during its broadcast.",
-            "The Masters champions are later invited to replay their winning round.",
-            "Traditionally, refreshments at the Masters are at surprisingly low prices.",
-            "Majority of the participants necessitate qualification through rigorous criteria.",
-            "The azaleas bloom during the tournament, providing beautiful scenery.",
-            "The term 'Amen Corner' refers to the challenging holes 11, 12, and 13.",
-            "The Masters has seen some of the most iconic moments in sports history.",
-            "People travel from all over the world to attend the Masters in Augusta.",
-            "Television ratings for the Masters are among the highest for golf.",
-            "Many golf fans have a tradition of watching the Masters every year.",
-            "The Masters is renowned for producing dramatic finishes.",
-            "The golf course utilizes a variety of cultural and historical references."
-        ];
-
-        // Expanded funny golf puns
-        const golfPuns = [
-            "Why do golfers carry two pairs of pants? In case they get a hole in one!",
-            "I told my friend 10 jokes to get him to laugh. Sadly, no pun in ten did.",
-            "Why didn't the golfer bring an extra pair of socks? In case he got a hole in one!",
-            "What type of golf clubs do trees use? Their own branches!",
-            "Why do golfers love nature? Because they get to enjoy their 'fore'st!",
-            "Why do golf balls always seem to get lost? Because they get 'teed' off!",
-            "What’s the best way to greet the golf course? With a hole-y welcome!",
-            "What did the golfer say to his caddie? 'I’m going to need a new driver!'",
-            "Why did the golfer bring two pairs of shoes? In case he got a hole in one!",
-            "How do you know a golfer is in trouble? He's out of the fairway!",
-            "What do you call a golfer in the water? A golf fish!",
-            "Why did the chicken join the golf club? Because it wanted to work on its 'fore' swing!",
-            "What’s a golfer’s favorite drink? A par-tee punch!",
-            "Why was the golf club so good at talking? Because it had a lot of 'drive'!",
-            "How do you fix a broken golf swing? With a 'tweeter'!",
-            "Why did the golfer take an extra shirt? In case he got a birdie!",
-            "What’s a golfer’s least favorite game? CROQUET!",
-            "What do you call a golfer who loves to practice? An 'ace' up his sleeve!",
-            "Why did the golfer wear two belts? To keep his pants up while driving!",
-            "What do you call a golf ball that’s gone bad? A 'tee'rrible shot!",
-            "What did the golf ball say to the hole? 'You’ll never guess where I’m headed!'",
-            "How did the golfer feel after making a great shot? UnFore-gettable!",
-            "Why did the golfer bring a ladder? To reach new 'heights'!",
-            "What did one golf course say to another? 'Can I putt it in your hole?'",
-            "How is golf like eating spaghetti? It's all about the 'putt'!",
-            "What’s a golfer’s favorite mode of transportation? A 'putt-mobile'!",
-            "Why don’t golfers ever get lost? They always know how to ‘putt’ their ball back on track!",
-            "How do you know you're in trouble on the golf course? When you see a sand trap around every corner!",
-            "What is a golfer’s favorite game? Mini golf!",
-            "Why are most golf courses so wet? Because they have lots of 'watering holes!'",
-            "What is a golfer’s least favorite vegetable? A 'slice' of onion!",
-            "What did the golfer say after a bad round? 'I think I might retire my balls!'",
-            "Why are golf tournaments so boring? They last FORE-ever!",
-            "What do you call a golfer who acts like a jerk? A 'divot'!",
-            "Why did the golfer take some time to practice? He wanted to improve his 'stroke'!",
-            "Why did the golfer become a poet? He wanted to play with words instead of balls!",
-            "Why do golfers love math? Because it's all about the 'angle'!",
-            "What do you call a golfer who works at the bakery? A 'bread' winner!",
-            "What do you call an angry golfer? A 'fore'-lorn player!",
-            "Why do golfers never get kicked out of bars? They're always 'under par'!",
-            "What did the golf course say when it was tired? 'I need to take a 'fairway'!",
-            "Why did the golfer go to art school? He wanted to learn how to draw a perfect line!",
-            "How do you know a golfer is a good listener? They always know when to 'putt' in their two cents!",
-            "Why did the soccer player bring a golf club to the game? To help him with his aim!",
-            "Why did the golfer break up with his girlfriend? She couldn’t handle his 'slice' of humor!",
-            "What do you call a golf ball that doubles as a time machine? A 'fore'-warned ball!",
-            "What did the golfer say to his nemesis? 'I'm going to outdrive you off the green!'",
-            "Why did the golfer start a band? Because he had great 'chords'!",
-            "What’s a golfer’s favorite exercise? The 'fore'-arm workout!",
-            "Why was the golf ball so happy? Because it found its 'hole' mate!",
-            "What did the golf tee say to the ball? 'I’ve got your back!'",
-            "What do you get when you cross a golfer with a rabbi? A chaplain who handles your 'fore'!",
-            "What’s a golfer's worst nightmare? A fully booked tee time!",
-            "How do golfers keep their clothes dry? With 'fore'-closures!"
-        ];
-
-        // Display live stats in the footer
-        async function displayLiveStats() {
-            const weather = await getWeather();
-            const funFact = funFacts[Math.floor(Math.random() * funFacts.length)];
-            const pun = golfPuns[Math.floor(Math.random() * golfPuns.length)];
-
-            const statsHTML = `
-                <p>Current Weather in Augusta, GA: ${weather.temperature}°F, ${weather.condition}</p>
-                <p>Fun Fact: ${funFact}</p>
-                <p>Joke: ${pun}</p>
-            `;
-            document.getElementById("liveStats").innerHTML = statsHTML;
-        }
-
-        // Call the function to display live stats
-        displayLiveStats();
-    </script>
-</body>
-</html>
-
-<!-- ORIGINAL FOOTER
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Autoplay Example</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        footer {
-            text-align: center; 
-            padding: 20px; 
-            background-color: #1a4831; 
-            color: white;
-        }
-        .video-container {
-            position: relative;
-            max-width: 500px; /* Maximum width */
-            width: 100%; /* Responsive width */
-            height: 400px; /* Height will be adjusted automatically */
-            overflow: hidden;
-            margin: 0 auto; /* Center the video */
-            aspect-ratio: 16 / 9; /* Set aspect ratio to 16:9 */
-        }
         .video-container iframe {
             position: absolute;
             top: 0;
@@ -268,6 +33,10 @@
             width: 100%;
             height: 100%; /* Makes the iframe fill the container */
         }
+        .fact-joke-container {
+            margin-top: 20px;
+            color: #ffffff; /* Set text color to white for better readability */
+        }
     </style>
 </head>
 <body>
@@ -280,8 +49,13 @@
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                 referrerpolicy="strict-origin-when-cross-origin" 
                 allowfullscreen 
-                src="https://www.youtube.com/embed/G97AdMLbfr4?enablejsapi=1&autoplay=1&mute=0"></iframe>  <!-- Enable JS API -->
-      <!--  </div>
+                src="https://www.youtube.com/embed/G97AdMLbfr4?enablejsapi=1&autoplay=1&mute=0"></iframe>  
+        </div>
+        
+        <div class="fact-joke-container">
+            <p id="randomFact"></p>
+            <p id="randomJoke"></p>
+        </div>
         
         <p>Website created by K-Dawg.</p> 
         <p>&copy; 2025. All Rights Reserved.</p>
@@ -309,7 +83,210 @@
             event.target.setVolume(10); // Set the volume to 10%
             event.target.playVideo(); // Autoplay the video
         }
+
+        // Array of Augusta National Golf Club facts
+        const facts = [
+            "Augusta National Golf Club was founded in 1933 by Bobby Jones and Clifford Roberts.",
+            "The Masters Tournament, held at Augusta National, is the first major championship of the year.",
+            "The 12th hole at Augusta National is known as 'Golden Bell'.",
+            "Augusta National is famous for its azaleas that bloom during the Masters.",
+            "The green jacket awarded to the Masters champion was first introduced in 1949.",
+            "Augusta National has a total of 18 holes, and each hole has its own unique name.",
+            "The Masters is the only major championship hosted at the same venue every year.",
+            "The tournament was originally known as the Augusta National Invitation Tournament.",
+            "In 1997, Tiger Woods became the youngest player to win the Masters at the age of 21.",
+            "The first Masters was held in 1934 and was won by Horton Smith.",
+            "Augusta National was the first golf club to admit women into its membership in 2012.",
+            "The course is designed to be a challenge for all levels of golfers.",
+            "The famous par-3 contest is held on the Wednesday before the Masters Tournament.",
+            "The Masters champion is awarded a green jacket that must remain at Augusta National.",
+            "The club has a strict dress code that prohibits denim and t-shirts.",
+            "Many of the holes at Augusta National are named after flowers and shrubs.",
+            "The 13th hole, 'Azalea', is known for its breathtaking views and difficulty.",
+            "The Masters has a long-standing tradition of champions throwing their clubs into the pond at 16 after they win.",
+            "Augusta National does not allow cellphone use on the course during the tournament.",
+            "The course is known for its fast greens, making putting especially challenging.",
+            "There are a total of 44 bunkers on the Augusta National course.",
+            "The length of the course was originally 6,810 yards and has been extended over the years.",
+            "Augusta National underwent significant changes in preparation for the 2019 Masters.",
+            "The club's motto is 'Every day is a Saturday.'",
+            "The Masters winners' names are inscribed on a wall in the clubhouse.",
+            "Every year, the Masters Tournament has a different honorary starter.",
+            "Augusta National places a lot of emphasis on maintaining the natural beauty of the course.",
+            "In 1980, the Masters featured a famous duel between Tom Watson and Jack Nicklaus.",
+            "The 11th hole, known as 'Butterfield', is one of the most challenging holes on the course.",
+            "The Masters is broadcasted worldwide in more than 200 countries.",
+            "The course has an average of 8,000 trees planted on its grounds.",
+            "Augusta National has partnered with other golf organizations to promote the game.",
+            "The club is famous for its rich history and has become a golf pilgrimage site.",
+            "The term 'Amen Corner' refers to the 11th, 12th, and 13th holes.",
+            "In 2020, the Masters was postponed from its traditional April date to November due to the pandemic.",
+            "Augusta National Golf Club is not open to the public, except during the tournament week.",
+            "The club features a variety of birds and wildlife, adding to its natural beauty.",
+            "The caddies at Augusta National wear white jumpsuits as part of their uniform.",
+            "The course has been ranked as one of the best in the world by various golf publications.",
+            "The club has exclusive rights to host the Masters without exception.",
+            "In 2016, Danny Willett won the Masters after an incredible collapse by Jordan Spieth.",
+            "The par-4 10th hole is known as 'Camellia' and represents a strategic challenge.",
+            "Augusta National has historically taken a stance against commercialism in golf.",
+            "The famous Magnolia Lane leads up to the clubhouse and is lined with magnolia trees.",
+            "The Masters has no cut, allowing all participants to play all four rounds.",
+            "The clubhouse at Augusta National is full of memorabilia and golf history.",
+            "Michael Jordan is one of the more famous members of Augusta National Golf Club.",
+            "The 16th hole, also known as 'Redbud', features a famous pond that has been the site of many dramatic moments.",
+            "The Masters was first televised in 1956, increasing its popularity significantly.",
+            "In 2004, Phil Mickelson won his first major title at Augusta National.",
+            "The 3rd hole, 'Flowering peach', is a challenging par-4 that requires precision.",
+            "Augusta National participates in several charitable efforts through its foundation.",
+            "The club has a beautiful azalea garden that contributes to the vibrant color during the tournament.",
+            "Each year, the Masters selects a different honorary starter to tee off the tournament.",
+            "Augusta National features very exclusive membership, with a rigorous selection process.",
+            "The 15th hole, known as 'Firethorn', is a par-5 that provides scoring opportunities.",
+            "One of the oldest trees on the course is over a century old.",
+            "The 14th hole, dubbed 'Chinese Fir', requires the golfer to navigate through a narrow opening.",
+            "Augusta National is famous for its low humidity and mild weather during the tournament.",
+            "The Masters has a tradition of serving pimento cheese sandwiches.",
+            "The club features a practice area unlike any other, designed for year-round training.",
+            "The caddie who carries the champion's bag is awarded with a sizeable gratuity after the tournament.",
+            "The 5th hole is known as 'Magnolia', featuring a very picturesque view.",
+            "The Masters has launched numerous initiatives promoting women's golf.",
+            "Bobby Jones, one of the founding members, was a legendary amateur golfer.",
+            "The tournament's green jacket is regarded as one of golf's most prestigious awards.",
+            "The 9th hole is known as 'Carolina Cherry', a challenging par-4.",
+            "The Masters is famous for its tradition of wearing floral attire during the event.",
+            "The library at Augusta National holds many rare trophies and artifacts.",
+            "The club initiated its 'First Tee' program aimed at educating youth about golf.",
+            "The 7th hole, called 'Pond', requires players to hit over a large water hazard.",
+            "In 2013, Adam Scott made history as the first Australian to win the Masters.",
+            "Augusta National was built on the grounds of a former indigo plantation.",
+            "The names of all Augusta National champions are etched into the tournament's history.",
+            "The 2nd hole, named 'Pink Dogwood', is known for its strategic beauty.",
+            "The Masters has an elite field, often featuring the world's top-ranked golfers.",
+            "The 6th hole is famous for its challenging elevation change and beautiful scenery.",
+            "Augusta National has been the site of many dramatic finishes in golf history.",
+            "The 4th hole is known as 'Flowering Peach', featuring a majestic view.",
+            "Each August, the club hosts the Augusta National Women’s Amateur Championship.",
+            "The Masters has one of the most devoted fan bases in professional sports.",
+            "In 1990, the Masters format was revised to include more international players.",
+            "The 17th hole, known as 'Nandina', is a true test for even the best golfers.",
+            "Augusta National has played host to numerous significant golf-related events.",
+            "The Masters has become synonymous with springtime golf.",
+            "The pachysandra plant is commonly found around the course.",
+            "President Dwight D. Eisenhower was one of the club's most famous members.",
+            "The 1st hole is known as 'Tea Olive', a challenging start to the course.",
+            "The club's transcendent beauty attracts thousands of visitors each year."
+        ];
+
+        // Array of funny golf jokes/puns
+        const jokes = [
+            "Why do golfers bring two pairs of pants? In case they get a hole in one!",
+            "What do you call a lion playing golf? A tee-rific golfer!",
+            "Why did the golfer bring an extra ball? Just in case he got a hole in one!",
+            "Golf is a lot like taxes. You drive hard to get to the green and end up in the hole.",
+            "What’s the difference between a golfer and a skydiver? A golfer goes *whack* 'fore' he jumps!",
+            "Why did the golf pro bring a pencil to the game? In case he had to draw a penalty!",
+            "Why was the golfer kicked out of the bar? Because he kept mentioning his hole-in-one!",
+            "How does a golfer find their lost clubs? They follow the driver's license.",
+            "Why do golf clubs never retire? They always put in the time!",
+            "Why do golfers hate the rain? Because they can’t tee off!",
+            "What do you get if you cross a golfer and a tennis player? A champion who can't serve!",
+            "Why do golf players carry an extra shirt? In case they get a hole in one!",
+            "Why didn’t the golfer play in the rain? He didn’t want to *chip* in the puddles!",
+            "What’s a golfer’s favorite place to shop? The putt store!",
+            "Why did the golfer break up with his girlfriend? She had too many issues on the back nine!",
+            "What’s the hardest part of playing golf? The conversations with fellow golfers!",
+            "Why do golf balls go to school? They want to be a little smarter at *driving*!",
+            "How do you know if a golfer is at your door? They can't find the key and don't know when to come in!",
+            "Why are golf courses always wet? Because they get putted too much!",
+            "Why did the golfer take a ladder? To reach the high score!",
+            "What’s the difference between a bad golfer and a bad skydiver? A bad golfer goes *whack* 'fore!'",
+            "Why do golfers never get lost? Because they always stay on course!",
+            "What do you call a golfer who loses all their balls? A swing and a miss!",
+            "Why was the new golfer's ball always in the hole? Because he didn't know how to play yet!",
+            "What do you call a playful golf ball? A tee-rific jokester!",
+            "Why did the golfer's head go cold? Because he kept losing to the *ice* competitors!",
+            "What did the golf club say to the ball? 'You’re in the hole until I say otherwise!'",
+            "Why did the golfer need a lawyer? He had too many disputes on the course!",
+            "What do you get when you play golf with a piñata? A real swing party!",
+            "Why don’t they play poker in the jungle? Too many cheetahs on the golf course!",
+            "How are golf and baseball alike? Both require a lot of practice to get a home run!",
+            "What happened to the golfer who didn’t pay their dues? They got *turfed*!",
+            "Why did the golfer bring two pairs of shoes? In case he got a hole in one!",
+            "What do golf enthusiasts eat for breakfast? A Putt-astic meal!",
+            "Why don't golfers get lost? They always know the greens!",
+            "What do you call an alligator who plays golf? An *instinctive swing*!",
+            "What do you call a golf club on a shelf? A swinging disappointment!",
+            "Why did the golf instructor quit? He lost his drive!",
+            "Why do golfers always tell jokes? They want to drive home a punchline!",
+            "Why did the golfer miss the ball? He was too focused on *swinging* out of control!",
+            "How do golfers celebrate birthdays? They throw a big *tee party!*",
+            "What kind of club can you get for your golf car? A putt-ing club!",
+            "Why don’t golfers use their driver for everything? Because the best clubs know their limits!",
+            "What’s the best way to make a golfer happy? Just tell them they’re on par!",
+            "Why are golfers so good at socializing? They know how to drive the conversation!",
+            "What do you call a golf course that doesn't make any money? A 'green' operation!",
+            "Why did the golfer take their phone to the course? They wanted to *call the shots*!",
+            "What does a golfer say when they finish a hard game? 'I need a *swing vacation*!'", 
+            "Why are graveyards the best golf courses? Because everyone is buried there!",
+            "Why is golf the best sport? Because it gives you *fore* some minutes of pure joy!",
+            "What is a golfer's favorite vegetable? A *hole* radish!",
+            "Why did the golf ball stay home? It couldn't find its *hook*!",
+            "What did the golfer say when his friend stole his clubs? That was an *unfore* seen challenge!",
+            "Why do golfers hate suspense? They just want to get their *putt* in!",
+            "What do golfers say at the end of a great day? 'Let's go out on *par* tonight!'",
+            "Why did the golf instructor go broke? Too many *drive-thrus*!",
+            "What’s a golfer’s favorite type of music? Anything with a good *swing*!",
+            "Why did the golfer buy a new ball? It had *great drive potential*!",
+            "What’s a golf club’s favorite school subject? *Drivology*!",
+            "Why was the golfer always late? Because he couldn’t find his *hole*!",
+            "What do golf clubs drink before a game? Tee!",
+            "Why did the golfer cross the road? To get to the *other hole*!",
+            "Why was the golfer nervous? He was going to *tee off*!",
+            "What did the golfer shout when he found his lost ball? 'I've *hit the jackpot*!'",
+            "Why was the golf course sometimes muddy? Because it gets *turf* over!',
+            "What did the golfer say at the wedding? 'That was a *hole-in-one* celebration!'",
+            "Why did everyone love the golfer? He was the *life of the tee party*!",
+            "Why did the golfer’s leg hurt? He took a *swing* at love!",
+            "What do you call a lion at the golf course? A *buga-roar*!",
+            "Why are trees so good at golf? Because they bring their *branches* to every round!",
+            "What did the golfing chef cook? A *hole-in-one* meal!",
+            "What do you call a lazy golfer? A *par* snatcher!",
+            "Why was the golfer always optimistic? Because they knew how to take a good *swing*!",
+            "What happened to the golfer who was afraid of heights? He couldn't make it to the *high score*!",
+            "Why did the club win the award? It had the best *swing* of the night!",
+            "What is a golf course's favorite movie? *Swingers*!",
+            "Why do cats like playing golf? Because they always *land on their paws*!",
+            "Why do golfers never play cards? They’d rather putt than deal!",
+            "Why did the chicken become a golfer? It wanted to cross the course!",
+            "What’s a golfer’s favorite ocean? The *swing sea*!",
+            "Why did the golfer refuse to play under the rain? They didn't want their clubs to lose their grip!",
+            "What is a golfer's least favorite vegetable? A *bore*!",
+            "Why didn't the golfer go home? He was too busy *putting around*!",
+            "Why did the cookie break up with the golfer? He kept giving her the *crumbs*!",
+            "What do you call a sad golfer? A *putt* down!",
+            "Why did the golfer go to the doctor? He had a bad case of *swing fever*!",
+            "What do you call a bird that plays golf? A *par-more*!",
+            "Why did the golfer quit playing golf? He couldn't make the *green*!",
+            "What do golfers put on their sandwiches? *Tee*!",
+            "Why was the golfer terrible at music? They couldn't keep the *beats*!",
+            "Why did the golfer's shoes talk? Because they had too many *soles*!",
+            "Why do golfers make bad politicians? They can't handle the pressure of a *swing vote*!"
+        ];
+
+        // Function to get random item from an array
+        function getRandomItem(array) {
+            const randomIndex = Math.floor(Math.random() * array.length);
+            return array[randomIndex];
+        }
+
+        // Function to display random fact and joke
+        function displayRandomFactAndJoke() {
+            document.getElementById('randomFact').textContent = getRandomItem(facts);
+            document.getElementById('randomJoke').textContent = getRandomItem(jokes);
+        }
+
+        // Call display function when the page loads
+        window.onload = displayRandomFactAndJoke;
     </script>
 </body>
 </html>
--->
