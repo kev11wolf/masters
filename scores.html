@@ -171,102 +171,104 @@
         }
 
         // Copy and paste your space-delimited data directly here
-        const csvData = `Player	Round 1	Round 2	Round 3	Round 4	Total	Tier
-Scottie Scheffler	0	0	0	0	0	1
-Rory McIlroy	0	0	0	0	0	1
-Xander Schauffele	0	0	0	0	0	1
-Jon Rahm	0	0	0	0	0	1
-Ludvig Aberg	0	0	0	0	0	1
-Collin Morikawa	0	0	0	0	0	1
-Bryson DeChambeau	0	0	0	0	0	1
-Justin Thomas	0	0	0	0	0	1
-Brooks Koepka	0	0	0	0	0	1
-Hideki Matsuyama	0	0	0	0	0	1
-Viktor Hovland	0	0	0	0	0	1
-Tommy Fleetwood	0	0	0	0	0	1
-Jordan Spieth	0	0	0	0	0	1
-Joaquin Niemann	0	0	0	0	0	1
-Will Zalatoris	0	0	0	0	0	2
-Tyrrell Hatton	0	0	0	0	0	2
-Patrick Cantlay	0	0	0	0	0	2
-Cameron Smith	0	0	0	0	0	2
-Sungjae Im	0	0	0	0	0	2
-Shane Lowry	0	0	0	0	0	2
-Wyndham Clark	0	0	0	0	0	2
-Tony Finau	0	0	0	0	0	2
-Akhshay Bhatia	0	0	0	0	0	2
-Min Woo Lee	0	0	0	0	0	2
-Sergio Garcia	0	0	0	0	0	2
-Sam Burns	0	0	0	0	0	2
-Dustin Johnson	0	0	0	0	0	2
-Tom Kim	0	0	0	0	0	2
-Russell Henley	0	0	0	0	0	2
-Taylor Pendrith	0	0	0	0	0	2
-Cameron Young	0	0	0	0	0	2
-Byeong Hun An	0	0	0	0	0	2
-Brian Harman	0	0	0	0	0	2
-Adam Scott	0	0	0	0	0	3
-Sepp Straka	0	0	0	0	0	3
-Thomas Detry	0	0	0	0	0	3
-Matt Fitzpatrick	0	0	0	0	0	3
-Rasmus Hojgaard	0	0	0	0	0	3
-Jason Day	0	0	0	0	0	3
-Robert MacIntyre	0	0	0	0	0	3
-Corey Conners	0	0	0	0	0	3
-Daniel Berger	0	0	0	0	0	3
-Maverick McNealy	0	0	0	0	0	3
-Sahith Theegala	0	0	0	0	0	3
-Patrick Reed	0	0	0	0	0	3
-Max Greyserman	0	0	0	0	0	3
-Max Homa	0	0	0	0	0	3
-Harris English	0	0	0	0	0	3
-Denny McCarthy	0	0	0	0	0	3
-Davis Thompson	0	0	0	0	0	3
-J.J. Spaun	0	0	0	0	0	3
-Billy Horschel	0	0	0	0	0	3
-Aaron Rai	0	0	0	0	0	3
-Nick Taylor	0	0	0	0	0	3
-Keegan Bradley	0	0	0	0	0	3
-Cam Davis	0	0	0	0	0	3
-Christiaan Bezuidenhout	0	0	0	0	0	4
-Thriston Lawrence	0	0	0	0	0	4
-Nico Echavarria	0	0	0	0	0	4
-Nicolai Hojgaard	0	0	0	0	0	4
-Lucas Glover	0	0	0	0	0	4
-Justin Rose	0	0	0	0	0	4
-Laurie Canter	0	0	0	0	0	4
-Stephan Jaeger	0	0	0	0	0	4
-J.T Poston	0	0	0	0	0	4
-Chris Kirk	0	0	0	0	0	4
-Austin Eckroat	0	0	0	0	0	4
-Joe Highsmith	0	0	0	0	0	4
-Tom Hoge	0	0	0	0	0	4
-Phil Mickelson	0	0	0	0	0	4
-Nick Dunlap	0	0	0	0	0	4
-Kevin Yu	0	0	0	0	0	4
-Charl Schwartzel	0	0	0	0	0	4
-Adam Schenk	0	0	0	0	0	4
-Patton Kizzire	0	0	0	0	0	4
-Matt McCarty	0	0	0	0	0	4
-Jhonattan Vegas	0	0	0	0	0	4
-Danny Willett	0	0	0	0	0	4
-Bubba Watson	0	0	0	0	0	4
-Rafael Campos	0	0	0	0	0	4
-Brian Campbell	0	0	0	0	0	4
-Jose Luis Ballester	0	0	0	0	0	4
-Hiroshi Tai	0	0	0	0	0	4
-Matthieu Pavon	0	0	0	0	0	4
-Davis Riley	0	0	0	0	0	4
-Noah Kent	0	0	0	0	0	4
-Zach Johnson	0	0	0	0	0	4
-Bernahard Langer	0	0	0	0	0	4
-Evan Beck	0	0	0	0	0	4
-Justin Hastings	0	0	0	0	0	4
-Angel Cabrera	0	0	0	0	0	4
-Vijay Singh	0	0	0	0	0	4
-Mike Weir	0	0	0	0	0	4
-Jose Maria Olazabal	0	0	0	0	0	4
-Fred Couples	0	0	0	0	0	4`;
+        const csvData = `
+Player Name	Round 1	Round 2	Round 3	Round 4	Total	Tier
+S.Scheffler	-	-	-	-	0	1
+R.McIlroy	-	-	-	-	0	1
+X.Schauffele	-	-	-	-	0	1
+J.Rahm	-	-	-	-	0	1
+L.Aberg	-	-	-	-	0	1
+C.Morikawa	-	-	-	-	0	1
+B.DeChambeau	-	-	-	-	0	1
+J.Thomas	-	-	-	-	0	1
+B.Koepka	-	-	-	-	0	1
+H.Matsuyama	-	-	-	-	0	1
+V.Hovland	-	-	-	-	0	1
+T.Fleetwood	-	-	-	-	0	1
+J.Spieth	-	-	-	-	0	1
+J.Niemann	-	-	-	-	0	1
+W.Zalatoris	-	-	-	-	0	2
+T.Hatton	-	-	-	-	0	2
+P.Cantlay	-	-	-	-	0	2
+C.Smith	-	-	-	-	0	2
+S.Im	-	-	-	-	0	2
+S.Lowry	-	-	-	-	0	2
+W.Clark	-	-	-	-	0	2
+T.Finau	-	-	-	-	0	2
+A.Bhatia	-	-	-	-	0	2
+M.Woo	-	-	-	-	0	2
+S.Garcia	-	-	-	-	0	2
+S.Burns	-	-	-	-	0	2
+D.Johnson	-	-	-	-	0	2
+T.Kim	-	-	-	-	0	2
+R.Henley	-	-	-	-	0	2
+T.Pendrith	-	-	-	-	0	2
+C.Young	-	-	-	-	0	2
+B.Hun	-	-	-	-	0	2
+B.Harman	-	-	-	-	0	2
+A.Scott	-	-	-	-	0	3
+S.Straka	-	-	-	-	0	3
+T.Detry	-	-	-	-	0	3
+M.Fitzpatrick	-	-	-	-	0	3
+R.Hojgaard	-	-	-	-	0	3
+J.Day	-	-	-	-	0	3
+R.MacIntyre	-	-	-	-	0	3
+C.Conners	-	-	-	-	0	3
+D.Berger	-	-	-	-	0	3
+M.McNealy	-	-	-	-	0	3
+S.Theegala	-	-	-	-	0	3
+P.Reed	-	-	-	-	0	3
+M.Greyserman	-	-	-	-	0	3
+M.Homa	-	-	-	-	0	3
+H.English	-	-	-	-	0	3
+D.McCarthy	-	-	-	-	0	3
+D.Thompson	-	-	-	-	0	3
+J.Spaun	-	-	-	-	0	3
+B.Horschel	-	-	-	-	0	3
+A.Rai	-	-	-	-	0	3
+N.Taylor	-	-	-	-	0	3
+K.Bradley	-	-	-	-	0	3
+C.Davis	-	-	-	-	0	3
+C.Bezuidenhout	-	-	-	-	0	4
+T.Lawrence	-	-	-	-	0	4
+N.Echavarria	-	-	-	-	0	4
+N.Hojgaard	-	-	-	-	0	4
+L.Glover	-	-	-	-	0	4
+J.Rose	-	-	-	-	0	4
+L.Canter	-	-	-	-	0	4
+S.Jaeger	-	-	-	-	0	4
+J.Poston	-	-	-	-	0	4
+C.Kirk	-	-	-	-	0	4
+A.Eckroat	-	-	-	-	0	4
+J.Highsmith	-	-	-	-	0	4
+T.Hoge	-	-	-	-	0	4
+P.Mickelson	-	-	-	-	0	4
+N.Dunlap	-	-	-	-	0	4
+K.Yu	-	-	-	-	0	4
+C.Schwartzel	-	-	-	-	0	4
+A.Schenk	-	-	-	-	0	4
+P.Kizzire	-	-	-	-	0	4
+M.McCarty	-	-	-	-	0	4
+J.Vegas	-	-	-	-	0	4
+D.Willett	-	-	-	-	0	4
+B.Watson	-	-	-	-	0	4
+R.Campos	-	-	-	-	0	4
+B.Campbell	-	-	-	-	0	4
+J.Luis	-	-	-	-	0	4
+H.Tai	-	-	-	-	0	4
+M.Pavon	-	-	-	-	0	4
+D.Riley	-	-	-	-	0	4
+N.Kent	-	-	-	-	0	4
+Z.Johnson	-	-	-	-	0	4
+B.Langer	-	-	-	-	0	4
+E.Beck	-	-	-	-	0	4
+J.Hastings	-	-	-	-	0	4
+A.Cabrera	-	-	-	-	0	4
+V.Singh	-	-	-	-	0	4
+M.Weir	-	-	-	-	0	4
+J.Maria	-	-	-	-	0	4
+F.Couples	-	-	-	-	0	4
+`;
 
         function populateScores(csvData) {
             const tbody = document.querySelector('#scores tbody');
