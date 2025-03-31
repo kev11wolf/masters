@@ -82,12 +82,14 @@
             border-collapse: collapse; 
             margin-top: 20px; 
             font-family: 'Playfair Display', serif; 
+            table-layout: auto; /* Allow the table to resize dynamically */
         }
 
         th, td {
             padding: 10px; 
             border: 1px solid #1a4831; 
             text-align: center; 
+            font-size: calc(12px + 0.5vw); /* Dynamically adjust font size */
         }
 
         th {
@@ -110,6 +112,19 @@
             background-color: #2c2c2c; 
             color: white; 
             width: 100%; 
+        }
+
+        /* Additional media queries for better responsiveness */
+        @media (max-width: 768px) {
+            th, td {
+                font-size: calc(10px + 0.8vw); /* Adjust for smaller screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            th, td {
+                font-size: calc(8px + 1vw); /* Further adjustment for extra small screens */
+            }
         }
     </style>
 </head>
@@ -188,7 +203,7 @@ function populateLeaderboard(csvData) {
     tbody.innerHTML = '';
 
     rows.forEach(row => {
-        const columns = row.split('\t'); // Split by tab or you can also use space if needed
+        const columns = row.split('\t'); // Split by tab; ensure your data uses this format
         const tr = document.createElement('tr');
 
         columns.forEach(col => {
@@ -202,11 +217,9 @@ function populateLeaderboard(csvData) {
 }
 
 // Updated example CSV data to demonstrate new functionality
-const csvExample = `
-Participant	Player 1	Player 2	Player 3	Player 4	Player 5	Player 6	Player 1 Score	Player 2 Score	Player 3 Score	Player 4 Score	Player 5 Score	Player 6 Score	Total Score
-Kevin	Jose Maria Olazabal	Matthieu Pavon	Taylor Pendrith	J.T. Poston	Jon Rahm	Aaron Rai	0	0	0		0	0	0
-Best Scenario	Scottie Scheffler	Scottie Scheffler	Scottie Scheffler	Scottie Scheffler	Scottie Scheffler	Scottie Scheffler	0	0	0	0	0	0	0
-`;
+const csvExample = `Participant	Player 1	Player 2	Player 3	Player 4	Player 5	Player 6	Player 1 Score	Player 2 Score	Player 3 Score	Player 4 Score	Player 5 Score	Player 6 Score	Total Score
+Kevin	Jose Maria Olazabal	Matthieu Pavon	Taylor Pendrith	J.T. Poston	Jon Rahm	Aaron Rai	0	0	0	0	0	0	0
+Best Scenario	Scottie Scheffler	Scottie Scheffler	Scottie Scheffler	Scottie Scheffler	Scottie Scheffler	Scottie Scheffler	0	0	0	0	0	0	0`;
 
 // Call the function to populate the leaderboard with updated example data
 populateLeaderboard(csvExample);
@@ -228,4 +241,5 @@ populateLeaderboard(csvExample);
 </script>
 
 </body>
+
 </html>
