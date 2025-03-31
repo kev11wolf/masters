@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -112,6 +113,7 @@
         }
     </style>
 </head>
+
 <body>
 
 <header>
@@ -140,7 +142,19 @@
         <thead>
             <tr>
                 <th>Participant</th>
-                <th>Total</th>
+                <th>Player 1</th>
+                <th>Player 2</th>
+                <th>Player 3</th>
+                <th>Player 4</th>
+                <th>Player 5</th>
+                <th>Player 6</th>
+                <th>Player 1 Score</th>
+                <th>Player 2 Score</th>
+                <th>Player 3 Score</th>
+                <th>Player 4 Score</th>
+                <th>Player 5 Score</th>
+                <th>Player 6 Score</th>
+                <th>Total Score</th>
             </tr>
         </thead>
         <tbody>
@@ -174,7 +188,7 @@ function populateLeaderboard(csvData) {
     tbody.innerHTML = '';
 
     rows.forEach(row => {
-        const columns = row.split('\t');
+        const columns = row.split('\t'); // Split by tab or you can also use space if needed
         const tr = document.createElement('tr');
 
         columns.forEach(col => {
@@ -187,12 +201,14 @@ function populateLeaderboard(csvData) {
     });
 }
 
-// Example CSV data to demonstrate functionality
-const csvExample = `Kevin\t1024
-Evan\t850
+// Updated example CSV data to demonstrate new functionality
+const csvExample = `
+Participant	Player 1	Player 2	Player 3	Player 4	Player 5	Player 6	Player 1 Score	Player 2 Score	Player 3 Score	Player 4 Score	Player 5 Score	Player 6 Score	Total Score
+Kevin	Jose Maria Olazabal	Matthieu Pavon	Taylor Pendrith	J.T. Poston	Jon Rahm	Aaron Rai	0	0	0		0	0	0
+Best Scenario	Scottie Scheffler	Scottie Scheffler	Scottie Scheffler	Scottie Scheffler	Scottie Scheffler	Scottie Scheffler	0	0	0	0	0	0	0
 `;
 
-// Call the function to populate the leaderboard with example data
+// Call the function to populate the leaderboard with updated example data
 populateLeaderboard(csvExample);
 </script>
 
