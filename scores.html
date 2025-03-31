@@ -77,7 +77,6 @@
             border-collapse: collapse;
             margin-top: 20px;
             font-family: 'Playfair Display', serif;
-            font-size: 16px;
         }
 
         th,
@@ -103,13 +102,15 @@
         }
 
         @media (max-width: 768px) {
-            table {
-                font-size: 12px;
+            table th, table td {
+                font-size: 10px; /* Minimum font size for smaller screens */
             }
         }
 
-        .alert {
-            color: #B22222;
+        @media (max-width: 480px) {
+            table th, table td {
+                font-size: 8px; /* Minimum font size for mobile devices */
+            }
         }
     </style>
 </head>
@@ -199,75 +200,7 @@ A.Bhatia	-	-	-	-	0	2
 M.Woo	-	-	-	-	0	2
 S.Garcia	-	-	-	-	0	2
 S.Burns	-	-	-	-	0	2
-D.Johnson	-	-	-	-	0	2
-T.Kim	-	-	-	-	0	2
-R.Henley	-	-	-	-	0	2
-T.Pendrith	-	-	-	-	0	2
-C.Young	-	-	-	-	0	2
-B.Hun	-	-	-	-	0	2
-B.Harman	-	-	-	-	0	2
-A.Scott	-	-	-	-	0	3
-S.Straka	-	-	-	-	0	3
-T.Detry	-	-	-	-	0	3
-M.Fitzpatrick	-	-	-	-	0	3
-R.Hojgaard	-	-	-	-	0	3
-J.Day	-	-	-	-	0	3
-R.MacIntyre	-	-	-	-	0	3
-C.Conners	-	-	-	-	0	3
-D.Berger	-	-	-	-	0	3
-M.McNealy	-	-	-	-	0	3
-S.Theegala	-	-	-	-	0	3
-P.Reed	-	-	-	-	0	3
-M.Greyserman	-	-	-	-	0	3
-M.Homa	-	-	-	-	0	3
-H.English	-	-	-	-	0	3
-D.McCarthy	-	-	-	-	0	3
-D.Thompson	-	-	-	-	0	3
-J.Spaun	-	-	-	-	0	3
-B.Horschel	-	-	-	-	0	3
-A.Rai	-	-	-	-	0	3
-N.Taylor	-	-	-	-	0	3
-K.Bradley	-	-	-	-	0	3
-C.Davis	-	-	-	-	0	3
-C.Bezuidenhout	-	-	-	-	0	4
-T.Lawrence	-	-	-	-	0	4
-N.Echavarria	-	-	-	-	0	4
-N.Hojgaard	-	-	-	-	0	4
-L.Glover	-	-	-	-	0	4
-J.Rose	-	-	-	-	0	4
-L.Canter	-	-	-	-	0	4
-S.Jaeger	-	-	-	-	0	4
-J.Poston	-	-	-	-	0	4
-C.Kirk	-	-	-	-	0	4
-A.Eckroat	-	-	-	-	0	4
-J.Highsmith	-	-	-	-	0	4
-T.Hoge	-	-	-	-	0	4
-P.Mickelson	-	-	-	-	0	4
-N.Dunlap	-	-	-	-	0	4
-K.Yu	-	-	-	-	0	4
-C.Schwartzel	-	-	-	-	0	4
-A.Schenk	-	-	-	-	0	4
-P.Kizzire	-	-	-	-	0	4
-M.McCarty	-	-	-	-	0	4
-J.Vegas	-	-	-	-	0	4
-D.Willett	-	-	-	-	0	4
-B.Watson	-	-	-	-	0	4
-R.Campos	-	-	-	-	0	4
-B.Campbell	-	-	-	-	0	4
-J.Luis	-	-	-	-	0	4
-H.Tai	-	-	-	-	0	4
-M.Pavon	-	-	-	-	0	4
-D.Riley	-	-	-	-	0	4
-N.Kent	-	-	-	-	0	4
-Z.Johnson	-	-	-	-	0	4
-B.Langer	-	-	-	-	0	4
-E.Beck	-	-	-	-	0	4
-J.Hastings	-	-	-	-	0	4
-A.Cabrera	-	-	-	-	0	4
-V.Singh	-	-	-	-	0	4
-M.Weir	-	-	-	-	0	4
-J.Maria	-	-	-	-	0	4
-F.Couples	-	-	-	-	0	4
+D.Johnson	
 `;
 
         function populateScores(csvData) {
