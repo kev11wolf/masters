@@ -12,6 +12,7 @@
             background-color: #f4f4f4;
         }
         footer {
+            width: 100%;  /* Ensure footer width is 100% of the viewport */
             text-align: center; 
             padding: 20px; 
             background-color: #1a4831; 
@@ -242,7 +243,7 @@
             "Why did the golfer get kicked off the course? He kept hitting on the greens!",
             "What do you call a dinosaur that plays golf? A *putt-odactyl*!",
             "What did the golf ball say to the club? 'You really drive me crazy!'",
-            "Why did the golfer sit in the shade? Because he was a little *putt!*!",
+            "Why did the golfer sit in the shade? Because he was a little *putt*!",
             "What’s the best way to learn golf? Swing by a class and take a *putt*!",
             "Why do golf balls make bad students? They can never make it to the green!",
             "Why did the golfer eat his balls? He wanted to get a hole in one!",
@@ -267,8 +268,10 @@
             document.getElementById('randomJoke').textContent = getRandomItem(jokes);
         }
 
-        // Call display function when the page loads
-        window.onload = displayRandomFactAndJoke;
+        // Call display function when the DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            displayRandomFactAndJoke();
+        });
     </script>
 </body>
 </html>
