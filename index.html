@@ -17,7 +17,120 @@
             padding: 0; /* Remove default padding */
         }
 
-        /* Add existing styles... */
+        header {
+            background: #1a4831; /* Dark green background for the header */
+            color: #ffffff; /* White text color for visibility against the dark background */
+            display: flex; /* Uses flexbox layout to arrange child elements in a row */
+            justify-content: space-between; /* Distributes space between child elements in the header */
+            align-items: center; /* Vertically centers child elements within the header */
+            padding: 10px 20px; /* Padding around header */
+            position: relative; /* Sets positioning context for any absolutely positioned child elements */
+        }
+
+        #logo {
+            max-height: 60px; /* Restricts logo height to 60 pixels */
+            cursor: pointer; /* Changes cursor to pointer on hover, indicating it's clickable */
+        }
+
+        nav {
+            position: relative; /* Necessary for absolute positioning of dropdown menu within the navigation */
+        }
+
+        .logo-container {
+            display: flex; /* Makes logo and text horizontally aligned using flexbox */
+            align-items: center; /* Vertically centers the content within this container */
+            cursor: pointer; /* Indicates this log is clickable */
+            padding: 30px; /* Adds space around the logo and text, increasing the clickable area */
+        }
+
+        .logo-container img {
+            max-width: 50px; /* Restricts the logo image width to 50 pixels */
+            max-height: 50px; /* Restricts the logo image height to 50 pixels */
+            margin-right: 8px; /* Adds space between the logo image and the text */
+        }
+
+        .menu-text {
+            font-size: 16px; /* Increases font size of the menu text */
+            color: white; /* Sets menu text color to white for contrast against the header background */
+        }
+
+        .dropdown {
+            display: none; /* Hides the dropdown menu by default */
+            position: absolute; /* Absolutely positions it relative to the nearest positioned ancestor */
+            right: 0; /* Aligns the dropdown to the right side of the header */
+            background-color: #1a4831; /* Matches the dropdown's background to the header's background */
+            border-radius: 5px; /* Gives the dropdown corners a rounded appearance */
+            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow to create depth */
+            z-index: 1; /* Ensures the dropdown appears above other overlapping content */
+        }
+
+        .dropdown a {
+            color: white; /* Sets link text color in the dropdown to white */
+            padding: 15px 20px; /* Adds padding around links */
+            text-decoration: none; /* Ensures links have no underline for a cleaner look */
+            display: block; /* Makes links block elements, allowing them to fill the available width */
+        }
+
+        .dropdown a:hover {
+            background-color: #218838; /* Changes background color of dropdown links on hover for feedback */
+        }
+
+        main {
+            padding: 20px; /* Adds padding around the main content area */
+        }
+
+        .big-button {
+            background-color: #1a4831; /* Sets the button's background color */
+            color: white; /* Sets the button text color to white for visibility */
+            padding: 20px 20px; /* Adds padding around the button's content */
+            text-decoration: none; /* Removes underline from the button text */
+            border-radius: 5px; /* Applies rounded corners to the button */
+            display: inline-block; /* Makes the button behave like a block element but remain inline */
+            font-size: 18px; /* Sets the text size in the button */
+            margin-top: 10px; /* Adds space above the button */
+        }
+
+        .big-button:hover {
+            background-color: #218838; /* Changes button background color on hover for user feedback */
+        }
+
+        /* Styles for slideshow */
+        .slideshow-container {
+            position: relative; /* Positions the slideshow elements relative to this container */
+            max-width: 100%; /* Sets maximum width to ensure responsiveness */
+            margin: 20px auto; /* Centers the slideshow in the middle of the page */
+            overflow: hidden; /* Hides any element that overflows the container */
+        }
+
+        .mySlides {
+            display: none; /* Hides all slides in the slideshow by default */
+            width: 100%; /* Makes the images stretch to fill the container width */
+            max-width: 600px; /* Restricts maximum width of slides to 600 pixels */
+            height: auto; /* Maintains the aspect ratio of images */
+            margin: 0 auto; /* Centers images in the slideshow */
+        }
+
+        /* Styles for images next to paragraphs */
+        .image-paragraph {
+            display: flex; /* Allows image and text to be aligned next to each other using flexbox */
+            align-items: center; /* Vertically centers image and text */
+            justify-content: center; /* Centers the entire content within this container */
+        }
+
+        .image-paragraph img {
+            max-width: 400px; /* Limits the width of the image to a maximum of 400 pixels */
+            width: auto; /* Allows the image to resize according to its original aspect ratio */
+            height: auto; /* Maintains aspect ratio of images when resized */
+            margin-right: 20px; /* Adds space between the image and the adjoining text */
+        }
+
+        footer {
+            text-align: center; /* Centers text in footer */
+            padding: 20px; /* Space around footer content */
+            background-color: #2c2c2c; /* Dark gray footer background */
+            color: white; /* Footer text color */
+            width: 100%; /* Full width */
+        }
     </style>
 </head>
 <body>
@@ -43,62 +156,46 @@
 </header>
 
 <main>
-    <h1>The 2025 Sommerville Masters Golf Pool Invitational</h1>
-    <h2>Hello Friends. </h2>
-    <h2>It's that time of year again. </h2>
+    <!-- Pre Tournament Intro -->
+    <h1>The 2025 Sommerville Masters Golf Pool Invitational</h1> <!-- Main title of the webpage -->
+    <h2>Hello Friends. </h2> <!-- Subheading welcoming visitors -->
+    <h2>It's that time of year again. </h2> <!-- Subheading introducing the event -->
         
     <h2>Welcome to The Masters at Augusta National Golf Club.</h2>
 
     <div class="image-paragraph">
         <img src="https://golfdigest.sports.sndimg.com/content/dam/images/golfdigest/fullset/2017/04/27/5901ef4355566d7a285ae1d8_nantz.jpg.rend.hgtvcom.966.544.suffix/1573313127891.jpeg" alt="Descriptive Alt Text">
     </div>
-    <h2>A tradition unlike any other. 🌸</h2>
-    <a href="register.html" class="big-button">Register Now</a>
-
-Day 1 Summary 
+    <h2>A tradition unlike any other. 🌸</h2> <!-- Paragraph text -->
+    <a href="register.html" class="big-button">Register Now</a> <!-- Button linking to the registration page -->
+<!-- Day 1 Summary 
+    <h1>The 2025 Sommerville Masters Golf Pool Invitational</h1>
     <h1>Current Pick 'Em Leaderboard </h1>
+    
     <h1>Round 1 Summary</h1>
-    <h2>Participants and Scores:</h2>
-    <ul>
-        <li>John Doe: 72</li>
-        <li>Jane Smith: 68</li>
-        <li>Bob Johnson: 75</li>
-        <li>Mary Brown: 70</li>
-    </ul>
+    <h2>Input summary here</h2>
+    -->
 
-
-<!-- Day 2 Summary
+    <!-- Day 2 Summary 
+    <h1>The 2025 Sommerville Masters Golf Pool Invitational</h1>
+      <h1>Current Pick 'Em Leaderboard </h1>
     <h1>Round 2 Summary</h1>
-    <h2>Participants and Scores:</h2>
-    <ul>
-        <li>John Doe: 70</li>
-        <li>Jane Smith: 69</li>
-        <li>Bob Johnson: 73</li>
-        <li>Mary Brown: 68</li>
-    </ul>
+    <h2>Input summary here</h2>
     -->
 
-<!-- Day 3 Summary
+    <!-- Day 3 Summary 
+    <h1>The 2025 Sommerville Masters Golf Pool Invitational</h1>
+      <h1>Current Pick 'Em Leaderboard </h1>
     <h1>Round 3 Summary</h1>
-    <h2>Participants and Scores:</h2>
-    <ul>
-        <li>John Doe: 68</li>
-        <li>Jane Smith: 67</li>
-        <li>Bob Johnson: 74</li>
-        <li>Mary Brown: 66</li>
-    </ul>
+    <h2>Input summary here</h2>
     -->
 
-<!-- Day 4 Summary
+    <!-- Day 4 Summary 
+    <h1>The 2025 Sommerville Masters Golf Pool Invitational</h1>
+      <h1>Current Pick 'Em Leaderboard </h1>
     <h1>Round 4 Summary</h1>
-    <h2>Participants and Scores:</h2>
-    <ul>
-        <li>John Doe: 71</li>
-        <li>Jane Smith: 68</li>
-        <li>Bob Johnson: 70</li>
-        <li>Mary Brown: 69</li>
-    </ul> -->
-
+    <h2>Input summary here</h2>
+    -->
     <!-- Slideshow Container -->
     <div class="slideshow-container">
         <img class="mySlides" src="https://public.augusta.com/s3fs-public/article/images/clubhouse_14.jpg" alt="Slideshow Image 1">
@@ -114,11 +211,50 @@ Day 1 Summary
 </main>
 
 <footer>
-    <div id="footer"></div>
+    <div id="footer"></div> <!-- Placeholder div for footer content; footer content can be dynamically loaded with JavaScript -->
 </footer>
 
 <script>
-// JavaScript code for dropdown menu and slideshow functionality unchanged
+// Function to toggle the display of the dropdown menu
+function toggleDropdown() {
+    const dropdown = document.getElementById('dropdown'); // Retrieves the dropdown element
+    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block'; // Toggles the dropdown's visibility state
+}
+
+// Closes the dropdown if clicking outside of it
+window.onclick = function(event) {
+    if (!event.target.closest('.logo-container')) { // Checks if the clicked target is not the logo container
+        const dropdown = document.getElementById('dropdown'); // Retrieves dropdown element
+        if (dropdown.style.display === 'block') { // If the dropdown is currently visible
+            dropdown.style.display = 'none'; // Hides the dropdown menu
+        }
+    }
+}
+
+// Slideshow functionality
+let slideIndex = 0; // Initializes slide index to 0, indicating the first slide
+showSlides(); // Calls showSlides function to display the initial slide
+
+function showSlides() {
+    let slides = document.getElementsByClassName("mySlides"); // Retrieves all elements with the class mySlides
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none"; // Hides all slides
+    }
+    slideIndex++; // Increments the slide index to move to the next slide
+    if (slideIndex > slides.length) {slideIndex = 1;} // Resets index to 1 if it exceeds the total number of slides
+    slides[slideIndex - 1].style.display = "block"; // Displays the current slide based on the updated index
+    setTimeout(showSlides, 5000); // Calls showSlides again after 5 seconds to change the slide
+}
+
+// Fetch footer content from an external HTML file
+document.addEventListener("DOMContentLoaded", function() { // Waits for the DOM to fully load before executing the following
+    fetch('footer.html') // Fetches content from footer.html
+        .then(response => response.text()) // Converts the fetched response to text
+        .then(data => {
+            document.getElementById('footer').innerHTML = data; // Inserts the fetched footer content into the placeholder div
+        })
+        .catch(error => console.error('Error loading footer:', error)); // Logs any errors to the console
+});
 </script>
 
 </body>
