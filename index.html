@@ -163,6 +163,38 @@
         
     <h2>Welcome to The Masters at Augusta National Golf Club.</h2>
 
+    
+<!-- Countdown Timer -->
+<div id="countdown" style="font-size: 48px; font-weight: bold; color: white; background-color: #1a4831; padding: 20px; border-radius: 10px; margin: 20px 0;"></div>
+<script>
+    // Set the date we’re counting down to
+    const countDownDate = new Date("April 10, 2025 09:00:00").getTime();
+
+    // Update the countdown every 1 second
+    const x = setInterval(function() {
+        // Get today's date and time
+        const now = new Date().getTime();
+
+        // Calculate the distance between now and the countdown date
+        const distance = countDownDate - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Output the result in the countdown element
+        document.getElementById("countdown").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+        // If the countdown is over, display a message
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("countdown").innerHTML = "EXPIRED";
+        }
+    }, 1000);
+</script>
+
     <div class="image-paragraph">
         <img src="https://golfdigest.sports.sndimg.com/content/dam/images/golfdigest/fullset/2017/04/27/5901ef4355566d7a285ae1d8_nantz.jpg.rend.hgtvcom.966.544.suffix/1573313127891.jpeg" alt="Descriptive Alt Text">
     </div>
