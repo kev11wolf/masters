@@ -163,15 +163,16 @@
         
     <h2>Welcome to The Masters at Augusta National Golf Club.</h2>
 
-    <!-- Countdown Timer -->
+  <!-- Countdown Timer -->
 <div id="countdown" style="font-size: 48px; font-weight: bold; color: white; background-color: #1a4831; padding: 20px; border-radius: 10px; margin: 20px 0;"></div>
 <script>
-    // Set the date we’re counting down to
-    const countDownDate = new Date("April 10, 2025 09:00:00").getTime();
+    // Set the target date and time in Eastern Time (UTC-5 or UTC-4 depending on daylight saving time)
+    const targetDateTime = "2025-04-10T09:00:00-04:00"; // Adjust according to your target timezone (e.g., -04:00 for EDT)
+    const countDownDate = new Date(targetDateTime).getTime();
 
     // Update the countdown every 1 second
     const x = setInterval(function() {
-        // Get today's date and time
+        // Get the current time in UTC
         const now = new Date().getTime();
 
         // Calculate the distance between now and the countdown date
