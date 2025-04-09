@@ -155,19 +155,98 @@
     </nav>
 </header>
 
-<main>
+<!-- <main>
     <!-- Pre Tournament Intro -->
-    <h1>The 2025 Sommerville Masters Golf Pool Invitational</h1> <!-- Main title of the webpage -->
-    <h2>Hello Friends. </h2> <!-- Subheading welcoming visitors -->
-    <h2>It's that time of year again. </h2> <!-- Subheading introducing the event -->
+   <!-- <h1>The 2025 Sommerville Masters Golf Pool Invitational</h1>
+  <!-- <h2>Hello Friends. </h2>
+    <!-- <h2>It's that time of year again. </h2>
         
     <h2>Welcome to The Masters at Augusta National Golf Club.</h2>
 
         <div class="image-paragraph">
         <img src="https://golfdigest.sports.sndimg.com/content/dam/images/golfdigest/fullset/2017/04/27/5901ef4355566d7a285ae1d8_nantz.jpg.rend.hgtvcom.966.544.suffix/1573313127891.jpeg" alt="Descriptive Alt Text">
     </div>
-    <h2>A tradition unlike any other. 🌸</h2> <!-- Paragraph text -->
-    <a href="register.html" class="big-button">Click here to make your picks!</a> <!-- Button linking to the registration page -->
+    <h2>A tradition unlike any other. 🌸</h2>
+    <a href="register.html" class="big-button">Click here to make your picks!</a>
+-->
+
+<!-- Leaderboard Summary -->
+   <title>Static Leaderboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        table {
+            width: 70%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #ccc;
+        }
+        th {
+            background-color: #1a4831;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Pick 'Em Leaderboard</h1>
+    
+    <table id="leaderboard">
+        <thead>
+            <tr>
+                <th>Participant</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+            <!-- Dynamic content will be added here -->
+        </tbody>
+    </table>
+
+    <script>
+        // Data dump (copy and paste your data here)
+        const dataDump = `
+K-Dawg	0
+Brandon E.	0
+Paul W.	0
+Evan S.	0
+Stephen	0
+Cole T.	0
+Nat S.	0
+Jason K.	0
+Blake S.	0
+Nate	0
+        `;
+
+        function populateTable() {
+            const rows = dataDump.trim().split('\n');
+            const tableBody = document.getElementById('tableBody');
+
+            // Loop through the rows and add them to the table
+            rows.forEach(row => {
+                const columns = row.split('\t'); // Split by tab
+                if (columns.length === 2) { // Ensure it has exactly two columns
+                    const newRow = document.createElement('tr');
+                    newRow.innerHTML = `<td>${columns[0]}</td><td>${columns[1]}</td>`;
+                    tableBody.appendChild(newRow);
+                }
+            });
+        }
+
+        // Call the function on page load
+        window.onload = populateTable;
+    </script>
+</body>
+</-->
 
       <!-- Countdown Timer -->
 <div id="countdown" style="font-size: 48px; font-weight: bold; color: white; background-color: #1a4831; padding: 20px; border-radius: 10px; margin: 20px 0;"> </div>
@@ -202,29 +281,64 @@
 </script>
     <h4>Time left til 1st tee time</h4>
 
-<!-- Wednesday Info 
-    <h1>Announcements</h1> 
-    <h2> - You should have recieved an e-mail from me with info about this year's pool. If you didn't see it, check your junk folder and add me to your safe senders list.
-    <br> - Double check your picks on the "Pick 'Em leaderboard" to make sure everything looks good. If something is wrong or you want to tweak your picks just email me at kev11wolf@gmail.com
-    <br> - 
-
-
-</h2> 
-    <h2>It's that time of year again. </h2> 
-        
-    <h2>Welcome to The Masters at Augusta National Golf Club.</h2>
-
-        <div class="image-paragraph">
-        <img src="https://golfdigest.sports.sndimg.com/content/dam/images/golfdigest/fullset/2017/04/27/5901ef4355566d7a285ae1d8_nantz.jpg.rend.hgtvcom.966.544.suffix/1573313127891.jpeg" alt="Descriptive Alt Text">
-    </div>
-    <h2>A tradition unlike any other. 🌸</h2> <!-- Paragraph text -->
-
 <!-- Pool size -->
 <div id="pool_size" style="font-size: 48px; font-weight: bold; color: white; background-color: #1a4831; padding: 20px; border-radius: 10px; margin: 20px 0;">
     Pool Size: $180
 </div>
     <h4>Winner takes all!</h4>
 
+
+
+ <!-- Wednesday Info -->
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Click to Enlarge</title>
+    <style>
+        .image-paragraph {
+            text-align: center; /* Center the image */
+            max-width: 100%; /* Prevent overflow on smaller screens */
+        }
+        .image-paragraph img {
+            width: 100%; /* Responsive: Image takes full width of the container */
+            max-width: 800px; /* Set a maximum width */
+            cursor: pointer; /* Show hand cursor on hover */
+            transition: transform 0.3s ease; /* Smooth transition for scaling */
+        }
+        .enlarged {
+            transform: scale(1.5); /* Modify the scale value for size increase */
+        }
+    </style>
+</head>
+<body>
+    <div class="image-paragraph">
+        <img id="clickableImage" src="https://www.telegraph.co.uk/content/dam/golf/2025/03/19/TELEMMGLPICT000331271241_17424025825180_trans_NvBQzQNjv4BqqVzuuqpFlyLIwiB6NTmJwSX5rhseiWKOo9p9OQ-ymek.jpeg?imwidth=1280" alt="Descriptive Alt Text">
+    </div>
+
+    <script>
+        // Get the image element
+        const image = document.getElementById('clickableImage');
+
+        // Add a click event listener to toggle enlarged state
+        image.addEventListener('click', function() {
+            this.classList.toggle('enlarged'); // Toggle the enlarged class
+        });
+    </script>
+</body>
+    <h1>Announcements</h1> 
+    <h4> - You should have recieved an e-mail from me with info about this year's pool. If you didn't see it, check your junk folder and add me to your safe senders list. I will be sending more too, so keep an eye out for them.
+    <br>
+    <br> - Double check your picks on the "Pick 'Em leaderboard" to make sure everything looks good. If something is wrong or you want to tweak your picks just email me at kev11wolf@gmail.com.
+    <br>
+    <br> - This website works best on a PC monitor, but is mobile friendly.
+    <br>
+    <br> - Questions? Concerns? Comments? Let me know your thoughts on how this website can be improved!
+
+</h4> 
+
+
+        
 
     
 <!-- Day 1 Summary   -->
