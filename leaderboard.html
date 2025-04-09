@@ -248,8 +248,8 @@
             if (newMessage) {
                 const timestamp = new Date().toLocaleString();
                 messages.push({ user: username, message: newMessage, timestamp });
-                if (messages.length > 50) {
-                    messages.shift(); // Remove the oldest message if we have more than 50
+                if (messages.length > 500) {
+                    messages.shift(); // Remove the oldest message if we exceed 500
                 }
                 localStorage.setItem('messages', JSON.stringify(messages));
                 messageInput.value = ''; // Clear input field
@@ -260,7 +260,26 @@
             }
         }
 
+        // Function to reset the message board - Modify as needed to restrict access
+        function resetMessageBoard() {
+            // You can add a specific condition here if you want to restrict access
+            const password = prompt("Enter the reset password:");
+            if (password === "yourSecretPassword") {
+                messages = []; // Clear the messages array
+                localStorage.removeItem('messages'); // Remove messages from local storage
+                messagesContainer.innerHTML = ''; // Clear the display
+                alert("Message board has been reset.");
+            } else {
+                alert("Incorrect password. Reset aborted.");
+            }
+        }
+
         sendButton.addEventListener('click', addMessage);
+        // You can call resetMessageBoard() from the console or modify to check a condition.
+
+        // For example, you can expose the reset method globally for your convenience
+        // window.resetMessageBoard = resetMessageBoard;
+
         messageInput.addEventListener('keypress', (event) => {
             if (event.key === 'Enter') {
                 addMessage();
