@@ -116,10 +116,45 @@
             width: 100%; 
         }
 
+        /* Message board styles */
+        #messages {
+            height: 200px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .message {
+            padding: 5px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .message:last-child {
+            border-bottom: none;
+        }
+
+        .username-input,
+        .message-input {
+            width: 40%;
+            padding: 10px;
+            margin: 10px 5px; 
+        }
+
+        input[type="button"] {
+            padding: 10px;
+        }
+
         /* Additional media queries for better responsiveness */
         @media (max-width: 768px) {
             th, td {
                 font-size: calc(10px + 0.8vw); /* Adjust for smaller screens */
+            }
+
+            .username-input,
+            .message-input {
+                width: 80%; /* Adjust for smaller screens */
             }
         }
 
@@ -179,6 +214,63 @@
             <!-- Dynamic content will be inserted here -->
         </tbody>
     </table>
+
+    <!-- Message Board Section -->
+    <h2>Message Board</h2>
+    <input type="text" id="usernameInput" class="username-input" placeholder="Enter your username" />
+    <div id="messages"></div>
+    <input type="text" id="messageInput" class="message-input" placeholder="Enter your message" />
+    <input type="button" id="sendButton" value="Send" />
+
+    <script>
+        const messagesContainer = document.getElementById('messages');
+        const messageInput = document.getElementById('messageInput');
+        const sendButton = document.getElementById('sendButton');
+        const usernameInput = document.getElementById('usernameInput');
+
+        // Load messages from local storage
+        let messages = JSON.parse(localStorage.getItem('messages')) || [];
+
+        function displayMessages() {
+            messagesContainer.innerHTML = '';
+            messages.forEach(({ user, message, timestamp }) => {
+                const messageElement = document.createElement('div');
+                messageElement.className = 'message';
+                messageElement.innerHTML = `<strong>${user}</strong> <em>(${timestamp})</em>: ${message}`;
+                messagesContainer.appendChild(messageElement);
+            });
+            messagesContainer.scrollTop = messagesContainer.scrollHeight; // Auto-scroll to the bottom
+        }
+
+        function addMessage() {
+            const newMessage = messageInput.value.trim();
+            const username = usernameInput.value.trim() || "ANONYMOUS"; // Default to "ANONYMOUS"
+            if (newMessage) {
+                const timestamp = new Date().toLocaleString();
+                messages.push({ user: username, message: newMessage, timestamp });
+                if (messages.length > 50) {
+                    messages.shift(); // Remove the oldest message if we have more than 50
+                }
+                localStorage.setItem('messages', JSON.stringify(messages));
+                messageInput.value = ''; // Clear input field
+                usernameInput.value = ''; // Clear username input field for next use
+                displayMessages();
+            } else {
+                alert('Please enter a message.');
+            }
+        }
+
+        sendButton.addEventListener('click', addMessage);
+        messageInput.addEventListener('keypress', (event) => {
+            if (event.key === 'Enter') {
+                addMessage();
+            }
+        });
+
+        // Display messages on initial load
+        displayMessages();
+    </script>
+    
 </main>
 
 <script>
