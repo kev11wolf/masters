@@ -219,26 +219,26 @@ function populateLeaderboard(csvData) {
 
 // Example CSV data to demonstrate functionality
 const csvExample = `
-Dima K.	Scottie Scheffler	Rory McIlroy	Cameron Smith	Will Zalatoris	Justin Rose	Cameron Young	-4	-4	-1	2	-7	0	-16
-Jason K.	Scottie Scheffler	Rory McIlroy	Corey Conners	Min Woo Lee	Daniel Berger	Cam Davis	-4	-4	-4	-1	-1	2	-13
-Jailbirdie El Pato	Scottie Scheffler	Rory McIlroy	Tony Finau	Min Woo Lee	Matt Fitzpatrick	Ángel Cabrera	-4	-4	3	-1	-1	3	-10
-Blake S.	Rory McIlroy	Scottie Scheffler	Min Woo Lee	Cameron Smith	Maverick McNealy	Nicolai Højgaard	-4	-4	-1	-1	0	4	-10
-Rick S.	Collin Morikawa	Viktor Hovland	Patrick Cantlay	Shane Lowry	Justin Rose	Max Homa	0	0	2	-1	-7	2	-8
-Paul W.	Jon Rahm	Rory McIlroy	Shane Lowry	Patrick Reed	Aaron Rai	Nick Taylor	3	-4	-1	-1	-2	1	-8
-Thomas K.	Scottie Scheffler	Collin Morikawa	Russell Henley	Shane Lowry	Aaron Rai	Tom Hoge	-4	0	4	-1	-2	0	-7
-Max	Rory McIlroy	Collin Morikawa	Sergio Garcia	Jason Day	Phil Mickelson	Max Greyserman	-4	0	0	-2	3	-1	-7
-Evan S.	Scottie Scheffler	Xander Schauffele	Patrick Cantlay	Cameron Smith	Matt Fitzpatrick	Cameron Young	-4	2	2	-1	-1	0	-6
-K-Dawg	Scottie Scheffler	Bryson DeChambeau	Sahith Theegala	Patrick Cantlay	Phil Mickelson	Cameron Young	-4	-2	1	2	3	0	-5
-Nate C.	Viktor Hovland	Rory McIlroy	Will Zalatoris	Min Woo Lee	Byeong Hun An	Cameron Young	0	-4	2	-1	2	0	-5
-Cole T.	Scottie Scheffler	Rory McIlroy	Patrick Cantlay	Will Zalatoris	Billy Horschel	Joe Highsmith	-4	-4	2	2	5	4	-4
-Nat S.	Collin Morikawa	Bryson DeChambeau	Tony Finau	Corey Conners	Billy Horschel	Max Homa	0	-2	3	-4	5	2	-4
-Justin E.	Rory McIlroy	Ludvig Åberg	Will Zalatoris	Patrick Cantlay	Maverick McNealy	Matthieu Pavon	-4	-2	2	2	0	6	-4
-Stephen	Bryson DeChambeau	Ludvig Åberg	Tony Finau	Tom Kim	Sungjae Im	Nick Taylor	-2	-2	3	1	-1	1	-4
-Addison G	Rory McIlroy	Collin Morikawa	Will Zalatoris	Russell Henley	Michael Kim	Max Homa	-4	0	2	4	-1	2	-3
-Brady	Scottie Scheffler	Brooks Koepka	Wyndham Clark	Min Woo Lee	Dustin Johnson	Max Homa	-4	1	2	-1	2	2	-2
-Jordan 	Collin Morikawa	Rory McIlroy	Sepp Straka	Russell Henley	J.J. Spaun	Cameron Young	0	-4	5	4	2	0	-2
-Zach K.	Scottie Scheffler	Xander Schauffele	Russell Henley	Wyndham Clark	Maverick McNealy	Nick Taylor	-4	2	4	2	0	1	-1
-Brandon E.	Scottie Scheffler	Ludvig Åberg	Russell Henley	Sepp Straka	Billy Horschel	Christiaan Bezuidenhout	-4	-2	4	5	5	4	2
+Dima K.	Scottie Scheffler	Rory McIlroy	Cameron Smith	Will Zalatoris	Justin Rose	Cameron Young	-4	0	-1	2	-7	0	-12
+Jason K.	Scottie Scheffler	Rory McIlroy	Corey Conners	Min Woo Lee	Daniel Berger	Cam Davis	-4	0	-4	-1	-1	2	-10
+Rick S.	Collin Morikawa	Viktor Hovland	Patrick Cantlay	Shane Lowry	Justin Rose	Max Homa	0	-1	2	-1	-7	2	-9
+Thomas K.	Scottie Scheffler	Collin Morikawa	Russell Henley	Shane Lowry	Aaron Rai	Tom Hoge	-4	0	7	-1	-2	0	-7
+K-Dawg	Scottie Scheffler	Bryson DeChambeau	Sahith Theegala	Patrick Cantlay	Phil Mickelson	Cameron Young	-4	-3	0	2	3	0	-7
+Stephen	Bryson DeChambeau	Ludvig Åberg	Tony Finau	Tom Kim	Sungjae Im	Nick Taylor	-3	-4	3	1	-1	1	-7
+Jailbirdie El Pato	Scottie Scheffler	Rory McIlroy	Tony Finau	Min Woo Lee	Matt Fitzpatrick	Ángel Cabrera	-4	0	3	-1	-1	3	-6
+Blake S.	Rory McIlroy	Scottie Scheffler	Min Woo Lee	Cameron Smith	Maverick McNealy	Nicolai Højgaard	0	-4	-1	-1	0	4	-6
+Evan S.	Scottie Scheffler	Xander Schauffele	Patrick Cantlay	Cameron Smith	Matt Fitzpatrick	Cameron Young	-4	1	2	-1	-1	0	-6
+Nat S.	Collin Morikawa	Bryson DeChambeau	Tony Finau	Corey Conners	Billy Horschel	Max Homa	0	-3	3	-4	5	2	-5
+Paul W.	Jon Rahm	Rory McIlroy	Shane Lowry	Patrick Reed	Aaron Rai	Nick Taylor	3	0	-1	-1	-2	1	-4
+Max	Rory McIlroy	Collin Morikawa	Sergio Garcia	Jason Day	Phil Mickelson	Max Greyserman	0	0	0	-2	3	-1	-3
+Nate C.	Viktor Hovland	Rory McIlroy	Will Zalatoris	Min Woo Lee	Byeong Hun An	Cameron Young	-1	0	2	-1	2	0	-2
+Justin E.	Rory McIlroy	Ludvig Åberg	Will Zalatoris	Patrick Cantlay	Maverick McNealy	Matthieu Pavon	0	-4	2	2	0	6	-2
+Zach K.	Scottie Scheffler	Xander Schauffele	Russell Henley	Wyndham Clark	Maverick McNealy	Nick Taylor	-4	1	7	4	0	1	-2
+Brady	Scottie Scheffler	Brooks Koepka	Wyndham Clark	Min Woo Lee	Dustin Johnson	Max Homa	-4	2	4	-1	2	2	-1
+Cole T.	Scottie Scheffler	Rory McIlroy	Patrick Cantlay	Will Zalatoris	Billy Horschel	Joe Highsmith	-4	0	2	2	5	4	0
+Addison G	Rory McIlroy	Collin Morikawa	Will Zalatoris	Russell Henley	Michael Kim	Max Homa	0	0	2	7	-1	2	1
+Brandon E.	Scottie Scheffler	Ludvig Åberg	Russell Henley	Sepp Straka	Billy Horschel	Christiaan Bezuidenhout	-4	-4	7	6	5	4	1
+Jordan 	Collin Morikawa	Rory McIlroy	Sepp Straka	Russell Henley	J.J. Spaun	Cameron Young	0	0	6	7	2	0	2
 `;
 
 // Call the function to populate the leaderboard with the example data
