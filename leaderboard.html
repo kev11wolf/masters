@@ -334,26 +334,26 @@ function populateLeaderboard(csvData) {
 
 // Updated example CSV data to demonstrate new functionality
 const csvExample = `
-K-Dawg	Scottie Scheffler	Bryson DeChambeau	Sahith Theegala	Patrick Cantlay	Phil Mickelson	Cameron Young	-	-	-	-	-	-	0
-Brandon E.	Scottie Scheffler	Ludvig Aberg	Russell Henley	Sepp Straka	Billy Horschel	Christiaan Bezuidenhout	-	-	-	-	-	-	0
-Paul W.	Jon Rahm	Rory McIlroy	Shane Lowry	Patrick Reed	Aaron Rai	Nick Taylor	-	-	-	-	-	-	0
-Evan S.	Scottie Scheffler	Xander Schauffele	Patrick Cantlay	Cameron Smith	Matt Fitzpatrick	Cameron Young	-	-	-	-	-	-	0
-Stephen	Bryson DeChambeau	Ludvig Aberg	Tony Finau	Tom Kim	Sungjae Im	Nick Taylor	-	-	-	-	-	-	0
-Cole T.	Scottie Scheffler	Rory McIlroy	Patrick Cantlay	Will Zalatoris	Billy Horschel	Joe Highsmith	-	-	-	-	-	-	0
-Nat S.	Collin Morikawa	Bryson DeChambeau	Tony Finau	Corey Conners	Billy Horschel	Max Homa	-	-	-	-	-	-	0
-Jason K.	Scottie Scheffler	Rory McIlroy	Corey Conners	Min Woo Lee	Daniel Berger	Cameron Davis	-	-	-	-	-	-	0
-Blake S.	Rory McIlroy	Scottie Scheffler	Min Woo Lee	Cameron Smith	Maverick McNealy	Nicolai Hojgaard	-	-	-	-	-	-	0
-Addison G	Rory McIlroy	Collin Morikawa	Will Zalatoris	Russell Henley	Michael Kim	Max Homa	-	-	-	-	-	-	0
-Brady	Scottie Scheffler	Brooks Koepka	Wyndham Clark	Min Woo Lee	Dustin Johnson	Max Homa	-	-	-	-	-	-	0
-Justin E.	Rory McIlroy	Ludvig Aberg	Will Zalatoris	Patrick Cantlay	Maverick McNealy	Matthieu Pavon	-	-	-	-	-	-	0
-Max	Rory McIlroy	Collin Morikawa	Sergio Garcia	Jason Day	Phil Mickelson	Max Greyserman	-	-	-	-	-	-	0
-Rick S.	Collin Morikawa	Viktor Hovland	Patrick Cantlay	Shane Lowry	Justin Rose	Max Homa	-	-	-	-	-	-	0
-Zach Kinnaman	Scottie Scheffler	Xander Schauffele	Russell Henley	Wyndham Clark	Maverick McNealy	Nick Taylor	-	-	-	-	-	-	0
-Dima Kyle	Scottie Scheffler	Rory McIlroy	Cameron Smith	Will Zalatoris	Justin Rose	Cameron Young	-	-	-	-	-	-	0
-Jailbirdie El Pato	Scottie Scheffler	Rory McIlroy	Tony Finau	Min Woo Lee	Matt Fitzpatrick	Angel Cabrera	-	-	-	-	-	-	0
-Jordan 	Collin Morikawa	Rory McIlroy	Sepp Straka	Russell Henley	J.J. Spaun	Cameron Young	-	-	-	-	-	-	0
-Thomas K.	Scottie Scheffler	Collin Morikawa	Russell Henley	Shane Lowry	Aaron Rai	Tom Hoge	-	-	-	-	-	-	0
-Nate C.	Viktor Hovland	Rory McIlroy	Will Zalatoris	Min Woo Lee	Byeong-Hun An	Cameron Young	-	-	-	-	-	-	0
+Rick S.	Collin Morikawa	Viktor Hovland	Patrick Cantlay	Shane Lowry	Justin Rose	Max Homa	31	-	-	-	3	4	38
+Zach K.	Scottie Scheffler	Xander Schauffele	Russell Henley	Wyndham Clark	Maverick McNealy	Nick Taylor	25	-	-	-	23	-	48
+Stephen	Bryson DeChambeau	Ludvig Aberg	Tony Finau	Tom Kim	Sungjae Im	Nick Taylor	-	-	25	24	-	-	49
+Brady	Scottie Scheffler	Brooks Koepka	Wyndham Clark	Min Woo Lee	Dustin Johnson	Max Homa	25	-	-	31	-	4	60
+Brandon E.	Scottie Scheffler	Ludvig Aberg	Russell Henley	Sepp Straka	Billy Horschel	Christiaan Bezuidenhout	25	-	-	-	39	9	73
+Paul W.	Jon Rahm	Rory McIlroy	Shane Lowry	Patrick Reed	Aaron Rai	Nick Taylor	-	-	-	35	41	-	76
+Jailbirdie El Pato	Scottie Scheffler	Rory McIlroy	Tony Finau	Min Woo Lee	Matt Fitzpatrick	Angel Cabrera	25	-	25	31	-	-	81
+Justin E.	Rory McIlroy	Ludvig Aberg	Will Zalatoris	Patrick Cantlay	Maverick McNealy	Matthieu Pavon	-	-	46	-	23	13	82
+Jason K.	Scottie Scheffler	Rory McIlroy	Corey Conners	Min Woo Lee	Daniel Berger	Cameron Davis	25	-	39	31	-	-	95
+Jordan 	Collin Morikawa	Rory McIlroy	Sepp Straka	Russell Henley	J.J. Spaun	Cameron Young	31	-	-	-	4	62	97
+Thomas K.	Scottie Scheffler	Collin Morikawa	Russell Henley	Shane Lowry	Aaron Rai	Tom Hoge	25	31	-	-	41	9	106
+K-Dawg	Scottie Scheffler	Bryson DeChambeau	Sahith Theegala	Patrick Cantlay	Phil Mickelson	Cameron Young	25	-	-	-	29	62	116
+Max	Rory McIlroy	Collin Morikawa	Sergio Garcia	Jason Day	Phil Mickelson	Max Greyserman	-	31	-	27	29	35	122
+Blake S.	Rory McIlroy	Scottie Scheffler	Min Woo Lee	Cameron Smith	Maverick McNealy	Nicolai Hojgaard	-	25	31	47	23	-	126
+Evan S.	Scottie Scheffler	Xander Schauffele	Patrick Cantlay	Cameron Smith	Matt Fitzpatrick	Cameron Young	25	-	-	47	-	62	134
+Nat S.	Collin Morikawa	Bryson DeChambeau	Tony Finau	Corey Conners	Billy Horschel	Max Homa	31	-	25	39	39	4	138
+Nate C.	Viktor Hovland	Rory McIlroy	Will Zalatoris	Min Woo Lee	Byeong-Hun An	Cameron Young	-	-	46	31	-	62	139
+Addison G	Rory McIlroy	Collin Morikawa	Will Zalatoris	Russell Henley	Michael Kim	Max Homa	-	31	46	-	60	4	141
+Cole T.	Scottie Scheffler	Rory McIlroy	Patrick Cantlay	Will Zalatoris	Billy Horschel	Joe Highsmith	25	-	-	46	39	61	171
+Dima K.	Scottie Scheffler	Rory McIlroy	Cameron Smith	Will Zalatoris	Justin Rose	Cameron Young	25	-	47	46	3	62	183
 `;
 
 // Call the function to populate the leaderboard with updated example data
