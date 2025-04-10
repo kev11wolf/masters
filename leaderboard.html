@@ -9,7 +9,7 @@
 
     <style>
         body {
-            font-family: 'Roboto', sans-serif; 
+            font-family: 'Roboto', sans-serif;
             background-color: #f5f5f5;
             color: #1a4831;
             text-align: center; /* Centers all text */
@@ -18,29 +18,29 @@
         }
 
         header {
-            background: #1a4831; 
-            color: #ffffff; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
+            background: #1a4831;
+            color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             padding: 10px 20px;
-            position: relative; 
+            position: relative;
         }
 
         #logo {
-            max-height: 60px; 
-            cursor: pointer; 
+            max-height: 60px;
+            cursor: pointer;
         }
 
         nav {
-            position: relative; 
+            position: relative;
         }
 
         .logo-container {
-            display: flex; 
-            align-items: center; 
-            cursor: pointer; 
-            padding: 10px; 
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 10px;
         }
 
         .logo-container img {
@@ -86,8 +86,7 @@
             table-layout: auto; /* Allow the table to resize dynamically */
         }
 
-        th,
-        td {
+        th, td {
             padding: 10px; 
             border: 1px solid #1a4831; 
             text-align: center; 
@@ -116,52 +115,9 @@
             width: 100%; 
         }
 
-        /* Message board styles */
-        #messages {
-            height: 200px;
-            overflow-y: auto;
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin-bottom: 20px;
-            background-color: #f9f9f9;
-        }
-
-        .message {
-            padding: 5px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .message:last-child {
-            border-bottom: none;
-        }
-
-        .username-input,
-        .message-input {
-            width: 40%;
-            padding: 10px;
-            margin: 10px 5px; 
-        }
-
-        input[type="button"] {
-            padding: 10px;
-        }
-
-        /* Additional media queries for better responsiveness */
-        @media (max-width: 768px) {
-            th, td {
-                font-size: calc(10px + 0.8vw); /* Adjust for smaller screens */
-            }
-
-            .username-input,
-            .message-input {
-                width: 80%; /* Adjust for smaller screens */
-            }
-        }
-
-        @media (max-width: 480px) {
-            th, td {
-                font-size: calc(8px + 1vw); /* Further adjustment for extra small screens */
-            }
+        /* CSS for negative numbers */
+        .negative {
+            color: red; /* Red color for negative numbers */
         }
 
     </style>
@@ -214,84 +170,6 @@
             <!-- Dynamic content will be inserted here -->
         </tbody>
     </table>
-
-    <!-- Message Board Section -->
-    <!--
-    <h2>Message Board</h2>
-    <input type="text" id="usernameInput" class="username-input" placeholder="Enter your username" />
-    <div id="messages"></div>
-    <input type="text" id="messageInput" class="message-input" placeholder="Enter your message" />
-    <input type="button" id="sendButton" value="Send" />
-
-    <script>
-        const messagesContainer = document.getElementById('messages');
-        const messageInput = document.getElementById('messageInput');
-        const sendButton = document.getElementById('sendButton');
-        const usernameInput = document.getElementById('usernameInput');
-
-        // Load messages from local storage
-        let messages = JSON.parse(localStorage.getItem('messages')) || [];
-
-        function displayMessages() {
-            messagesContainer.innerHTML = '';
-            messages.forEach(({ user, message, timestamp }) => {
-                const messageElement = document.createElement('div');
-                messageElement.className = 'message';
-                messageElement.innerHTML = `<strong>${user}</strong> <em>(${timestamp})</em>: ${message}`;
-                messagesContainer.appendChild(messageElement);
-            });
-            messagesContainer.scrollTop = messagesContainer.scrollHeight; // Auto-scroll to the bottom
-        }
-
-        function addMessage() {
-            const newMessage = messageInput.value.trim();
-            const username = usernameInput.value.trim() || "ANONYMOUS"; // Default to "ANONYMOUS"
-            if (newMessage) {
-                const timestamp = new Date().toLocaleString();
-                messages.push({ user: username, message: newMessage, timestamp });
-                if (messages.length > 500) {
-                    messages.shift(); // Remove the oldest message if we exceed 500
-                }
-                localStorage.setItem('messages', JSON.stringify(messages));
-                messageInput.value = ''; // Clear input field
-                usernameInput.value = ''; // Clear username input field for next use
-                displayMessages();
-            } else {
-                alert('Please enter a message.');
-            }
-        }
-
-        // Function to reset the message board - Modify as needed to restrict access
-        function resetMessageBoard() {
-            // You can add a specific condition here if you want to restrict access
-            const password = prompt("Enter the reset password:");
-            if (password === "yourSecretPassword") {
-                messages = []; // Clear the messages array
-                localStorage.removeItem('messages'); // Remove messages from local storage
-                messagesContainer.innerHTML = ''; // Clear the display
-                alert("Message board has been reset.");
-            } else {
-                alert("Incorrect password. Reset aborted.");
-            }
-        }
-
-        sendButton.addEventListener('click', addMessage);
-        // You can call resetMessageBoard() from the console or modify to check a condition.
-
-        // For example, you can expose the reset method globally for your convenience
-        // window.resetMessageBoard = resetMessageBoard;
-
-        messageInput.addEventListener('keypress', (event) => {
-            if (event.key === 'Enter') {
-                addMessage();
-            }
-        });
-
-        // Display messages on initial load
-        displayMessages();
-    </script>
-    -->
-    
 </main>
 
 <script>
@@ -325,6 +203,13 @@ function populateLeaderboard(csvData) {
         columns.forEach(col => {
             const td = document.createElement('td');
             td.textContent = col;
+
+            // Check if the value is a number and negative
+            const num = parseFloat(col);
+            if (!isNaN(num) && num < 0) {
+                td.classList.add('negative'); // Add the red class if negative
+            }
+
             tr.appendChild(td);
         });
 
@@ -332,7 +217,7 @@ function populateLeaderboard(csvData) {
     });
 }
 
-// Updated example CSV data to demonstrate new functionality
+// Example CSV data to demonstrate functionality
 const csvExample = `
 Dima K.	Scottie Scheffler	Rory McIlroy	Cameron Smith	Will Zalatoris	Justin Rose	Cameron Young	-4	-2	-1	2	-6	0	-13
 Jason K.	Scottie Scheffler	Rory McIlroy	Corey Conners	Min Woo Lee	Daniel Berger	Cam Davis	-4	-2	-4	-1	-1	1	-11
@@ -356,7 +241,7 @@ Brandon E.	Scottie Scheffler	Ludvig Åberg	Russell Henley	Sepp Straka	Billy Hors
 Stephen	Bryson DeChambeau	Ludvig Åberg	Tony Finau	Tom Kim	Sungjae Im	Nick Taylor	-1	0	3	1	0	3	0
 `;
 
-// Call the function to populate the leaderboard with updated example data
+// Call the function to populate the leaderboard with the example data
 populateLeaderboard(csvExample);
 </script>
 
