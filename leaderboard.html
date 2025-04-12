@@ -220,25 +220,26 @@ function populateLeaderboard(csvData) {
 // Example CSV data to demonstrate functionality
 const csvExample = `
 Rick S.	Collin Morikawa	Viktor Hovland	Patrick Cantlay	Shane Lowry	Justin Rose	Max Homa	-4	-4	0	-5	-8	-1	-21
-Jason K.	Scottie Scheffler	Rory McIlroy	Corey Conners	Min Woo Lee	Daniel Berger	Cam Davis	-5	-6	-6	-1	0	CUT	-18
-Nat S.	Collin Morikawa	Bryson DeChambeau	Tony Finau	Corey Conners	Billy Horschel	Max Homa	-4	-7	CUT	-6	CUT	-1	-18
-Paul W.	Jon Rahm	Rory McIlroy	Shane Lowry	Patrick Reed	Aaron Rai	Nick Taylor	-2	-6	-5	-4	3	0	-17
-Max	Rory McIlroy	Collin Morikawa	Sergio Garcia	Jason Day	Phil Mickelson	Max Greyserman	-6	-4	CUT	-4	CUT	-1	-15
-Stephen	Bryson DeChambeau	Ludvig Åberg	Tony Finau	Tom Kim	Sungjae Im	Nick Taylor	-7	-3	CUT	2	-3	0	-13
-Nate C.	Viktor Hovland	Rory McIlroy	Will Zalatoris	Min Woo Lee	Byeong Hun An	Cameron Young	-4	-6	CUT	-1	-2	CUT	-13
-Thomas K.	Scottie Scheffler	Collin Morikawa	Russell Henley	Shane Lowry	Aaron Rai	Tom Hoge	-5	-4	CUT	-5	3	2	-12
-Jailbirdie El Pato	Scottie Scheffler	Rory McIlroy	Tony Finau	Min Woo Lee	Matt Fitzpatrick	Ángel Cabrera	-5	-6	CUT	-1	0	CUT	-12
-Blake S.	Rory McIlroy	Scottie Scheffler	Min Woo Lee	Cameron Smith	Maverick McNealy	Nicolai Højgaard	-6	-5	-1	CUT	0	CUT	-12
-Addison G	Rory McIlroy	Collin Morikawa	Will Zalatoris	Russell Henley	Michael Kim	Max Homa	-6	-4	CUT	CUT	0	-1	-11
-K-Dawg	Scottie Scheffler	Bryson DeChambeau	Sahith Theegala	Patrick Cantlay	Phil Mickelson	Cameron Young	-5	-7	1	0	CUT	CUT	-11
-Justin E.	Rory McIlroy	Ludvig Åberg	Will Zalatoris	Patrick Cantlay	Maverick McNealy	Matthieu Pavon	-6	-3	CUT	0	0	CUT	-9
-Zach K.	Scottie Scheffler	Xander Schauffele	Russell Henley	Wyndham Clark	Maverick McNealy	Nick Taylor	-5	-2	CUT	1	0	0	-7
-Evan S.	Scottie Scheffler	Xander Schauffele	Patrick Cantlay	Cameron Smith	Matt Fitzpatrick	Cameron Young	-5	-2	0	CUT	0	CUT	-7
-Brady	Scottie Scheffler	Brooks Koepka	Wyndham Clark	Min Woo Lee	Dustin Johnson	Max Homa	-5	CUT	1	-1	CUT	-1	-6
-Dima K.	Scottie Scheffler	Rory McIlroy	Cameron Smith	Will Zalatoris	Justin Rose	Cameron Young	-5	-6	CUT	CUT	-8	CUT	CUT
-Cole T.	Scottie Scheffler	Rory McIlroy	Patrick Cantlay	Will Zalatoris	Billy Horschel	Joe Highsmith	-5	-6	0	CUT	CUT	CUT	CUT
-Jordan 	Collin Morikawa	Rory McIlroy	Sepp Straka	Russell Henley	J.J. Spaun	Cameron Young	-4	-6	CUT	CUT	4	CUT	CUT
-Brandon E.	Scottie Scheffler	Ludvig Åberg	Russell Henley	Sepp Straka	Billy Horschel	Christiaan Bezuidenhout	-5	-3	CUT	CUT	CUT	CUT	CUT
+Jason K.	Scottie Scheffler	Rory McIlroy	Corey Conners	Min Woo Lee	Daniel Berger	Cam Davis	-6	-10	-7	1	0	CUT	-23
+Rick S.	Collin Morikawa	Viktor Hovland	Patrick Cantlay	Shane Lowry	Justin Rose	Max Homa	-3	-5	3	-6	-8	-1	-22
+Nat S.	Collin Morikawa	Bryson DeChambeau	Tony Finau	Corey Conners	Billy Horschel	Max Homa	-3	-9	CUT	-7	CUT	-1	-20
+Paul W.	Jon Rahm	Rory McIlroy	Shane Lowry	Patrick Reed	Aaron Rai	Nick Taylor	0	-10	-6	-3	-1	0	-20
+Max	Rory McIlroy	Collin Morikawa	Sergio Garcia	Jason Day	Phil Mickelson	Max Greyserman	-10	-3	CUT	-6	CUT	-1	-20
+Stephen	Bryson DeChambeau	Ludvig Åberg	Tony Finau	Tom Kim	Sungjae Im	Nick Taylor	-9	-2	CUT	2	-5	0	-16
+Thomas K.	Scottie Scheffler	Collin Morikawa	Russell Henley	Shane Lowry	Aaron Rai	Tom Hoge	-6	-3	CUT	-6	-1	0	-16
+Nate C.	Viktor Hovland	Rory McIlroy	Will Zalatoris	Min Woo Lee	Byeong Hun An	Cameron Young	-5	-10	CUT	1	-1	CUT	-15
+Jailbirdie El Pato	Scottie Scheffler	Rory McIlroy	Tony Finau	Min Woo Lee	Matt Fitzpatrick	Ángel Cabrera	-6	-10	CUT	1	0	CUT	-15
+Blake S.	Rory McIlroy	Scottie Scheffler	Min Woo Lee	Cameron Smith	Maverick McNealy	Nicolai Højgaard	-10	-6	1	CUT	0	CUT	-15
+Addison G	Rory McIlroy	Collin Morikawa	Will Zalatoris	Russell Henley	Michael Kim	Max Homa	-10	-3	CUT	CUT	-1	-1	-15
+K-Dawg	Scottie Scheffler	Bryson DeChambeau	Sahith Theegala	Patrick Cantlay	Phil Mickelson	Cameron Young	-6	-9	2	3	CUT	CUT	-10
+Justin E.	Rory McIlroy	Ludvig Åberg	Will Zalatoris	Patrick Cantlay	Maverick McNealy	Matthieu Pavon	-10	-2	CUT	3	0	CUT	-9
+Zach K.	Scottie Scheffler	Xander Schauffele	Russell Henley	Wyndham Clark	Maverick McNealy	Nick Taylor	-6	-2	CUT	1	0	0	-8
+Evan S.	Scottie Scheffler	Xander Schauffele	Patrick Cantlay	Cameron Smith	Matt Fitzpatrick	Cameron Young	-6	-2	3	CUT	0	CUT	-5
+Brady	Scottie Scheffler	Brooks Koepka	Wyndham Clark	Min Woo Lee	Dustin Johnson	Max Homa	-6	CUT	1	1	CUT	-1	-5
+Dima K.	Scottie Scheffler	Rory McIlroy	Cameron Smith	Will Zalatoris	Justin Rose	Cameron Young	-6	-10	CUT	CUT	-8	CUT	CUT
+Cole T.	Scottie Scheffler	Rory McIlroy	Patrick Cantlay	Will Zalatoris	Billy Horschel	Joe Highsmith	-6	-10	3	CUT	CUT	CUT	CUT
+Jordan 	Collin Morikawa	Rory McIlroy	Sepp Straka	Russell Henley	J.J. Spaun	Cameron Young	-3	-10	CUT	CUT	4	CUT	CUT
+Brandon E.	Scottie Scheffler	Ludvig Åberg	Russell Henley	Sepp Straka	Billy Horschel	Christiaan Bezuidenhout	-6	-2	CUT	CUT	CUT	CUT	CUT
 `;
 
 // Call the function to populate the leaderboard with the example data
