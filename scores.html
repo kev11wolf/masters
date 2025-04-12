@@ -135,8 +135,7 @@
             </div>
         </nav>
     </header>
-    <h1>Site Under Construction</h1>
-<!--
+
     
     <main>
         <h1>Masters Leaderboard</h1>
@@ -155,7 +154,7 @@
             </thead>
             <tbody>
                 <!-- Data will be populated here -->
-                <!--
+            
             </tbody>
         </table>
     </main>
@@ -177,101 +176,102 @@
 
         // Copy and paste your space-delimited data directly here
         const csvData = `
-J.Rose	65	--	0	0	-8	65	Three
-B.DeChambeau	69	--	0	0	-6	69	One
-C.Conners	68	--	0	0	-4	68	Two
-S.Scheffler	68	--	0	0	-4	68	One
-L.Åberg	68	--	0	0	-4	68	One
-T.Hatton	69	--	0	0	-3	69	Two
-M.Fitzpatrick	71	--	0	0	-3	71	Three
-M.McCarty	71	--	0	0	-3	71	Four
-S.Im	71	--	0	0	-3	71	Three
-R.Højgaard	73	--	0	0	-3	73	Four
-A.Rai	70	--	0	0	-2	70	Three
-H.English	70	--	0	0	-2	70	Three
-J.Day	70	--	0	0	-2	70	Two
-S.Lowry	71	--	0	0	-2	71	Two
-V.Hovland	71	--	0	0	-2	71	One
-A.Bhatia	70	--	0	0	-1	70	Two
-B.Harman	71	--	0	0	-1	71	Two
-B.Watson	71	--	0	0	-1	71	Four
-C.Smith	71	--	0	0	-1	71	Two
-D.Berger	71	--	0	0	-1	71	Three
-F.Couples	71	--	0	0	-1	71	Four
-M.Greyserman	71	--	0	0	-1	71	Four
-M.Woo	71	--	0	0	-1	71	Two
-P.Reed	71	--	0	0	-1	71	Two
-R.McIlroy	72	--	0	0	-1	72	One
-T.Hoge	72	--	0	0	-1	72	Four
-S.Theegala	72	--	0	0	-1	72	Two
-N.Taylor	73	--	0	0	-1	73	Four
-B.Koepka	74	--	0	0	-1	74	One
-J.Spaun	74	--	0	0	-1	74	Three
-R.Campos	75	--	0	0	-1	75	Four
-D.Thompson	71	--	0	0	0	71	Three
-M.Kim	71	--	0	0	0	71	Three
-B.Campbell	72	--	0	0	0	72	Four
-C.Young	72	--	0	0	0	72	Four
-C.Morikawa	72	--	0	0	0	72	One
-J.Niemann	72	--	0	0	0	72	One
-M.McNealy	72	--	0	0	0	72	Three
-S.Jaeger	72	--	0	0	0	72	Three
-Z.Johnson	72	--	0	0	0	72	Four
-X.Schauffele	73	--	0	0	0	73	One
-C.Schwartzel	74	--	0	0	0	74	Four
-D.Johnson	74	--	0	0	0	74	Three
-P.Cantlay	74	--	0	0	0	74	Two
-D.McCarthy	71	--	0	0	1	71	Three
-H.Tai	73	--	0	0	1	73	Four
-Á.Cabrera	75	--	0	0	3	75	Four
-C.Kirk	75	--	0	0	3	75	Four
-D.Willett	75	--	0	0	3	75	Four
-J.Vegas	75	--	0	0	3	75	Four
-J.Rahm	75	--	0	0	3	75	One
-M.Weir	75	--	0	0	3	75	Four
-P.Mickelson	75	--	0	0	3	75	Three
-R.Macintyre	75	--	0	0	3	75	Two
-T.Finau	75	--	0	0	3	75	Two
-S.Garcia	72	--	0	0	4	72	Two
-W.Clark	76	--	0	0	4	76	Two
-A.Eckroat	76	--	0	0	4	76	Four
-C.Bezuidenhout	76	--	0	0	4	76	Four
-J.Highsmith	76	--	0	0	4	76	Four
-J.Luis	76	--	0	0	4	76	Four
-J.Hastings	76	--	0	0	4	76	Four
-K.Yu	76	--	0	0	4	76	Four
-N.Højgaard	76	--	0	0	4	76	Four
-A.Scott	77	--	0	0	5	77	Three
-B.Horschel	77	--	0	0	5	77	Three
-E.Beck	77	--	0	0	5	77	Four
-J.María	77	--	0	0	5	77	Four
-L.Canter	77	--	0	0	5	77	Three
-T.Pendrith	77	--	0	0	5	77	Three
-S.Straka	78	--	0	0	6	78	Two
-L.Glover	78	--	0	0	6	78	Three
-M.Pavon	78	--	0	0	6	78	Four
-R.Henley	79	--	0	0	7	79	Two
-N.Kent	79	--	0	0	7	79	Four
-P.Kizzire	79	--	0	0	7	79	Four
-T.Detry	79	--	0	0	7	79	Three
-T.Lawrence	79	--	0	0	7	79	Four
-N.Dunlap	90	--	0	0	18	90	Four
-D.Riley	73	--	0	0	-	73	Four
-H.Matsuyama	73	--	0	0	-	73	One
-J.Spieth	73	--	0	0	-	73	One
-J.Thomas	73	--	0	0	-	73	One
-N.Echavarria	73	--	0	0	-	73	Four
-T.Kim	73	--	0	0	-	73	Two
-T.Fleetwood	73	--	0	0	-	73	One
-S.Burns	73	--	0	0	-	73	Three
-B.Langer	74	--	0	0	-	74	Four
-B.Hun	74	--	0	0	-	74	Three
-J.Poston	74	--	0	0	-	74	Four
-K.Bradley	74	--	0	0	-	74	Two
-W.Zalatoris	74	--	0	0	-	74	Two
-A.Schenk		--	0	0			Four
-C.Davis		--	0	0			Four
-M.Homa		--	0	0			Four
+Player Name	Round 1 RAW	Round 2 Raw	Round 3 Raw	Round 4 Raw	Total to Par	Total RAW	Tier RAW
+J.Rose	65	71	0	0	-8	136	Three
+B.DeChambeau	69	68	0	0	-7	137	One
+C.Conners	68	70	0	0	-6	138	Two
+R.McIlroy	72	66	0	0	-6	138	One
+S.Scheffler	68	71	0	0	-5	139	One
+M.McCarty	71	68	0	0	-5	139	Four
+S.Lowry	71	68	0	0	-5	139	Two
+T.Hatton	69	70	0	0	-5	139	Two
+J.Day	70	70	0	0	-4	140	Two
+V.Hovland	71	69	0	0	-4	140	One
+R.Højgaard	73	67	0	0	-4	140	Four
+S.Im	71	70	0	0	-3	141	Three
+L.Åberg	68	73	0	0	-3	141	One
+P.Reed	71	70	0	0	-3	141	Two
+H.Matsuyama	73	68	0	0	-3	141	One
+C.Morikawa	72	69	0	0	-3	141	One
+M.Kim	71	71	0	0	-2	142	Three
+D.Riley	73	69	0	0	-2	142	Four
+T.Fleetwood	73	69	0	0	-2	142	One
+X.Schauffele	73	69	0	0	-2	142	One
+B.Harman	71	71	0	0	-2	142	Two
+H.English	70	73	0	0	-1	143	Three
+S.Burns	73	70	0	0	-1	143	Three
+N.Echavarria	73	70	0	0	-1	143	Four
+B.Watson	71	72	0	0	-1	143	Four
+M.Woo	71	72	0	0	-1	143	Two
+S.Theegala	72	72	0	0	0	144	Two
+D.Thompson	71	73	0	0	0	144	Three
+A.Rai	70	74	0	0	0	144	Three
+N.Taylor	73	71	0	0	0	144	Four
+J.Thomas	73	71	0	0	0	144	One
+D.Berger	71	73	0	0	0	144	Three
+M.Fitzpatrick	71	73	0	0	0	144	Three
+T.Hoge	72	72	0	0	0	144	Four
+M.Homa	74	70	0	0	0	144	Four
+W.Clark	76	68	0	0	0	144	Two
+M.McNealy	72	73	0	0	1	145	Three
+B.Campbell	72	73	0	0	1	145	Four
+B.Hun	74	71	0	0	1	145	Three
+J.Niemann	72	74	0	0	2	146	One
+M.Greyserman	71	75	0	0	2	146	Four
+J.Spieth	73	73	0	0	2	146	One
+Z.Johnson	72	74	0	0	2	146	Four
+T.Kim	73	73	0	0	2	146	Two
+J.Poston	74	72	0	0	2	146	Four
+S.Jaeger	72	74	0	0	2	146	Three
+A.Bhatia	70	76	0	0	2	146	Two
+J.Spaun	74	72	0	0	2	146	Three
+J.Rahm	75	71	0	0	2	146	One
+D.McCarthy	71	75	0	0	2	146	Three
+C.Schwartzel	74	72	0	0	2	146	Four
+P.Cantlay	74	72	0	0	2	146	Two
+D.Willett	75	71	0	0	2	146	Four
+B.Langer	74	73	82	82	CUT	311	Four
+F.Couples	71	77	82	82	CUT	312	Four
+C.Kirk	75	72	82	82	CUT	311	Four
+C.Smith	71	78	82	82	CUT	313	Two
+C.Young	72	79	82	82	CUT	315	Four
+K.Bradley	74	73	82	82	CUT	311	Two
+P.Mickelson	75	74	82	82	CUT	313	Three
+S.Straka	78	71	82	82	CUT	313	Two
+D.Johnson	74	73	82	82	CUT	311	Three
+T.Finau	75	73	82	82	CUT	312	Two
+R.Henley	79	68	82	82	CUT	311	Two
+R.Macintyre	75	75	82	82	CUT	314	Two
+M.Weir	75	73	82	82	CUT	312	Four
+S.Garcia	72	76	82	82	CUT	312	Two
+A.Schenk	73	75	82	82	CUT	312	Four
+J.Highsmith	76	72	82	82	CUT	312	Four
+J.Hastings	76	72	82	82	CUT	312	Four
+R.Campos	75	73	82	82	CUT	312	Four
+B.Koepka	74	75	82	82	CUT	313	One
+W.Zalatoris	74	78	82	82	CUT	316	Two
+J.Vegas	75	75	82	82	CUT	314	Four
+A.Scott	77	72	82	82	CUT	313	Three
+B.Horschel	77	72	82	82	CUT	313	Three
+N.Højgaard	76	74	82	82	CUT	314	Four
+J.Luis	76	78	82	82	CUT	318	Four
+K.Yu	76	74	82	82	CUT	314	Four
+T.Pendrith	77	75	82	82	CUT	316	Three
+H.Tai	73	77	82	82	CUT	314	Four
+A.Eckroat	76	74	82	82	CUT	314	Four
+C.Bezuidenhout	76	75	82	82	CUT	315	Four
+J.María	77	74	82	82	CUT	315	Four
+N.Kent	79	76	82	82	CUT	319	Four
+L.Glover	78	74	82	82	CUT	316	Three
+P.Kizzire	79	73	82	82	CUT	316	Four
+T.Detry	79	74	82	82	CUT	317	Three
+C.Davis	74	79	82	82	CUT	317	Four
+E.Beck	77	76	82	82	CUT	317	Four
+L.Canter	77	77	82	82	CUT	318	Three
+M.Pavon	78	76	82	82	CUT	318	Four
+T.Lawrence	79	76	82	82	CUT	319	Four
+Á.Cabrera	75	80	82	82	CUT	319	Four
+N.Dunlap	90	71	82	82	CUT	325	Four
 `;
         function populateScores(csvData) {
             const tbody = document.querySelector('#scores tbody');
@@ -300,7 +300,6 @@ M.Homa		--	0	0			Four
 
         populateScores(csvData);
     </script>
--->
     <div id="footer"></div>
 
     <script>
