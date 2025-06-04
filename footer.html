@@ -50,166 +50,7 @@
             <p id="randomFact"></p>
             <p id="randomJoke"></p>
         </div>
-<!-- Your existing footer and other content above -->
 
-
-
-        
-<!-- Chat UI -->
-<div id="chat-container" style="border: 1px solid #ccc; width: 350px; height: 400px; overflow-y: auto; margin: 20px auto; padding: 10px; background: #fff;">
-  <h3 style="text-align:center;">Chat</h3>
-  <div id="messages" style="margin-bottom: 10px; height: 300px; overflow-y: auto; border: 1px solid #ddd; padding: 5px; background:#f9f9f9;"></div>
-  <input type="text" id="message-input" placeholder="Type a message" style="width: 70%; padding: 8px; margin-right: 5px;">
-  <button id="send-btn" style="padding: 8px 12px;">Send</button>
-</div>
-
-
-<!-- Add Supabase SDK -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js/dist/supabase.min.js"></script>
-
-<script>
-  // Initialize Supabase
-  const supabaseUrl = 'https://mgmpzllkceyemdvptpzj.supabase.co';
-  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1nbXB6bGxrY2V5ZW1kdnB0cHpqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg5NzA1MzYsImV4cCI6MjA2NDU0NjUzNn0.a8rjF4PX76YeFNC6GDWf3WFXhjOHYsUN0xOIa3c02XQ';
-
-  const supabase = supabase.createClient(supabaseUrl, supabaseKey);
-
-  const userInfoDiv = document.getElementById('user-info');
-  const messagesDiv = document.getElementById('messages');
-  const messageInput = document.getElementById('message-input');
-
-  // Sign up
-  document.getElementById('signup-btn').onclick = async () => {
-    const email = document.getElementById('signup-email').value;
-    const password = document.getElementById('signup-password').value;
-    const { user, error } = await supabase.auth.signUp({ email, password });
-    if (error) alert(error.message);
-    else alert('Check your email to confirm your account.');
-  };
-
-  // Sign in
-  document.getElementById('signin-btn').onclick = async () => {
-    const email = document.getElementById('signin-email').value;
-    const password = document.getElementById('signin-password').value;
-    const { user, error } = await supabase.auth.signIn({ email, password });
-    if (error) alert(error.message);
-  };
-
-  // Sign out
-  document.getElementById('signout-btn').onclick = async () => {
-    await supabase.auth.signOut();
-  };
-
-  // Update UI based on auth state
-  supabase.auth.onAuthStateChange((event, session) => {
-    updateUI(session?.user);
-    loadMessages(); // Load messages if logged in
-  });
-
-  function updateUI(user) {
-    if (user) {
-      document.getElementById('user-info').innerText = `Logged in as: ${user.email}`;
-      document.getElementById('signout-btn').style.display = 'inline-block';
-    } else {
-      document.getElementById('user-info').innerText = 'Not logged in.';
-      document.getElementById('signout-btn').style.display = 'none';
-      messagesDiv.innerHTML = '<em>Please log in to see messages.</em>';
-    }
-  }
-
-  // Load messages only if logged in
-  async function loadMessages() {
-    const user = supabase.auth.user();
-    if (!user) {
-      messagesDiv.innerHTML = '<em>Please log in to see messages.</em>';
-      return;
-    }
-    const { data, error } = await supabase
-      .from('messages')
-      .select('*')
-      .order('created_at', { ascending: true });
-    if (error) {
-      console.error('Error loading messages:', error);
-      return;
-    }
-    messagesDiv.innerHTML = '';
-    data.forEach(msg => {
-      const msgElem = document.createElement('div');
-      msgElem.style.marginBottom = '8px';
-      msgElem.innerHTML = `<strong>${msg.user_name || 'Anonymous'}:</strong> ${msg.content}`;
-      messagesDiv.appendChild(msgElem);
-    });
-    messagesDiv.scrollTop = messagesDiv.scrollHeight;
-  }
-
-  // Subscribe to new messages
-  const subscription = supabase
-    .from('messages')
-    .on('INSERT', payload => {
-      loadMessages();
-    })
-    .subscribe();
-
-  // Send message
-  document.getElementById('send-btn').onclick = async () => {
-    const user = supabase.auth.user();
-    if (!user) {
-      alert('Please log in to send messages.');
-      return;
-    }
-    const content = messageInput.value.trim();
-    if (!content) return;
-    const { error } = await supabase
-      .from('messages')
-      .insert([{ content, user_name: user.email }]);
-    if (error) console.error('Error sending message:', error);
-    messageInput.value = '';
-  };
-
-  // Check auth state on page load
-  window.onload = () => {
-    const user = supabase.auth.user();
-    updateUI(user);
-    loadMessages();
-  };
-</script>
-
-<!-- Existing scripts like dropdown toggle, slideshow, etc. stay below -->
-<script>
-  // existing toggleDropdown() function
-  function toggleDropdown() {
-    const dropdown = document.getElementById('dropdown');
-    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-  }
-
-  // existing outside click for dropdown
-  window.onclick = function(event) {
-    if (!event.target.closest('.logo-container')) {
-      const dropdown = document.getElementById('dropdown');
-      if (dropdown.style.display === 'block') {
-        dropdown.style.display = 'none';
-      }
-    }
-  }
-
-  // existing slideshow code
-  let slideIndex = 0;
-  showSlides();
-
-  function showSlides() {
-    let slides = document.getElementsByClassName("mySlides");
-    for (let i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-    }
-    slideIndex++;
-    if (slideIndex > slides.length) { slideIndex = 1; }
-    slides[slideIndex - 1].style.display = "block";
-    setTimeout(showSlides, 5000);
-  }
-</script>
-
-
-        
         <div class="video-container">
             <iframe 
                 id="videoPlayer" 
@@ -432,5 +273,137 @@
             displayRandomFactAndJoke();
         });
     </script>
+    <!-- Footer with Login/Signup and Chat -->
+<footer style="background-color:#1a4831; color:white; padding:20px; text-align:center; font-family:Arial, sans-serif;">
+  <!-- Login / Sign Up UI -->
+  <div style="margin-bottom:20px;">
+    <h3>Login / Sign Up</h3>
+    <div style="margin-bottom:10px;">
+      <input type="email" id="signup-email" placeholder="Sign Up Email" style="margin-right:5px; padding:5px; width:150px;" />
+      <input type="password" id="signup-password" placeholder="Sign Up Password" style="margin-right:5px; padding:5px; width:150px;" />
+      <button id="signup-btn" style="padding:5px 10px;">Sign Up</button>
+    </div>
+    <div style="margin-bottom:10px;">
+      <input type="email" id="signin-email" placeholder="Sign In Email" style="margin-right:5px; padding:5px; width:150px;" />
+      <input type="password" id="signin-password" placeholder="Sign In Password" style="margin-right:5px; padding:5px; width:150px;" />
+      <button id="signin-btn" style="padding:5px 10px;">Sign In</button>
+    </div>
+    <button id="signout-btn" style="display:none; padding:5px 10px;">Sign Out</button>
+    <div id="user-info" style="margin-top:10px;">Not logged in.</div>
+  </div>
+
+  <!-- Chat Box -->
+  <div id="chat-container" style="border: 1px solid #ccc; width: 350px; height: 400px; overflow-y: auto; margin: 20px auto; padding: 10px; background:#fff;">
+    <h3 style="text-align:center;">Chat</h3>
+    <div id="messages" style="margin-bottom:10px; height:300px; overflow-y:auto; border:1px solid #ddd; padding:5px; background:#f9f9f9;"></div>
+    <input type="text" id="message-input" placeholder="Type a message" style="width:70%; padding:8px; margin-right:5px;" />
+    <button id="send-btn" style="padding:8px 12px;">Send</button>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<!-- Load Supabase SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js/dist/supabase.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Initialize Supabase
+    const supabaseUrl = 'https://mgmpzllkceyemdvptpzj.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1nbXB6bGxrY2V5ZW1kdnB0cHpqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg5NzA1MzYsImV4cCI6MjA2NDU0NjUzNn0.a8rjF4PX76YeFNC6GDWf3WFXhjOHYsUN0xOIa3c02XQ';
+
+    const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+    const userInfoDiv = document.getElementById('user-info');
+    const signOutBtn = document.getElementById('signout-btn');
+    const messagesDiv = document.getElementById('messages');
+    const messageInput = document.getElementById('message-input');
+
+    // Sign Up
+    document.getElementById('signup-btn').onclick = async () => {
+      const email = document.getElementById('signup-email').value;
+      const password = document.getElementById('signup-password').value;
+      const { user, error } = await supabase.auth.signUp({ email, password });
+      if (error) alert(error.message);
+      else alert('Check your email to confirm your account.');
+    };
+
+    // Sign In
+    document.getElementById('signin-btn').onclick = async () => {
+      const email = document.getElementById('signin-email').value;
+      const password = document.getElementById('signin-password').value;
+      const { user, error } = await supabase.auth.signIn({ email, password });
+      if (error) alert(error.message);
+    };
+
+    // Sign Out
+    signOutBtn.onclick = async () => {
+      await supabase.auth.signOut();
+    };
+
+    // Listen to auth changes
+    supabase.auth.onAuthStateChange((event, session) => {
+      updateUI(session?.user);
+      loadMessages();
+    });
+
+    function updateUI(user) {
+      if (user) {
+        document.getElementById('user-info').innerText = `Logged in as: ${user.email}`;
+        signOutBtn.style.display = 'inline-block';
+      } else {
+        document.getElementById('user-info').innerText = 'Not logged in.';
+        signOutBtn.style.display='none';
+        if (messagesDiv) messagesDiv.innerHTML='<em>Please log in to see messages.</em>';
+      }
+    }
+
+    // Load messages
+    async function loadMessages() {
+      const user = supabase.auth.user();
+      if (!user) {
+        if (messagesDiv) messagesDiv.innerHTML='<em>Please log in to see messages.</em>';
+        return;
+      }
+      const { data, error } = await supabase
+        .from('messages')
+        .select('*')
+        .order('created_at', { ascending: true });
+      if (error) {
+        console.error('Error loading messages:', error);
+        return;
+      }
+      if (messagesDiv) {
+        messagesDiv.innerHTML = '';
+        data.forEach(msg => {
+          const msgElem=document.createElement('div');
+          msgElem.style.marginBottom='8px';
+          msgElem.innerHTML=`<strong>${msg.user_name || 'Anonymous'}:</strong> ${msg.content}`;
+          messagesDiv.appendChild(msgElem);
+        });
+        messagesDiv.scrollTop=messagesDiv.scrollHeight;
+      }
+    }
+
+    // Subscribe to new messages
+    supabase
+      .from('messages')
+      .on('INSERT', payload => { loadMessages(); })
+      .subscribe();
+
+    // Send message
+    document.getElementById('send-btn').onclick=async () => {
+      const user = supabase.auth.user();
+      if (!user) { alert('Please log in to send messages.'); return; }
+      const content = messageInput.value.trim();
+      if (!content) return;
+      const { error }=await supabase
+        .from('messages')
+        .insert([{ content, user_name: user.email }]);
+      if (error) console.error('Error sending message:', error);
+      messageInput.value='';
+    };
+
+    // Load messages on page load
+    loadMessages();
+  });
+</script>
 </body>
 </html>
