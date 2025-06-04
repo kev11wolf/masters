@@ -273,7 +273,7 @@
             displayRandomFactAndJoke();
         });
     </script>
-    <!-- Footer with Login/Signup and Chat -->
+   <!-- Your footer code -->
 <footer style="background-color:#1a4831; color:white; padding:20px; text-align:center; font-family:Arial, sans-serif;">
   <!-- Login / Sign Up UI -->
   <div style="margin-bottom:20px;">
@@ -292,8 +292,8 @@
     <div id="user-info" style="margin-top:10px;">Not logged in.</div>
   </div>
 
-  <!-- Chat Box -->
-  <div id="chat-container" style="border: 1px solid #ccc; width: 350px; height: 400px; overflow-y: auto; margin: 20px auto; padding: 10px; background:#fff;">
+  <!-- Chat -->
+  <div id="chat-container" style="border:1px solid #ccc; width:350px; height:400px; overflow-y:auto; margin:20px auto; padding:10px; background:#fff;">
     <h3 style="text-align:center;">Chat</h3>
     <div id="messages" style="margin-bottom:10px; height:300px; overflow-y:auto; border:1px solid #ddd; padding:5px; background:#f9f9f9;"></div>
     <input type="text" id="message-input" placeholder="Type a message" style="width:70%; padding:8px; margin-right:5px;" />
@@ -301,15 +301,12 @@
   </div>
 </footer>
 
-<!-- Scripts -->
-<!-- Load Supabase SDK -->
+<!-- Scripts (place at end of your body) -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js/dist/supabase.min.js"></script>
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    // Initialize Supabase
-    const supabaseUrl = 'https://mgmpzllkceyemdvptpzj.supabase.co';
-    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1nbXB6bGxrY2V5ZW1kdnB0cHpqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg5NzA1MzYsImV4cCI6MjA2NDU0NjUzNn0.a8rjF4PX76YeFNC6GDWf3WFXhjOHYsUN0xOIa3c02XQ';
-
+    const supabaseUrl='https://mgmpzllkceyemdvptpzj.supabase.co';
+    const supabaseKey='YOUR_PUBLIC_ANON_KEY';
     const supabase = supabase.createClient(supabaseUrl, supabaseKey);
     const userInfoDiv = document.getElementById('user-info');
     const signOutBtn = document.getElementById('signout-btn');
@@ -317,65 +314,62 @@
     const messageInput = document.getElementById('message-input');
 
     // Sign Up
-    document.getElementById('signup-btn').onclick = async () => {
-      const email = document.getElementById('signup-email').value;
-      const password = document.getElementById('signup-password').value;
-      const { user, error } = await supabase.auth.signUp({ email, password });
-      if (error) alert(error.message);
+    document.getElementById('signup-btn').onclick=async ()=>{
+      const email=document.getElementById('signup-email').value;
+      const password=document.getElementById('signup-password').value;
+      const {user,error}=await supabase.auth.signUp({email,password});
+      if(error) alert(error.message);
       else alert('Check your email to confirm your account.');
     };
 
     // Sign In
-    document.getElementById('signin-btn').onclick = async () => {
-      const email = document.getElementById('signin-email').value;
-      const password = document.getElementById('signin-password').value;
-      const { user, error } = await supabase.auth.signIn({ email, password });
-      if (error) alert(error.message);
+    document.getElementById('signin-btn').onclick=async ()=>{
+      const email=document.getElementById('signin-email').value;
+      const password=document.getElementById('signin-password').value;
+      const {user,error}=await supabase.auth.signIn({email,password});
+      if(error) alert(error.message);
     };
 
     // Sign Out
-    signOutBtn.onclick = async () => {
+    document.getElementById('signout-btn').onclick=async ()=>{
       await supabase.auth.signOut();
     };
 
     // Listen to auth changes
-    supabase.auth.onAuthStateChange((event, session) => {
+    supabase.auth.onAuthStateChange((event,session)=>{
       updateUI(session?.user);
       loadMessages();
     });
 
-    function updateUI(user) {
-      if (user) {
-        document.getElementById('user-info').innerText = `Logged in as: ${user.email}`;
-        signOutBtn.style.display = 'inline-block';
+    function updateUI(user){
+      if(user){
+        document.getElementById('user-info').innerText='Logged in as: '+user.email;
+        signOutBtn.style.display='inline-block';
       } else {
-        document.getElementById('user-info').innerText = 'Not logged in.';
+        document.getElementById('user-info').innerText='Not logged in.';
         signOutBtn.style.display='none';
-        if (messagesDiv) messagesDiv.innerHTML='<em>Please log in to see messages.</em>';
+        if(messagesDiv) messagesDiv.innerHTML='<em>Please log in to see messages.</em>';
       }
     }
 
     // Load messages
     async function loadMessages() {
-      const user = supabase.auth.user();
-      if (!user) {
-        if (messagesDiv) messagesDiv.innerHTML='<em>Please log in to see messages.</em>';
+      const user=supabase.auth.user();
+      if(!user){
+        if(messagesDiv) messagesDiv.innerHTML='<em>Please log in to see messages.</em>';
         return;
       }
-      const { data, error } = await supabase
+      const {data,error}=await supabase
         .from('messages')
         .select('*')
-        .order('created_at', { ascending: true });
-      if (error) {
-        console.error('Error loading messages:', error);
-        return;
-      }
-      if (messagesDiv) {
-        messagesDiv.innerHTML = '';
-        data.forEach(msg => {
+        .order('created_at',{ascending:true});
+      if(error){console.error('Error loading messages:',error); return;}
+      if(messagesDiv){
+        messagesDiv.innerHTML='';
+        data.forEach(msg=>{
           const msgElem=document.createElement('div');
           msgElem.style.marginBottom='8px';
-          msgElem.innerHTML=`<strong>${msg.user_name || 'Anonymous'}:</strong> ${msg.content}`;
+          msgElem.innerHTML=`<strong>${msg.user_name||'Anonymous'}:</strong> ${msg.content}`;
           messagesDiv.appendChild(msgElem);
         });
         messagesDiv.scrollTop=messagesDiv.scrollHeight;
@@ -385,23 +379,23 @@
     // Subscribe to new messages
     supabase
       .from('messages')
-      .on('INSERT', payload => { loadMessages(); })
+      .on('INSERT',()=>{loadMessages();})
       .subscribe();
 
     // Send message
-    document.getElementById('send-btn').onclick=async () => {
-      const user = supabase.auth.user();
-      if (!user) { alert('Please log in to send messages.'); return; }
-      const content = messageInput.value.trim();
-      if (!content) return;
-      const { error }=await supabase
+    document.getElementById('send-btn').onclick=async ()=>{
+      const user=supabase.auth.user();
+      if(!user){ alert('Please log in to send messages.'); return; }
+      const content=messageInput.value.trim();
+      if(!content) return;
+      const {error}=await supabase
         .from('messages')
-        .insert([{ content, user_name: user.email }]);
-      if (error) console.error('Error sending message:', error);
+        .insert([{content, user_name: user.email}]);
+      if(error) console.error('Error sending message:',error);
       messageInput.value='';
     };
 
-    // Load messages on page load
+    // Load messages initially
     loadMessages();
   });
 </script>
