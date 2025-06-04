@@ -473,35 +473,63 @@ function showSlides() {
     setTimeout(showSlides, 5000); // Calls showSlides again after 5 seconds to change the slide
 }
 
-// Fetch footer content from an external HTML file
-document.addEventListener("DOMContentLoaded", function() { // Waits for the DOM to fully load before executing the following
-    fetch('footer.html') // Fetches content from footer.html
-        .then(response => response.text()) // Converts the fetched response to text
-        .then(data => {
-            document.getElementById('footer').innerHTML = data; // Inserts the fetched footer content into the placeholder div
-        })
-        .catch(error => console.error('Error loading footer:', error)); // Logs any errors to the console
-});
-</script>
-<!-- Chat Box UI -->
-<div id="chat-container" style="border: 1px solid #ccc; width: 350px; height: 400px; overflow-y: auto; margin: 20px auto; padding: 10px; background: #fff;">
-  <h3 style="text-align: center;">Chat</h3>
-  <div id="messages" style="margin-bottom: 10px; height: 300px; overflow-y: auto; border: 1px solid #ddd; padding: 5px; background:#f9f9f9;"></div>
-  <input type="text" id="message-input" placeholder="Type a message" style="width: 70%; padding: 8px; margin-right: 5px;">
-  <button id="send-btn" style="padding: 8px 12px;">Send</button>
-</div>
-
-<!-- Supabase SDK -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js/dist/supabase.min.js"></script>
 <script>
-  // Initialize Supabase client
+  // Initialize Supabase
   const supabaseUrl = 'https://mgmpzllkceyemdvptpzj.supabase.co';
   const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1nbXB6bGxrY2V5ZW1kdnB0cHpqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg5NzA1MzYsImV4cCI6MjA2NDU0NjUzNn0.a8rjF4PX76YeFNC6GDWf3WFXhjOHYsUN0xOIa3c02XQ';
-
   const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
-  // Load existing messages
+  const userInfoDiv = document.getElementById('user-info');
+  const messagesDiv = document.getElementById('messages');
+  const messageInput = document.getElementById('message-input');
+
+  // Sign up
+  document.getElementById('signup-btn').onclick = async () => {
+    const email = document.getElementById('signup-email').value;
+    const password = document.getElementById('signup-password').value;
+    const { user, error } = await supabase.auth.signUp({ email, password });
+    if (error) alert(error.message);
+    else alert('Check your email to confirm your account.');
+  };
+
+  // Sign in
+  document.getElementById('signin-btn').onclick = async () => {
+    const email = document.getElementById('signin-email').value;
+    const password = document.getElementById('signin-password').value;
+    const { user, error } = await supabase.auth.signIn({ email, password });
+    if (error) alert(error.message);
+  };
+
+  // Sign out
+  document.getElementById('signout-btn').onclick = async () => {
+    await supabase.auth.signOut();
+  };
+
+  // Update UI on auth state change
+  supabase.auth.onAuthStateChange((event, session) => {
+    updateUI(session?.user);
+    loadMessages(); // Load messages if logged in
+  });
+
+  function updateUI(user) {
+    if (user) {
+      userInfoDiv.innerHTML = `Logged in as: ${user.email}`;
+      document.getElementById('signout-btn').style.display = 'inline-block';
+    } else {
+      userInfoDiv.innerHTML = 'Not logged in.';
+      document.getElementById('signout-btn').style.display = 'none';
+      messagesDiv.innerHTML = ''; // Clear chat when logged out
+    }
+  }
+
+  // Load messages only if logged in
   async function loadMessages() {
+    const user = supabase.auth.user();
+    if (!user) {
+      messagesDiv.innerHTML = '<em>Please log in to see messages.</em>';
+      return;
+    }
     const { data, error } = await supabase
       .from('messages')
       .select('*')
@@ -510,7 +538,6 @@ document.addEventListener("DOMContentLoaded", function() { // Waits for the DOM 
       console.error('Error loading messages:', error);
       return;
     }
-    const messagesDiv = document.getElementById('messages');
     messagesDiv.innerHTML = '';
     data.forEach(msg => {
       const msgElem = document.createElement('div');
@@ -521,7 +548,7 @@ document.addEventListener("DOMContentLoaded", function() { // Waits for the DOM 
     messagesDiv.scrollTop = messagesDiv.scrollHeight;
   }
 
-  // Subscribe to new messages in real-time
+  // Subscribe to new messages
   const subscription = supabase
     .from('messages')
     .on('INSERT', payload => {
@@ -529,30 +556,40 @@ document.addEventListener("DOMContentLoaded", function() { // Waits for the DOM 
     })
     .subscribe();
 
-  // Send message handler
-  document.getElementById('send-btn').addEventListener('click', async () => {
-    const input = document.getElementById('message-input');
-    const message = input.value.trim();
-    if (message === '') return;
-
-    // Optionally, you can get the user's name or ID here
-    const userName = 'Visitor'; // Or integrate user auth
-
+  // Send message
+  document.getElementById('send-btn').onclick = async () => {
+    const user = supabase.auth.user();
+    if (!user) {
+      alert('Please log in to send messages.');
+      return;
+    }
+    const content = messageInput.value.trim();
+    if (!content) return;
     const { error } = await supabase
       .from('messages')
-      .insert([{ content: message, user_name: userName }]);
+      .insert([{ content, user_name: user.email }]);
+    if (error) console.error('Error sending message:', error);
+    messageInput.value = '';
+  };
 
-    if (error) {
-      console.error('Error sending message:', error);
-    } else {
-      input.value = '';
-    }
-  });
-
-  // Load messages on page load
+  // Initial check on page load
   window.onload = () => {
+    const user = supabase.auth.user();
+    updateUI(user);
     loadMessages();
   };
 </script>
+    
+// Fetch footer content from an external HTML file
+document.addEventListener("DOMContentLoaded", function() { // Waits for the DOM to fully load before executing the following
+    fetch('footer.html') // Fetches content from footer.html
+        .then(response => response.text()) // Converts the fetched response to text
+        .then(data => {
+            document.getElementById('footer').innerHTML = data; // Inserts the fetched footer content into the placeholder div
+        })
+        .catch(error => console.error('Error loading footer:', error)); // Logs any errors to the console
+});
+</script>
+
 </body>
 </html>
